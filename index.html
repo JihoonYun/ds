@@ -32,7 +32,7 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Home 1</a>
+                            <a href="#" onclick="loadContent('home.html')">Home 1</a>
                         </li>
                         <li>
                             <a href="#">Home 2</a>
@@ -144,6 +144,11 @@
                 $('#sidebar').toggleClass('active');
             });
         });
+
+        function loadContent(page) {
+            // Use jQuery to load content from external HTML files
+            $('#content').load(page);
+        }
     </script>
 </body>
 
