@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Collapsible sidebar using Bootstrap 4</title>
+    <title>Data Science, University of Colorado, Boulder</title>
 
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -20,105 +20,200 @@
 
 <body>
     <div class="wrapper">
-        <!-- Sidebar  -->
+        <!-- Sidebar  , ARM, DT, NB, SVM, Regression, NN -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+                <h3>Machine Learning</h3>
+                <h7>Individual Project</h7>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
+
+                <li>
+                    <a href="#" onclick="loadContent('Introduction.html')">Introduction</a>
+                </li>
+                <li>
+                    <a href="#" onclick="loadContent('DataPrep_EDA.html')">DataPrep/EDA</a>
+                </li>
+                <li>
+                    <a href="#modelMethodSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Clustering</a>
+                    <ul class="collapse list-unstyled" id="modelMethodSubmenu1"> 
                         <li>
-                            <a href="#" onclick="loadContent('home.html')">Home 1</a>
+                            <a href="#">OVERVIEW</a>
                         </li>
                         <li>
-                            <a href="#">Home 2</a>
+                            <a href="#">DATA</a>
                         </li>
                         <li>
-                            <a href="#">Home 3</a>
+                            <a href="#">CODE</a>
+                        </li>
+                        <li>
+                            <a href="#">RESULTS</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <a href="#modelMethodSubmenu2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">ARM</a>
+                    <ul class="collapse list-unstyled" id="modelMethodSubmenu2"> 
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="#">OVERVIEW</a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                            <a href="#">DATA</a>
                         </li>
                         <li>
-                            <a href="#">Page 3</a>
+                            <a href="#">CODE</a>
+                        </li>
+                        <li>
+                            <a href="#">RESULTS</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Portfolio</a>
+                    <a href="#modelMethodSubmenu4" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">NaiveBayes</a>
+                    <ul class="collapse list-unstyled" id="modelMethodSubmenu4"> 
+                        <li>
+                            <a href="#">OVERVIEW</a>
+                        </li>
+                        <li>
+                            <a href="#">DATA</a>
+                        </li>
+                        <li>
+                            <a href="#">CODE</a>
+                        </li>
+                        <li>
+                            <a href="#">RESULTS</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <a href="#">Contact</a>
+                    <a href="#modelMethodSubmenu3" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">DecTrees</a>
+                    <ul class="collapse list-unstyled" id="modelMethodSubmenu3"> 
+                        <li>
+                            <a href="#">OVERVIEW</a>
+                        </li>
+                        <li>
+                            <a href="#">DATA</a>
+                        </li>
+                        <li>
+                            <a href="#">CODE</a>
+                        </li>
+                        <li>
+                            <a href="#">RESULTS</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#modelMethodSubmenu5" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">SVMs</a>
+                    <ul class="collapse list-unstyled" id="modelMethodSubmenu5"> 
+                        <li>
+                            <a href="#">OVERVIEW</a>
+                        </li>
+                        <li>
+                            <a href="#">DATA</a>
+                        </li>
+                        <li>
+                            <a href="#">CODE</a>
+                        </li>
+                        <li>
+                            <a href="#">RESULTS</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#modelMethodSubmenu6" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Regression</a>
+                    <ul class="collapse list-unstyled" id="modelMethodSubmenu6"> 
+                        <li>
+                            <a href="#">OVERVIEW</a>
+                        </li>
+                        <li>
+                            <a href="#">DATA</a>
+                        </li>
+                        <li>
+                            <a href="#">CODE</a>
+                        </li>
+                        <li>
+                            <a href="#">RESULTS</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#modelMethodSubmenu7" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">NN</a>
+                    <ul class="collapse list-unstyled" id="modelMethodSubmenu7"> 
+                        <li>
+                            <a href="#">OVERVIEW</a>
+                        </li>
+                        <li>
+                            <a href="#">DATA</a>
+                        </li>
+                        <li>
+                            <a href="#">CODE</a>
+                        </li>
+                        <li>
+                            <a href="#">RESULTS</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Conclusions</a>
                 </li>
             </ul>
         </nav>
 
+        <!-- Header Nav -->
         <!-- Page Content  -->
-        <div id="content">
-
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
-                        <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
-                    </button>
-                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
+        <div id="body">
+            <div id='header'>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+    
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <!-- <span>Toggle Sidebar</span> -->
+                        </button>
+                        <!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>
+    
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ml-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Page</a>
+                                </li>
+                            </ul>
+                        </div> -->
                     </div>
-                </div>
-            </nav>
+                </nav>
+            </div>
+            <div id="content">
+                <h2>Collapsible Sidebar Using Bootstrap 4</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-            <h2>Collapsible Sidebar Using Bootstrap 4</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="line"></div>
 
-            <div class="line"></div>
+                <h2>Lorem Ipsum Dolor</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="line"></div>
 
-            <div class="line"></div>
+                <h2>Lorem Ipsum Dolor</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="line"></div>
 
-            <div class="line"></div>
-
-            <h3>Lorem Ipsum Dolor</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <h3>Lorem Ipsum Dolor</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
         </div>
     </div>
 
