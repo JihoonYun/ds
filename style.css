@@ -138,8 +138,8 @@ a.download {
 
 .menu-item.selected,
 .menu-item:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+    color: #488AC7;
+    background: #fff;
 }
 
 
