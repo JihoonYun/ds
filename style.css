@@ -140,9 +140,8 @@ a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
 } */
-a.article,
-a.article:hover,
-a.article.selected {
+a.article.selected,
+a.article:hover {
     background: #6d7fcc !important;
     color: #fff !important;
 }
