@@ -240,10 +240,10 @@
 
         function loadContent(menuItem, page) {
             // 
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => {
-                item.classList.remove('selected');
-            });
+            const selectedMenuItem = document.querySelector('.menu-item.selected');
+            if (selectedMenuItem) {
+                selectedMenuItem.classList.remove('selected');
+            }
 
             // 
             menuItem.classList.add('selected');
