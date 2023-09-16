@@ -9,7 +9,7 @@ body {
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Cambria', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -138,15 +138,17 @@ a.download {
 
 .menu-item.selected,
 .menu-item:hover {
-    color: #488AC7;
-    background: #fff;
+    color: #488AC7 !important;
+    background: #fff !important;
 }
 
 
 a.article,
 a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
+    /* background: #6d7fcc !important;
+    color: #fff !important; */
+    color: #488AC7 !important;
+    background: #fff !important;
 }
 
 
