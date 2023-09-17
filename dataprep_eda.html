@@ -16,11 +16,12 @@
   </div>
 
 <br/>
+<p class="text-dark"><h6><I><b>Collect final data for your project from Kaggle</I></b></h6></p>
 <p>Despite these efforts, it took a lot of work to collect a large amount of data in a short period due to the severe rendering time of the webpage. In the end, we abandoned the idea of using web scraping to collect used vehicles and downloaded the used vehicle data collected in September 2020 from <a href="https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset" target="_blank"><b><i>Kaggle</i></b></a> and used it in this project. Although the data was collected about three years ago, our project aims to analyze various vehicle characteristics and their relationship to vehicle prices and predictions, so we focused on the amount of data and included as many vehicle characteristics as possible rather than when the data was collected. The raw data consists of a total of 3.40 million records and 66 columns. You can download the raw data via the link below.</p>
 
-<p class="text-warning"><a href='https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset/download?datasetVersionNumber=1' target="_blank"><h8>[Download the raw data from Kaggle]</h8></p>
+<p class="text-warning"><a href='https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset/download?datasetVersionNumber=1' target="_blank"><h8>[Download the raw data from Kaggle]</h8></a></p>
 
-
+<p>The table below shows the column names and brief descriptions of the columns provided by the data.</p>
     <table class="table" style="font-size: 12px;">
         <thead>
           <tr class="row0">
@@ -361,6 +362,14 @@
           </tr>
         </tbody>
     </table>
+
+
+    <p class="text-dark"><h6><I><b>Collect Zip Code Data from the USPS</b></I></h6></p>
+    <p>In addition, we collected zipcode data from usps.com to identify which states the vehicle listings were from by utilizing the zip codes contained in the collected data. The Excel file is organized into three sheets and provides the information. However, in order to extract only the data needed for this project, only the first sheet, consisting of about 44,000 items, was converted to a CSV file and utilized. Below is the path of the data collected from USPS.</p>
+
+    <p class="text-warning"><a href='https://postalpro.usps.com/ZIP_Locale_Detail' target="_blank"><h8>[Download Zip Code Rawdata from USPS]</h8></a></p>
+    
+    <p>The collected data is integrated with the previously collected used vehicle data.</p>
 
 <div class="line"></div>
 
