@@ -7,7 +7,7 @@
 <p>
     <a class="btn btn-secondary" data-toggle="collapse" href="#collapseCode001" role="button" aria-expanded="false" aria-controls="collapseExample">
       View Code
-    </a> &nbsp;&nbsp;<a href="https://github.com/JihoonYun/ds/blob/main/src/Webscraping.R" target="_blank"><h8>[Link full code]</h8></a>
+    </a> &nbsp;&nbsp;<a href="https://github.com/JihoonYun/ds/blob/main/src/Webscraping.R" target="_blank"><h8 class="text-warning">[Link full code]</h8></a>
   </p>
   <div class="collapse" id="collapseCode001">
     <div class="card card-body">
@@ -18,17 +18,14 @@
 <br/>
 <p>Despite these efforts, it took a lot of work to collect a large amount of data in a short period due to the severe rendering time of the webpage. In the end, we abandoned the idea of using web scraping to collect used vehicles and downloaded the used vehicle data collected in September 2020 from <a href="https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset" target="_blank"><b><i>Kaggle</i></b></a> and used it in this project. Although the data was collected about three years ago, our project aims to analyze various vehicle characteristics and their relationship to vehicle prices and predictions, so we focused on the amount of data and included as many vehicle characteristics as possible rather than when the data was collected. The raw data consists of a total of 3.40 million records and 66 columns. You can download the raw data via the link below.</p>
 
-<p><a href='https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset/download?datasetVersionNumber=1' target="_blank"><h8>Download the raw data from Kaggle</h8></p>
+<p class="text-warning"><a href='https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset/download?datasetVersionNumber=1' target="_blank"><h8>[Download the raw data from Kaggle]</h8></p>
 
 
-    <table class="table table-bordered">
+    <table class="table" style="font-size: 12px;">
         <thead>
           <tr class="row0">
             <td class="column0 style0 s">Feature Name</td>
             <td class="column1 style0 s">Type</td>
-            <td class="column2 style0 s">Length</td>
-            <td class="column3 style0 s">Null_Count</td>
-            <td class="column4 style0 s">Size(Memory)</td>
             <td class="column5 style0 s">Definition</td>
           </tr>
         </thead>
@@ -36,529 +33,330 @@
           <tr class="row1">
             <td class="column0 style0 s">vin</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">The car's vehicle identification number (VIN) is the identifying code for a SPECIFIC automobile.</td>
           </tr>
           <tr class="row2">
             <td class="column0 style0 s">back_legroom</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Measure the distance between the rear and front backrests while keeping the front legroom at a standard 40 inches.</td>
           </tr>
           <tr class="row3">
             <td class="column0 style0 s">bed</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">2980472</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Category of bed size(open cargo area) in pickup truck. Null usually means the vehicle isn't a pickup truck</td>
           </tr>
           <tr class="row4">
             <td class="column0 style0 s">bed_height</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">2570942</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Height of bed in inches</td>
           </tr>
           <tr class="row5">
             <td class="column0 style0 s">bed_length</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">2570942</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Length of bed in inches</td>
           </tr>
           <tr class="row6">
             <td class="column0 style0 s">body_type</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">13543</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Body Type of the vehicle. Like Convertible, Hatchback, Sedan, etc.</td>
           </tr>
           <tr class="row7">
             <td class="column0 style0 s">cabin</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">2936507</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Category of cabin size(open cargo area) in pickup truck. Eg: Crew Cab, Extended Cab, etc.</td>
           </tr>
           <tr class="row8">
             <td class="column0 style0 s">city</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">city where the car is listed. Eg: Houston, San Antonio, etc.</td>
           </tr>
           <tr class="row9">
             <td class="column0 style0 s">city_fuel_economy</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">491285</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Fuel economy in city traffic in km per litre</td>
           </tr>
           <tr class="row10">
             <td class="column0 style0 s">combine_fuel_economy</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">3000040</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Combined fuel economy is a weighted average of City and Highway fuel economy in km per litre</td>
           </tr>
           <tr class="row11">
             <td class="column0 style0 s">daysonmarket</td>
             <td class="column1 style0 s">int64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Days since the vehicle was first listed on the website.</td>
           </tr>
           <tr class="row12">
             <td class="column0 style0 s">dealer_zip</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">&nbsp;Zipcode of the dealer</td>
           </tr>
           <tr class="row13">
             <td class="column0 style0 s">description</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">77901</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Vehicle description on the vehicle's listing page</td>
           </tr>
           <tr class="row14">
             <td class="column0 style0 s">engine_cylinders</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">100581</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">The engine configuration. Eg: I4, V6, etc.</td>
           </tr>
           <tr class="row15">
             <td class="column0 style0 s">engine_displacement</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">172386</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">engine_displacement is the measure of the cylinder volume swept by all of the pistons of a piston engine, excluding the combustion chambers.</td>
           </tr>
           <tr class="row16">
             <td class="column0 style0 s">engine_type</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">100581</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">The engine configuration. Eg: I4, V6, etc.</td>
           </tr>
           <tr class="row17">
             <td class="column0 style0 s">exterior_color</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">26</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Exterior dominant color of the vehicle</td>
           </tr>
           <tr class="row18">
             <td class="column0 style0 s">fleet</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">1426595</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Whether the vehicle was previously part of a fleet.</td>
           </tr>
           <tr class="row19">
             <td class="column0 style0 s">frame_damaged</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">1426595</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Whether the vehicle has a damaged frame.</td>
           </tr>
           <tr class="row20">
             <td class="column0 style0 s">franchise_dealer</td>
             <td class="column1 style0 s">bool</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">3000040</td>
             <td class="column5 style0 s">Whether the dealer is a franchise dealer.</td>
           </tr>
           <tr class="row21">
             <td class="column0 style0 s">franchise_make</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">572635</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">The company that owns the franchise.</td>
           </tr>
           <tr class="row22">
             <td class="column0 style0 s">front_legroom</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">&nbsp;The legroom in inches for the passenger seat</td>
           </tr>
           <tr class="row23">
             <td class="column0 style0 s">fuel_tank_volume</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Fuel tank's filling capacity in gallons</td>
           </tr>
           <tr class="row24">
             <td class="column0 style0 s">fuel_type</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">82724</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Dominant type of fuel ingested by the vehicle.</td>
           </tr>
           <tr class="row25">
             <td class="column0 style0 s">has_accidents</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">1426595</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Whether the vin has any accidents registered.</td>
           </tr>
           <tr class="row26">
             <td class="column0 style0 s">height</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Height of the vehicle in inches</td>
           </tr>
           <tr class="row27">
             <td class="column0 style0 s">highway_fuel_economy</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">491285</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Fuel economy in highway traffic in km per litre</td>
           </tr>
           <tr class="row28">
             <td class="column0 style0 s">horsepower</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">172386</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Horsepower is the power produced by an engine.</td>
           </tr>
           <tr class="row29">
             <td class="column0 style0 s">interior_color</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">165</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Interior color of the vehicle, usually a fancy one same as the brochure</td>
           </tr>
           <tr class="row30">
             <td class="column0 style0 s">isCab</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">1426595</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Whether the vehicle was previously taxi/cab.</td>
           </tr>
           <tr class="row31">
             <td class="column0 style0 s">is_certified</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">3000040</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Whether the vehicle is certified. Certified cars are covered through warranty period</td>
           </tr>
           <tr class="row32">
             <td class="column0 style0 s">is_cpo</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">2817142</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Pre-owned cars certified by the dealer</td>
           </tr>
           <tr class="row33">
             <td class="column0 style0 s">is_new</td>
             <td class="column1 style0 s">bool</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">3000040</td>
             <td class="column5 style0 s">If True means the vehicle was launched less than 2 years before 2020.</td>
           </tr>
           <tr class="row34">
             <td class="column0 style0 s">is_oemcpo</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">2864678</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Pre-owned cars certified by the manufacturer</td>
           </tr>
           <tr class="row35">
             <td class="column0 style0 s">latitude</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Latitude from the geolocation of the dealership</td>
           </tr>
           <tr class="row36">
             <td class="column0 style0 s">length</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Length of the vehicle in inches</td>
           </tr>
           <tr class="row37">
             <td class="column0 style0 s">listed_date</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">The date the vehicle was listed on the website.</td>
           </tr>
           <tr class="row38">
             <td class="column0 style0 s">listing_color</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Dominant color group from the exterior color.</td>
           </tr>
           <tr class="row39">
             <td class="column0 style0 s">listing_id</td>
             <td class="column1 style0 s">int64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Unique Listing id from the website</td>
           </tr>
           <tr class="row40">
             <td class="column0 style0 s">longitude</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">Longitude from the geolocation of the dealership</td>
           </tr>
           <tr class="row41">
             <td class="column0 style0 s">main_picture_url</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">369093</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">major_options</td>
           </tr>
           <tr class="row42">
             <td class="column0 style0 s">major_options</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">200048</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">maximum_seating</td>
           </tr>
           <tr class="row43">
             <td class="column0 style0 s">make_name</td>
-            <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">make_name</td>
           </tr>
           <tr class="row44">
             <td class="column0 style0 s">maximum_seating</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">maximum_seating</td>
           </tr>
           <tr class="row45">
             <td class="column0 style0 s">mileage</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">144387</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">mileage</td>
           </tr>
           <tr class="row46">
             <td class="column0 style0 s">model_name</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">model_name</td>
           </tr>
           <tr class="row47">
             <td class="column0 style0 s">owner_count</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">1517013</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">owner_count</td>
           </tr>
           <tr class="row48">
             <td class="column0 style0 s">power</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">481426</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">power</td>
           </tr>
           <tr class="row49">
             <td class="column0 style0 s">price</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">price</td>
           </tr>
           <tr class="row50">
             <td class="column0 style0 s">salvage</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">1426595</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">salvage</td>
           </tr>
           <tr class="row51">
             <td class="column0 style0 s">savings_amount</td>
             <td class="column1 style0 s">int64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">savings_amount</td>
           </tr>
           <tr class="row52">
             <td class="column0 style0 s">seller_rating</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">40872</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">seller_rating</td>
           </tr>
           <tr class="row53">
             <td class="column0 style0 s">sp_id</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">96</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">sp_id</td>
           </tr>
           <tr class="row54">
             <td class="column0 style0 s">sp_name</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">sp_name</td>
           </tr>
           <tr class="row55">
             <td class="column0 style0 s">theft_title</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">1426595</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">theft_title</td>
           </tr>
           <tr class="row56">
             <td class="column0 style0 s">torque</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">517793</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">torque</td>
           </tr>
           <tr class="row57">
             <td class="column0 style0 s">transmission</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">64185</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">transmission</td>
           </tr>
           <tr class="row58">
             <td class="column0 style0 s">transmission_display</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">64185</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">transmission_display</td>
           </tr>
           <tr class="row59">
             <td class="column0 style0 s">trimId</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">115827</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">trimId</td>
           </tr>
           <tr class="row60">
             <td class="column0 style0 s">trim_name</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">116294</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">trim_name</td>
           </tr>
           <tr class="row61">
             <td class="column0 style0 s">vehicle_damage_category</td>
             <td class="column1 style0 s">float64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">3000040</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">vehicle_damage_category</td>
           </tr>
           <tr class="row62">
             <td class="column0 style0 s">wheel_system</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">146732</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">wheel_system</td>
           </tr>
           <tr class="row63">
             <td class="column0 style0 s">wheel_system_display</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">146732</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">wheel_system_display</td>
           </tr>
           <tr class="row64">
             <td class="column0 style0 s">wheelbase</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">wheelbase</td>
           </tr>
           <tr class="row65">
             <td class="column0 style0 s">width</td>
             <td class="column1 style0 s">object</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">159269</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">width</td>
           </tr>
           <tr class="row66">
             <td class="column0 style0 s">year</td>
             <td class="column1 style0 s">int64</td>
-            <td class="column2 style0 n">3000040</td>
-            <td class="column3 style0 n">0</td>
-            <td class="column4 style0 n">24000320</td>
             <td class="column5 style0 s">year</td>
           </tr>
         </tbody>
