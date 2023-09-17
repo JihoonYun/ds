@@ -5,17 +5,25 @@ library(RSelenium)
 library(rvest)
 library(stringr)
 
+
+########################################################################################################
+# Collection of zipcode information for representative regions of the United States
+########################################################################################################
 ##Selenium
 remDr <- remoteDriver(remoteServerAddr="localhost", 
                       port=4445L, 
                       browserName="chrome")
 remDr$open()
 
-
+# URL
 zipcode_url <- 'https://www.edq.com/resources/glossary/zip-codes-of-major-cities-in-the-united-states/'
+
 remDr$navigate(zipcode_url)
+
+# Scraping html code from the html page
 web <- remDr$getPageSource()[[1]] %>% read_html() 
 
+# Collecting zipcodes
 zipcode_strs <- web %>% 
   html_elements(".BulletListStyle1 .NormalTextRun") %>% 
   html_text()
@@ -36,19 +44,15 @@ for (i in 1:length(zipcode_strs)) {
 
 extracted_zipcodes <- extracted_zipcodes[extracted_zipcodes != 0]
 
-#print(extracted_zipcodes)
 
-#############
-
-
-
-
+########################################################################################################
+# Collect used vehicle data from www.cargurus.com
+########################################################################################################
 
 ##Variables
 base_url <- 'https://www.cargurus.com/Cars/inventorylisting/viewDetailsFilterViewInventoryListing.action?sourceContext=carGurusHomePageModel&entitySelectingHelper.selectedEntity=&zip=__ZIP__#resultsPage=__PAGE__'
 
-
-
+# Run Selenium
 remDr <- remoteDriver(
   remoteServerAddr = "localhost",
   port = 4445L,
@@ -61,34 +65,15 @@ remDr <- remoteDriver(
 )
 
 
-#chrome_options <- c("--headless")
-#remDr$serverInfo(extraCapabilities = list(chromeOptions = list(args = chrome_options)))
-
-eCaps <- list(
-  chromeOptions = list(
-    prefs = list(
-      "profile.managed_default_content_settings.images" = 2L
-    )
-  )
-)
-
-remDr <- remoteDriver(
-  remoteServerAddr = "localhost",
-  port = 4445L,
-  browserName = "chrome",
-  extraCapabilities = eCaps
-)
-
-
 remDr <- remoteDriver(remoteServerAddr = "localhost", 
                       port = 4445L, 
                       browserName = "chrome")
 
 remDr$open()
 
-
 remDr$navigate('https://www.cargurus.com')
 
+# Define a data frame to store the data to be collected
 df <- data.frame(
   zipcode = numeric(0),
   name = character(0),
@@ -108,9 +93,6 @@ df <- data.frame(
   transmission = character(0)
 )
 
-
-
-
 # Define the page range
 start_page <- 1
 end_page <- 1
@@ -128,9 +110,12 @@ for (extracted_zipcode in extracted_zipcodes) {
     #Sys.sleep(1)
     web <- remDr$getPageSource()[[1]] %>% read_html() 
     
-    print(url)
-    
     zipcodes <- rep(extracted_zipcode, 16)
+    
+    
+    ##################################################
+    # Parse details of used vehicles from HTML page
+    ##################################################
     
     model_name <- web %>% 
       html_elements(".vO42pn") %>% 
@@ -153,8 +138,6 @@ for (extracted_zipcode in extracted_zipcodes) {
         car_price[i] <- amount
       }
     }
-    
-    
     
     loc <- web %>% 
       html_elements(".umcYBP span") %>% 
@@ -193,7 +176,7 @@ for (extracted_zipcode in extracted_zipcodes) {
       html_text()
     
     
-    # Extract Year value
+    # Extract values
     year_value <- web %>%
       html_elements("dt:contains('Year') + dd") %>%
       html_text()
@@ -234,6 +217,7 @@ for (extracted_zipcode in extracted_zipcodes) {
       html_elements("dt:contains('Transmission') + dd") %>%
       html_text()
     
+    # Create a data frame by incorporating an array of collected details for each vehicle
     new_df <- cbind(zipcodes,
                     model_name, 
                     car_price, 
@@ -252,14 +236,12 @@ for (extracted_zipcode in extracted_zipcodes) {
                     transmission_value )
     colnames(new_df) <- colnames(df)
     
-    
-    
-    
+    # Append to previously collected data frame
     df <- rbind(df, new_df)
   }
 }
 
-
+# Export all collected data frames as csv file
 write.csv(df, file = "my_data.csv", row.names = TRUE)
 
 
