@@ -476,17 +476,17 @@
 <p>>According to the plot below, Ford has the most used vehicles, followed by Chevrolet, Honda, Nissan, and Toyota. It suggests that American and Japanese brands largely dominate the used car market.
   <img src="chart009.png" class="rounded" width="1000">
 
-
+  <br/>
 <p class="text-dark"><h8><I><b>Variable: mileage</I></b></h8></p>
 <img src="chart010.png" class="rounded" width="1000">
 <p>The above histogram of mileage shows normally distributed. As you can see in the graph above, the average mileage of vehicles listed for sale is between 30,000 and 40,000. The distribution is skewed to the right, meaning that most listings are for cars with low mileage.</p>
-
+<br/>
 
 <p class="text-dark"><h8><I><b>Variable: ransmission, fuel type, wheel system, and body type</I></b></h8></p>
 <p>In the graph below, you can easily see the main characteristics of the vehicles, such as transmission, fuel type, wheel system, and body type. First, you can see that most vehicles have automatic transmissions, and most fuel types are gasoline. If you look at the wheel system, most of them are FWD, but if you compare them to other vehicle attributes, you can see that they are relatively balanced for each attribute. Finally, the most common body type is SUV/Crossover, Sedan, followed by Pickup Truck.</p> 
 <img src="chart012.png" class="rounded" width="1000">
 
-
+<br/>
 <p class="text-dark"><h8><I><b>Distribute data by region (state, city)</I></b></h8></p>
 <img src="chart013.png" class="rounded" width="1000">
 <img src="chart014.png" class="rounded" width="1000">
@@ -494,6 +494,13 @@
 <p>The two graphs above show how many cars are for sale in each state and how many are in each city based on the dealership's location. The first graph by state shows that Texas, California, and Florida have the most cars for sale. These are three of the most populous states in the U.S., and they're generally not cold enough to see much snow. In the second graph by city, you can see that the vehicle data is centered around large, populated cities, which means that the primary buyers of vehicles for sale are urban dwellers, which suggests that people who live in the city rather than the suburbs may be the primary target audience.</p>
 <br/>
 
+
+<p class="text-dark"><h8><I><b>Correlation </I></b></h8></p>
+<p>The correlation chart above provides essential insights into the relationship between the variables. The correlation coefficient between 'city_fuel_economy' and 'highway_fuel_economy' is relatively high, suggesting that higher city fuel economy tends to be associated with higher highway fuel economy. In contrast, the correlation coefficient between 'engine_cylinders' and 'city_fuel_economy' is very low, suggesting that as the number of cylinders in an engine increases, city fuel economy tends to decrease. And 'frame_damaged' has a low correlation with most other variables, indicating that frame damage may not significantly affect other vehicle attributes in this dataset. In addition, 'is_new' (indicating whether the car is new) has a relatively low correlation with most of the other variables, suggesting that whether the car is new may not depend much on the other vehicle attributes in this data set.</p>
+
+<img src="chart018.png" class="rounded" width="1000">
+
+<br/>
 
 <p class="text-dark"><h8><I><b>Relationship between mileage and used car price </I></b></h8></p>
 <p>Since the scale of vehicle prices is relatively large, logarithms are applied to emphasize the price characteristics. The graph below shows a scatter plot and a regression line to check for a linear relationship between mileage and logarithmic vehicle price. There is a somewhat linear relationship between mileage and log(price), as the regression line indicates a linear relationship. It shows that the log(price) decreases constantly as mileage increases. The negative slope of the regression line means that the price of the vehicle (log(price)) decreases as the mileage increases, suggesting that, in general, for used cars, the price tends to decrease as the mileage increases. In fact, the low slope of the regression line in the relationship between log(price) and mileage means that the change in log (price) is relatively small as mileage increases. In other words, a small increase in mileage may not significantly impact the price.</p>
@@ -505,8 +512,11 @@
 
 <img src="chart016.png" class="rounded" width="1000">
 <br/>
+<br/>
 
 <p class="text-dark"><h8><I><b>Relationship between fleet, new, cab and used car average price </I></b></h8></p>
 <p>Vehicles with a fleet history have been sold in bulk at one time to entities such as government offices and businesses, rental car companies, and used car dealerships and can generally be had for less on the used car market. Although we didn't see a dramatic price difference with or without this attribute, it can be one of the factors to consider when making a vehicle purchase decision. Next, Taxi vehicles typically have higher mileage and may have a lower average price due to their commercial use. It also leads to a similar difference in average price as Fleet. Finally, vehicles less than two years old tend to have a significantly higher average price than vehicles more than two years old. These vehicles are much newer technologically and have low or no mileage. In other words, the vehicle's age can significantly impact the price of a used car, making it one of the most important factors when purchasing a vehicle.</p>
 <img src="chart017.png" class="rounded" width="1000">
 <br/>
+
+
