@@ -292,6 +292,112 @@ df_cleaned04$franchise_make <- as.factor(df_cleaned04$franchise_make)
 df_cleaned04$make_name <- as.factor(df_cleaned04$make_name)
 
 
+# is_luxury_maker
+# Define a vector of luxury maker names
+luxury_makers <- c("Ferrari", "Rolls-Royce", "Lamborghini", "McLaren", "Bentley", "Aston Martin", "SRT", "Porsche")
+
+# Create a new column 'is_luxury_maker' based on the condition
+df_cleaned04$is_luxury_maker <- df_cleaned04$make_name %in% luxury_makers
+
+# Convert the 'is_luxury_maker' column to boolean (logical) type
+df_cleaned04$is_luxury_maker <- as.logical(df_cleaned04$is_luxury_maker)
+
+
+# Remove Outlier
+
+
+
+
+df_cleaned04 %>%
+  group_by(make_name) %>%
+  summarise(mean_price = mean(price, na.rm = TRUE)) %>%
+  arrange(desc(mean_price))  
+
+
+
+# Calculate Z-scores for 'horsepower' and 'price' columns
+z_scores_horsepower <- scale(df_cleaned04$horsepower)
+z_scores_price <- scale(df_cleaned04$price)
+
+# Set the threshold for identifying outliers (e.g., Z-score > 3 or < -3)
+threshold <- 3
+
+# Identify outliers for 'horsepower' and 'price'
+outliers_horsepower <- which(abs(z_scores_horsepower) > threshold)
+outliers_price <- which(abs(z_scores_price) > threshold)
+
+# Display the indices of outliers
+cat("Indices of horsepower outliers:", outliers_horsepower, "\n")
+cat("Indices of price outliers:", outliers_price, "\n")
+
+filtered_df <- df_cleaned04[-outliers_price, ]
+
+filtered_df[order(filtered_df$price, decreasing = TRUE), ]
+dim(filtered_df)
+
+# Create a box plot of the 'price' column
+ggplot(df_cleaned04, aes(y = price)) +
+  geom_boxplot(fill = "lightblue", color = "black") +
+  labs(y = "Price", title = "Box Plot of Price")
+
+# Define a vector of the 7 make_names to exclude
+excluded_makes <- c("Ferrari", "Rolls-Royce", "Lamborghini", "McLaren", "Bentley", "Aston Martin", "SRT", "Porsche")
+
+# Create a filtered dataframe excluding the 7 makes
+filtered_df <- df_cleaned04[!(df_cleaned04$make_name %in% excluded_makes), ]
+
+# Create a box plot of the 'price' column in the filtered dataframe
+ggplot(filtered_df, aes(y = price)) +
+  geom_boxplot(fill = "lightblue", color = "black") +
+  labs(y = "Price", title = "Box Plot of Price (Excluding 7 Makes)")
+
+
+
+# Define a vector of the 7 make_names to exclude
+excluded_makes <- c("Ferrari", "Rolls-Royce", "Lamborghini", "McLaren", "Bentley", "Aston Martin", "SRT")
+
+# Create a filtered dataframe excluding the 7 makes
+filtered_df <- df_cleaned04[(df_cleaned04$horsepower < 300), ]
+filtered_df[order(filtered_df$price, decreasing = TRUE), ]
+
+# Create a histogram of the 'price' column in the filtered dataframe
+ggplot(filtered_df, aes(x = price)) +
+  geom_histogram(binwidth = 1000, fill = "lightblue", color = "black") +
+  labs(x = "Price", y = "Frequency", title = "Histogram of Price (Excluding 7 Makes)")
+
+
+
+# tidyverse 라이브러리를 불러옵니다.
+library(tidyverse)
+
+# 데이터 프레임 df_cleaned04에서 make_name 별로 IQR을 계산하여 이상치를 찾습니다.
+df_cleaned04_new <- df_cleaned04 %>%
+  group_by(make_name) %>%
+  mutate(
+    q1 = quantile(price, 0.25),
+    q3 = quantile(price, 0.75),
+    iqr = q3 - q1,
+    lower_bound = q1 - 1.5 * iqr,
+    upper_bound = q3 + 1.5 * iqr
+  ) %>%
+  filter(price >= lower_bound & price <= upper_bound) %>%
+  ungroup()
+
+# 새로운 데이터프레임을 출력합니다.
+df_cleaned04_new
+
+
+
+# Define a vector of the 7 make_names to exclude
+excluded_makes <- c("Ferrari", "Rolls-Royce", "Lamborghini", "McLaren", "Bentley", "Aston Martin", "SRT", "Porsche")
+
+# Create a filtered dataframe excluding the 7 makes
+df_cleaned04_new1 <- df_cleaned04_new[!(df_cleaned04_new$make_name %in% excluded_makes), ]
+# Create a histogram of the 'price' column in the filtered dataframe
+ggplot(df_cleaned04_new1, aes(x = price)) +
+  geom_histogram(binwidth = 1000, fill = "lightblue", color = "black") +
+  labs(x = "Price", y = "Frequency", title = "Histogram of Price (Excluding 7 Makes)")
+
 
 # Zipcode and States
 # https://postalpro.usps.com/ZIP_Locale_Detail
@@ -314,6 +420,8 @@ df_zipcode$DELIVERY.ZIPCODE <- as.character(df_zipcode$DELIVERY.ZIPCODE)
 df_zipcode$DELIVERY.ZIPCODE <- sprintf("%05s", df_zipcode$DELIVERY.ZIPCODE)
 
 
+
+
 # https://wisevoter.com/state-rankings/snowiest-states/
 
 # Add state info
@@ -334,7 +442,7 @@ sum(is.na(df_cleaned05$state))
 
 
 write.csv(df_cleaned05, file = "used_cars_data_cleaned_final.csv", row.names = TRUE)
-
+str(df_cleaned05)
 
 ################################################################################
 # <Preprocessing>
