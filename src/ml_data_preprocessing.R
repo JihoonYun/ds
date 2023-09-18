@@ -21,7 +21,7 @@ cat("The number of duplicate rows are", duplicate_rows, ".\n")
 df_cleaned <- df[!duplicated(df), ]
 
 dim(df_cleaned)
-
+dim(df)
 
 
 # 2. Missing Values
@@ -37,7 +37,6 @@ df_cleaned01 <- df_cleaned
 
 # Replace empty strings ("") with NA in the entire dataframe
 df_cleaned01[df_cleaned01 == ""] <- NA
-
 
 
 # Load the necessary libraries
@@ -111,7 +110,8 @@ print(missing_count)
 
 head(df_cleaned03)
 write.csv(df_cleaned03, file = "used_cars_data_cleaned01.csv", row.names = TRUE)
-str(df_cleaned03)
+
+df_cleaned03 <- read.csv('used_cars_data_cleaned01.csv')
 
 
 unique_values <- df_cleaned03 %>%
@@ -277,6 +277,19 @@ df_cleaned04$width[df_cleaned04$width == "--"] <- NA
 df_cleaned04$width <- as.numeric(df_cleaned04$width)
 df_cleaned04$width[is.na(df_cleaned04$width)] <- mean(df_cleaned04$width, na.rm = TRUE)
 
+
+# body_type
+# Convert body_type to a factor (categorical variable)
+df_cleaned04$body_type <- as.factor(df_cleaned04$body_type)
+
+
+# franchise_make
+# Convert franchise_make to a factor (categorical variable)
+df_cleaned04$franchise_make <- as.factor(df_cleaned04$franchise_make)
+
+# make_name
+# Convert franchise_make to a factor (categorical variable)
+df_cleaned04$make_name <- as.factor(df_cleaned04$make_name)
 
 
 
