@@ -453,13 +453,13 @@
 <h2>EDA</h2>
 <br/>
 
+<p class="text-dark"><h8><I><b>Major Variables: price, </I></b></h8></p>
 <p>First, let's discuss the individual variables that can be explored. Price is the dependent variable in this project and is one of the most essential features. Let's look at the distribution of 'price'. </p>
 
 <img src="chart006.png" class="rounded" width="1000">
 <br/>
 
 
-<p class="text-dark"><h8><I><b>Major Variables: price, </I></b></h8></p>
 <p>In the graph above, price has a normal distribution that is heavily skewed to the left. This skew can be attributed to the properties of the vehicle. This dataset also includes data from high-performance cars. High-performance vehicles are usually much more expensive than standard vehicles, and this price difference has caused a significant bias in the normal distribution. In the previous data cleaning, we added high-performance cars as a feature called is_luxury, so plotting a histogram of 'price' by this feature separately should reduce the bias in the normal distribution. The graph below shows the histogram of 'price' separately for regular and high-performance vehicles.</p>
 
 <p class="text-dark"><h9><b>Case1: Histogram of 'price' for a typical vehicle</b></h9></p>
@@ -525,4 +525,10 @@
 <img src="chart017.png" class="rounded" width="1000">
 <br/>
 
+
+
+<p class="text-dark"><h8><I><b>Relationship between Fuel economy, horsepower and used car average price </I></b></h8></p>
+<p>The two graphs on the left below both show a decreasing trend in vehicle price (log) as city and highway fuel economy increases. However, the third graph shows that the higher the horsepower, the higher the price. Generally, a higher horsepower consumes more fuel and creates more drag by exerting more force. Not only that, but the engine also becomes larger and heavier to produce more power. For these reasons, fuel economy and horsepower are inversely proportional. The fourth heatmap shows the correlation between each attribute: fuel economy, horsepower, and price. You can see that price and horsepower are positively correlated, fuel efficiency and horsepower are strongly negatively correlated, and price and fuel efficiency are weakly negatively correlated.</p>
+<img src="chart022.png" class="rounded" width="1000">
+<br/>
 
