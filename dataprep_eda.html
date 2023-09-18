@@ -18,7 +18,7 @@
 <p class="text-dark"><h6><I><b>Collect final data for the project from Kaggle</I></b></h6></p>
 <p>Despite these efforts, it took a lot of work to collect a large amount of data in a short period due to the severe rendering time of the webpage. In the end, we abandoned the idea of using web scraping to collect used vehicles and downloaded the used vehicle data collected in September 2020 from <a href="https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset" target="_blank"><b><i>Kaggle</i></b></a> and used it in this project. Although the data was collected about three years ago, our project aims to analyze various vehicle characteristics and their relationship to vehicle prices and predictions, so we focused on the amount of data and included as many vehicle characteristics as possible rather than when the data was collected. The raw data consists of a total of 3.40 million records and 66 columns. You can download the raw data via the link below.</p>
 <br/>
-<a href='https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset'><img src='pic0001.jpeg'></a>
+<a href='https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset'><img src='pic0001.jpeg' width='800'></a>
 
 <p class="text-warning"><a href='https://www.kaggle.com/datasets/ananaymital/us-used-cars-dataset/download?datasetVersionNumber=1' target="_blank"><h8>[Download the raw data from Kaggle]</h8></a></p>
 
@@ -390,7 +390,7 @@
 
 <p class="text-dark"><h8><I><b></b>Missing values</I></b></h8></p>
 <p>First, some features in this raw dataset contain a high percentage of missing values. Preprocessing these columns is required because a high rate of missing values can lead to information loss and biased results. The graph below shows the percentage of missing values for each column in the raw data, with the bar graph highlighted in red when the missing values are greater than 55% of the total data. </p>
-<img src="chart001.png" class="rounded" width="1000">
+<img src="chart002.png" class="rounded" width="1000">
 <br/>
 <p>In the graph above, the red-colored features all show a missing rate of over 70%. Columns with a high missingness rate are deleted because the overall impact of the data analysis is too negative to justify creating and populating new missing values. </p>
 <br/>
