@@ -1,3 +1,9 @@
+
+
+
+################################################################################
+# Load raw data 
+################################################################################
 # Set the CSV file path
 csv_file_path <- "used_cars_data.csv"
 
@@ -400,13 +406,33 @@ str(df_cleaned05)
 ################################################################################
 # <EDA>
 ################################################################################
-df_eda <- df_cleaned05
+
+# Load the dplyr library
+library(dplyr)
+# Load the ggplot2 library
+library(ggplot2)
+# Load the gridExtra libraries
+library(gridExtra)
+# Load the maps libraries
+library(maps)
+# Load the reshape2 libraries
+library(reshape2)
+# Load the patchwork libraries
+library(patchwork)
+
+# df_eda <- df_cleaned05
+
+# Set the CSV file path
+eda_csv_file_path <- "used_cars_data_cleaned_final_ver.csv"
+
+# Read the CSV file
+df_eda <- read.csv(eda_csv_file_path)
+
+# Summarize dataframe
 str(df_eda)
 
 
 # Price
-# Load the ggplot2 library
-library(ggplot2)
 
 
 # Calculate median and mean of 'price' column
@@ -473,19 +499,6 @@ ggplot(make_count, aes(x = reorder(make_name, -row_count), y = row_count)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))  # Rotate x-axis labels for better readability
 
 
-# make name
-# Group the data by 'make_name' and calculate the number of rows in each group
-make_count <- df_eda %>%
-  group_by(make_name) %>%
-  summarise(row_count = n())
-
-# Create a bar plot to visualize the number of rows for each 'make_name'
-ggplot(make_count, aes(x = reorder(make_name, -row_count), y = row_count)) +
-  geom_bar(stat = "identity", fill = "lightblue", color = "black") +
-  labs(x = "Make Name", y = "Count", title = "Count by Make Name") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))  # Rotate x-axis labels for better readability
-
 
 #mileage
 
@@ -529,9 +542,6 @@ ggplot(df_eda, aes(x = fuel_type)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-# Load the ggplot2 library
-library(ggplot2)
-
 # Create a bar plot of vehicle counts by 'wheel_system'
 ggplot(df_eda, aes(x = wheel_system)) +
   geom_bar(fill = "lightblue") +
@@ -544,9 +554,6 @@ ggplot(df_eda, aes(x = wheel_system)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-# Load the ggplot2 library
-library(ggplot2)
-
 # Create a bar plot of vehicle counts by 'body_type'
 ggplot(df_eda, aes(x = body_type)) +
   geom_bar(fill = "lightblue") +
@@ -558,11 +565,6 @@ ggplot(df_eda, aes(x = body_type)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
-
-# Load the required libraries
-library(ggplot2)
-library(gridExtra)
 
 # Create individual bar plots
 plot1 <- ggplot(df_eda, aes(x = transmission)) +
@@ -597,9 +599,6 @@ plot4 <- ggplot(df_eda, aes(x = body_type)) +
 grid.arrange(plot1, plot2, plot3, plot4, ncol = 2)
 
 
-
-
-library(maps)
 
 # Calculate the frequencies of each state in the dataframe
 state_counts <- table(df_eda$state)
@@ -665,9 +664,9 @@ us_map$region <- state_abbreviations[us_map$region]
 
 us_map <- merge(us_map, state_counts, by.x = "region", by.y = "Var1", all.x = TRUE)
 
-us_map <- us_map %>%
-  select(-Freq.x) %>%   # Remove the Freq.x column
-  rename(Freq = Freq.y) # Rename Freq.y to Freq
+#us_map <- us_map %>%
+#  select(-Freq.x) %>%   # Remove the Freq.x column
+#  rename(Freq = Freq.y) # Rename Freq.y to Freq
 
 # Create the visualization
 ggplot(us_map, aes(x = long, y = lat, group = group, fill = Freq)) +
@@ -727,8 +726,6 @@ scatterplot
 
 
 
-library(reshape2)
-
 # Convert boolean columns in df_eda to numeric in df_eda2
 df_eda2 <- df_eda
 
@@ -738,7 +735,7 @@ df_eda2 <- df_eda2[, !(names(df_eda2) %in% c('X', 'X.1'))]
 df_eda2$frame_damaged <- as.numeric(df_eda2$frame_damaged)
 df_eda2$salvage <- as.numeric(df_eda2$salvage)
 df_eda2$is_new <- as.numeric(df_eda2$is_new)
-df_eda2$is_cab <- as.numeric(df_eda2$is_cab)
+df_eda2$is_cab <- as.numeric(df_eda2$isCab)
 df_eda2$fleet <- as.numeric(df_eda2$fleet)
 
 # Calculate the correlation matrix between numeric variables
@@ -758,10 +755,6 @@ ggplot(correlation_df, aes(Var1, Var2, fill = value)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 
-
-
-
-
 # Log transform the price variable
 df_eda$log_price <- log(df_eda$price)
 
@@ -778,8 +771,6 @@ ggplot(df_eda, aes(x = salvage, y = log_price, fill = salvage)) +
   geom_boxplot() +
   labs(x = "Salvage", y = "Log(Price)", title = "Comparison of Log-Transformed Vehicle Prices by Salvage Status") +
   theme_minimal()
-
-
 
 
 # Create a bar plot comparing the mean prices for frame_damaged groups (without log transformation)
@@ -801,8 +792,6 @@ df_eda %>%
   theme_minimal()
 
 
-
-library(patchwork)
 # Create a bar plot comparing the mean prices for frame_damaged groups (without log transformation)
 plot1 <- df_eda %>%
   mutate(frame_damaged = ifelse(frame_damaged, "Damaged", "Not Damaged")) %>%
@@ -825,10 +814,6 @@ plot2 <- df_eda %>%
 combined_plots <- plot1 + plot2
 combined_plots
 
-
-
-
-library(patchwork)
 
 # Create a bar plot comparing the mean prices for frame_damaged groups (without log transformation)
 plot1 <- df_eda %>%
@@ -898,7 +883,6 @@ ggplot(df_eda1, aes(y = log(price), x= year, color = is_old)) +
        x = "Year") +
   theme_minimal()
 
-str(df_eda)
 
 
 p1<-ggplot(df_eda, aes(x = log(price), y = body_type, fill = body_type)) +
