@@ -14,3 +14,87 @@
 <br/>
 <h5><b><I>3. Normalization</I></b></h5>
 <p>The dataset used in this project has several characteristics of used cars, and these characteristics may have different scales. Clustering algorithms form clusters based on the distance or similarity between variables, and other scales can distort distance measurements. Therefore, normalizing the data to make each variable have a constant scale is essential in clustering. Every column in the dataset performs a StandardScaler scale to scale the data to a constant range or mean and variance.</p>
+<br/>
+<p>First, the table below shows the dataframe structure before any preprocessing is performed. The first column on the left is the name of the column, and the subsequent columns from 0 to 4 show the data values in the first 1 to 5 rows. </p>
+
+<p>The table below is a collection of the dataframe after all three preprocesses have been performed. The structure is the same as the previous table, showing the column names and the first five rows of data information.</p>
+<table class="table">
+    <thead>
+      <tr style="text-align: right;">
+        <th></th>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>horsepower</th>
+        <td>-0.066486</td>
+        <td>1.482379</td>
+        <td>-1.057760</td>
+        <td>0.515887</td>
+        <td>-0.785160</td>
+      </tr>
+      <tr>
+        <th>mileage</th>
+        <td>-0.326035</td>
+        <td>1.690424</td>
+        <td>-0.243772</td>
+        <td>-0.706237</td>
+        <td>2.385143</td>
+      </tr>
+      <tr>
+        <th>price</th>
+        <td>0.331461</td>
+        <td>0.403879</td>
+        <td>-0.467588</td>
+        <td>0.643847</td>
+        <td>-1.178945</td>
+      </tr>
+      <tr>
+        <th>year</th>
+        <td>0.077314</td>
+        <td>-0.708981</td>
+        <td>0.863609</td>
+        <td>0.863609</td>
+        <td>-1.495276</td>
+      </tr>
+      <tr>
+        <th>highway_fuel_economy</th>
+        <td>-0.123454</td>
+        <td>-1.033434</td>
+        <td>1.332515</td>
+        <td>-0.123454</td>
+        <td>0.604531</td>
+      </tr>
+      <tr>
+        <th>length</th>
+        <td>-0.479916</td>
+        <td>2.489216</td>
+        <td>0.171695</td>
+        <td>0.761833</td>
+        <td>-0.375412</td>
+      </tr>
+      <tr>
+        <th>latitude</th>
+        <td>0.104975</td>
+        <td>1.392764</td>
+        <td>-0.663047</td>
+        <td>-0.344651</td>
+        <td>0.272675</td>
+      </tr>
+      <tr>
+        <th>longitude</th>
+        <td>-2.454046</td>
+        <td>-2.040969</td>
+        <td>-2.040215</td>
+        <td>0.804967</td>
+        <td>0.034963</td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+<p>By comparing the two dataframes above, you can easily understand the data preprocessing to perform clustering.</p>
