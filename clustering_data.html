@@ -16,8 +16,490 @@
 <p>The dataset used in this project has several characteristics of used cars, and these characteristics may have different scales. Clustering algorithms form clusters based on the distance or similarity between variables, and other scales can distort distance measurements. Therefore, normalizing the data to make each variable have a constant scale is essential in clustering. Every column in the dataset performs a StandardScaler scale to scale the data to a constant range or mean and variance.</p>
 <br/>
 <p>First, the table below shows the dataframe structure before any preprocessing is performed. The first column on the left is the name of the column, and the subsequent columns from 0 to 4 show the data values in the first 1 to 5 rows. </p>
-
+<br/>
+<h7>[Data frame structure before conversion]</h7>
+<table class="table">
+    <thead>
+      <tr style="text-align: right;">
+        <th></th>
+        <th>0</th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Unnamed: 0</th>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+      </tr>
+      <tr>
+        <th>X.1</th>
+        <td>149</td>
+        <td>172</td>
+        <td>281</td>
+        <td>304</td>
+        <td>309</td>
+      </tr>
+      <tr>
+        <th>X</th>
+        <td>377</td>
+        <td>446</td>
+        <td>694</td>
+        <td>755</td>
+        <td>768</td>
+      </tr>
+      <tr>
+        <th>vin</th>
+        <td>5FRYD4H38HB024491</td>
+        <td>5FRYD4H80HB013125</td>
+        <td>5J8TC2H37KL023471</td>
+        <td>5J8TB4H73JL002357</td>
+        <td>19UUB3F58GA004397</td>
+      </tr>
+      <tr>
+        <th>back_legroom</th>
+        <td>36.6</td>
+        <td>36.6</td>
+        <td>38.0</td>
+        <td>38.3</td>
+        <td>34.5</td>
+      </tr>
+      <tr>
+        <th>body_type</th>
+        <td>SUV / Crossover</td>
+        <td>SUV / Crossover</td>
+        <td>SUV / Crossover</td>
+        <td>SUV / Crossover</td>
+        <td>Sedan</td>
+      </tr>
+      <tr>
+        <th>city</th>
+        <td>Bronx</td>
+        <td>Bohemia</td>
+        <td>East Hartford</td>
+        <td>Bohemia</td>
+        <td>Bohemia</td>
+      </tr>
+      <tr>
+        <th>city_fuel_economy</th>
+        <td>18</td>
+        <td>18</td>
+        <td>21</td>
+        <td>19</td>
+        <td>21</td>
+      </tr>
+      <tr>
+        <th>daysonmarket</th>
+        <td>20</td>
+        <td>187</td>
+        <td>24</td>
+        <td>6</td>
+        <td>180</td>
+      </tr>
+      <tr>
+        <th>dealer_zip</th>
+        <td>10466</td>
+        <td>11716</td>
+        <td>6108</td>
+        <td>11716</td>
+        <td>11716</td>
+      </tr>
+      <tr>
+        <th>description</th>
+        <td>FACTORY CERTI...</td>
+        <td>**VIP REWARDS PAC...</td>
+        <td>2019 ACURA RDX S...</td>
+        <td>**VIP REWARDS PAC...</td>
+        <td>**VIP REWARDS P...</td>
+      </tr>
+      <tr>
+        <th>engine_cylinders</th>
+        <td>6</td>
+        <td>6</td>
+        <td>4</td>
+        <td>6</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <th>engine_displacement</th>
+        <td>3500</td>
+        <td>3500</td>
+        <td>2000</td>
+        <td>3500</td>
+        <td>3500</td>
+      </tr>
+      <tr>
+        <th>exterior_color</th>
+        <td>Black</td>
+        <td>Gray</td>
+        <td>Gunmetal Metallic</td>
+        <td>Gray</td>
+        <td>Black</td>
+      </tr>
+      <tr>
+        <th>fleet</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>frame_damaged</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>franchise_dealer</th>
+        <td>True</td>
+        <td>True</td>
+        <td>True</td>
+        <td>True</td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <th>franchise_make</th>
+        <td>Jeep</td>
+        <td>Kia</td>
+        <td>Jeep</td>
+        <td>Kia</td>
+        <td>Kia</td>
+      </tr>
+      <tr>
+        <th>front_legroom</th>
+        <td>41.4</td>
+        <td>41.4</td>
+        <td>42.0</td>
+        <td>42.0</td>
+        <td>42.6</td>
+      </tr>
+      <tr>
+        <th>fuel_tank_volume</th>
+        <td>19.5</td>
+        <td>19.5</td>
+        <td>17.1</td>
+        <td>16.0</td>
+        <td>17.2</td>
+      </tr>
+      <tr>
+        <th>fuel_type</th>
+        <td>Gasoline</td>
+        <td>Gasoline</td>
+        <td>Gasoline</td>
+        <td>Gasoline</td>
+        <td>Gasoline</td>
+      </tr>
+      <tr>
+        <th>has_accidents</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>height</th>
+        <td>67.4</td>
+        <td>67.4</td>
+        <td>65.7</td>
+        <td>65.0</td>
+        <td>57.0</td>
+      </tr>
+      <tr>
+        <th>highway_fuel_economy</th>
+        <td>26</td>
+        <td>26</td>
+        <td>27</td>
+        <td>27</td>
+        <td>31</td>
+      </tr>
+      <tr>
+        <th>horsepower</th>
+        <td>290</td>
+        <td>290</td>
+        <td>272</td>
+        <td>279</td>
+        <td>290</td>
+      </tr>
+      <tr>
+        <th>interior_color</th>
+        <td>Brown (Beige)</td>
+        <td>Black (Ebony)</td>
+        <td>Graystone</td>
+        <td>Graystone</td>
+        <td>Black (Ebony)</td>
+      </tr>
+      <tr>
+        <th>isCab</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>is_new</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>latitude</th>
+        <td>40.8847</td>
+        <td>40.7589</td>
+        <td>41.7696</td>
+        <td>40.7589</td>
+        <td>40.7589</td>
+      </tr>
+      <tr>
+        <th>length</th>
+        <td>196.2</td>
+        <td>196.2</td>
+        <td>186.8</td>
+        <td>184.4</td>
+        <td>190.3</td>
+      </tr>
+      <tr>
+        <th>listed_date</th>
+        <td>2020-08-20</td>
+        <td>2020-03-06</td>
+        <td>2020-08-16</td>
+        <td>2020-09-03</td>
+        <td>2020-03-13</td>
+      </tr>
+      <tr>
+        <th>listing_color</th>
+        <td>BLACK</td>
+        <td>GRAY</td>
+        <td>UNKNOWN</td>
+        <td>GRAY</td>
+        <td>BLACK</td>
+      </tr>
+      <tr>
+        <th>listing_id</th>
+        <td>279775080</td>
+        <td>267879618</td>
+        <td>279465226</td>
+        <td>281158060</td>
+        <td>268509322</td>
+      </tr>
+      <tr>
+        <th>longitude</th>
+        <td>-73.8317</td>
+        <td>-73.1055</td>
+        <td>-72.6545</td>
+        <td>-73.1055</td>
+        <td>-73.1055</td>
+      </tr>
+      <tr>
+        <th>main_picture_url</th>
+        <td>https://static.cargur...</td>
+        <td>https://static.cargur...</td>
+        <td>https://static.cargu...</td>
+        <td>https://static.cargu...</td>
+        <td>https://static.cargu...</td>
+      </tr>
+      <tr>
+        <th>major_options</th>
+        <td>['Leather Se...</td>
+        <td>['Leather Se...</td>
+        <td>['Leather Se...</td>
+        <td>['Leather Se...</td>
+        <td>['Leather Se...</td>
+      </tr>
+      <tr>
+        <th>make_name</th>
+        <td>Acura</td>
+        <td>Acura</td>
+        <td>Acura</td>
+        <td>Acura</td>
+        <td>Acura</td>
+      </tr>
+      <tr>
+        <th>maximum_seating</th>
+        <td>7.0</td>
+        <td>6.0</td>
+        <td>5.0</td>
+        <td>5.0</td>
+        <td>5.0</td>
+      </tr>
+      <tr>
+        <th>mileage</th>
+        <td>39359.0</td>
+        <td>50275.0</td>
+        <td>25604.0</td>
+        <td>31213.0</td>
+        <td>40359.0</td>
+      </tr>
+      <tr>
+        <th>model_name</th>
+        <td>MDX</td>
+        <td>MDX</td>
+        <td>RDX</td>
+        <td>RDX</td>
+        <td>TLX</td>
+      </tr>
+      <tr>
+        <th>owner_count</th>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>2</td>
+      </tr>
+      <tr>
+        <th>price</th>
+        <td>27700.0</td>
+        <td>29601.0</td>
+        <td>33343.0</td>
+        <td>30057.0</td>
+        <td>19882.0</td>
+      </tr>
+      <tr>
+        <th>salvage</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>savings_amount</th>
+        <td>1121</td>
+        <td>2559</td>
+        <td>737</td>
+        <td>520</td>
+        <td>489</td>
+      </tr>
+      <tr>
+        <th>seller_rating</th>
+        <td>2.8</td>
+        <td>3.647059</td>
+        <td>4.377778</td>
+        <td>3.647059</td>
+        <td>3.647059</td>
+      </tr>
+      <tr>
+        <th>sp_id</th>
+        <td>62178</td>
+        <td>339626</td>
+        <td>60510</td>
+        <td>339626</td>
+        <td>339626</td>
+      </tr>
+      <tr>
+        <th>sp_name</th>
+        <td>Eastchester C...</td>
+        <td>Generation Kia</td>
+        <td>Gengras C...</td>
+        <td>Generation Kia</td>
+        <td>Generation Kia</td>
+      </tr>
+      <tr>
+        <th>theft_title</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>transmission</th>
+        <td>A</td>
+        <td>A</td>
+        <td>A</td>
+        <td>A</td>
+        <td>A</td>
+      </tr>
+      <tr>
+        <th>trim_name</th>
+        <td>SH-AWD</td>
+        <td>SH-AWD with Adva...</td>
+        <td>SH-AWD</td>
+        <td>AWD with Adva...</td>
+        <td>V6 SH-AWD w...</td>
+      </tr>
+      <tr>
+        <th>wheel_system</th>
+        <td>AWD</td>
+        <td>AWD</td>
+        <td>AWD</td>
+        <td>AWD</td>
+        <td>AWD</td>
+      </tr>
+      <tr>
+        <th>wheelbase</th>
+        <td>111.0</td>
+        <td>111.0</td>
+        <td>108.3</td>
+        <td>105.7</td>
+        <td>109.3</td>
+      </tr>
+      <tr>
+        <th>width</th>
+        <td>77.7</td>
+        <td>77.7</td>
+        <td>74.8</td>
+        <td>73.7</td>
+        <td>73.0</td>
+      </tr>
+      <tr>
+        <th>year</th>
+        <td>2017</td>
+        <td>2017</td>
+        <td>2019</td>
+        <td>2018</td>
+        <td>2016</td>
+      </tr>
+      <tr>
+        <th>rpm</th>
+        <td>6200</td>
+        <td>6200</td>
+        <td>6500</td>
+        <td>6200</td>
+        <td>6200</td>
+      </tr>
+      <tr>
+        <th>torque_lbft</th>
+        <td>267</td>
+        <td>267</td>
+        <td>280</td>
+        <td>252</td>
+        <td>267</td>
+      </tr>
+      <tr>
+        <th>is_luxury</th>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+        <td>False</td>
+      </tr>
+      <tr>
+        <th>state</th>
+        <td>NY</td>
+        <td>NY</td>
+        <td>CT</td>
+        <td>NY</td>
+        <td>NY</td>
+      </tr>
+    </tbody>
+  </table>
+<br/>
 <p>The table below is a collection of the dataframe after all three preprocesses have been performed. The structure is the same as the previous table, showing the column names and the first five rows of data information.</p>
+<br/>
+<h7>[Data frame structure after conversion]</h7>
 <table class="table">
     <thead>
       <tr style="text-align: right;">
@@ -98,3 +580,18 @@
   </table>
   <br/>
 <p>By comparing the two dataframes above, you can easily understand the data preprocessing to perform clustering.</p>
+<br/>
+<br/>
+<a class="btn btn-secondary" data-toggle="collapse" href="#collapseCode001" role="button" aria-expanded="false" aria-controls="collapseExample">
+    View Code
+  </a> &nbsp;&nbsp;<a href="https://github.com/JihoonYun/ds/blob/main/src/ml_clustering_data.py" target="_blank"><h8 class="text-warning">[Link Code for Clustering-Data]</h8></a>
+</p>
+<div class="collapse" id="collapseCode001">
+    <div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto;font-size: 11px;"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">import</span>&nbsp;pandas&nbsp;<span style="color:#ff3399">as</span>&nbsp;pd</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">from</span>&nbsp;sklearn.preprocessing&nbsp;<span style="color:#ff3399">import</span>&nbsp;StandardScaler</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Set&nbsp;the&nbsp;path&nbsp;to&nbsp;the&nbsp;CSV&nbsp;file</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">file_path&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'/Users/jihoonyun/CUBoulder/R/workspace/used_cars_data_cleaned_final_ver.csv'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">file_path2&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'/Users/jihoonyun/CUBoulder/R/workspace/used_cars_data_cleaned_final_ver_sampled.csv'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Load&nbsp;the&nbsp;CSV&nbsp;file&nbsp;into&nbsp;a&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;pd.read_csv(file_path)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Print&nbsp;the&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(df.head())&nbsp;&nbsp;<span style="color:#999999">#&nbsp;Print&nbsp;the&nbsp;first&nbsp;5&nbsp;rows&nbsp;of&nbsp;the&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;define&nbsp;a&nbsp;random&nbsp;state&nbsp;variable</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">R_STATE&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#c10aff">99</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(f<span style="color:#ffd500">'Total&nbsp;Rows&nbsp;of&nbsp;df:&nbsp;{df.shape[0]}'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">################################################################################</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Sampling</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">################################################################################</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sampled_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;df.sample(frac<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">0.</span><span style="color:#c10aff">03</span>,&nbsp;random_state<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>R_STATE)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(f<span style="color:#ffd500">'Total&nbsp;Rows&nbsp;of&nbsp;sampled_df:&nbsp;{sampled_df.shape[0]}'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Extract&nbsp;numeric&nbsp;columns</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">numeric_columns&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;[<span style="color:#ffd500">'horsepower'</span>,&nbsp;<span style="color:#ffd500">'mileage'</span>,&nbsp;<span style="color:#ffd500">'price'</span>,&nbsp;<span style="color:#ffd500">'year'</span>,&nbsp;<span style="color:#ffd500">'highway_fuel_economy'</span>,&nbsp;<span style="color:#ffd500">'length'</span>,&nbsp;<span style="color:#ffd500">'latitude'</span>,&nbsp;<span style="color:#ffd500">'longitude'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;The&nbsp;new&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">cluster_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;sampled_df[numeric_columns]</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(<span style="color:#ffd500">"New&nbsp;DataFrame:"</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(cluster_df.info())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Create&nbsp;a&nbsp;scaler</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">scaler&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;StandardScaler()</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Apply&nbsp;Min-Max&nbsp;scaling&nbsp;to&nbsp;all&nbsp;columns</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df_scaled&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;pd.DataFrame(scaler.fit_transform(cluster_df),&nbsp;columns<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>cluster_df.columns)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Display&nbsp;the&nbsp;scaled&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(<span style="color:#ffd500">"Scaled&nbsp;DataFrame:"</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(df_scaled.info())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df_scaled.to_csv(file_path2)</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#4f4f4ftext-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+</div>
+<p class="text-warning"><a href='https://drive.google.com/file/d/1zcaW9zeALdYRkoOBwqsVKsqmi3b63L6o/view?usp=sharing' target="_blank"><h8>[Download pre-conversion data from Google Drive]</h8></a></p>
+<p class="text-warning"><a href='https://drive.google.com/file/d/1ZpdKUTgzajK9ZbrzkYYDJBumj3ph6DyW/view?usp=sharing' target="_blank"><h8>[Download converted data from Google Drive]</h8></a></p>
+
+<br/>
+
+<div class="line"></div>
