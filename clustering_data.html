@@ -1,2 +1,8 @@
 <h2>Clustering Data</h2>
-<p>...</p>
+<br/>
+
+<h7><b>[Column Extraction]</b></h7>
+<p>The data to be analyzed in this project contains characteristics of more than 60 cars. Applying clustering to all of this data poses several problems. Such data can increase computational complexity and make it challenging to identify clusters. Processing large amounts of data can reduce the resolution of the clusters and make it difficult to see the fine structure. Given these issues, it is recommended to extract only a few essential columns for analysis before performing clustering. It requires finding columns with unlabeled numeric data types that can be clustered from the preprocessed dataset in the previous step. And then, if vehicle attributes have similar characteristics, such as horsepower or torque, only one representative attribute will be categorized. If all the columns in this dataset were subject to clustering, the dimensionality mentioned above curse would make it difficult to measure the distance between the data. All of the columns below are numeric data types, but the blue columns will only be used for clustering.</p>
+<div class="alert alert-primary" role="alert">
+    <p><i>'back_legroom', 'city_fuel_economy', 'daysonmarket', 'engine_cylinders', 'engine_displacement', 'front_legroom', 'fuel_tank_volume', 'height', <font color='#0000ff'><b>'highway_fuel_economy'</b></font>, <font color='#0000ff'><b>'horsepower'</b></font>, <font color='#0000ff'><b>'latitude'</b></font>, <font color='#0000ff'><b>'length'</b></font>, <font color='#0000ff'><b>'longitude'</b></font>, 'maximum_seating', <font color='#0000ff'><b>'mileage'</b></font>, 'owner_count', <font color='#0000ff'><b>'price'</b></font>, 'savings_amount', 'seller_rating', 'wheelbase', 'width', <font color='#0000ff'><b>'year'</b></font>, 'rpm', 'torque_lbft'</i></p>
+</div>
