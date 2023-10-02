@@ -42,19 +42,3 @@ print(df_scaled.info())
 
 df_scaled.to_csv(file_path2)
 
-
-# Dataframe to HTML
-df_10 = df.head(5)
-df_10 = df_10.transpose()
-
-df_10_html = df_10.to_html()
-with open('df_10.html', 'w') as f:
-    f.write(df_10_html)
-
-df_scaled_10 = df_scaled.head(5)
-df_scaled_10 = df_scaled_10.transpose()
-
-df_scaled_10_html = df_scaled_10.to_html()
-with open('df_scaled_10.html', 'w') as f:
-    f.write(df_scaled_10_html)
-
