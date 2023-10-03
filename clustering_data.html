@@ -9,11 +9,11 @@
 <h5><b><I>2. Column Extraction</I></b></h5>
 <p>The data to be analyzed in this project contains characteristics of more than 60 cars. Applying clustering to all of this data poses several problems. Such data can increase computational complexity and make it challenging to identify clusters. Processing large amounts of data can reduce the resolution of the clusters and make it difficult to see the fine structure. Given these issues, it is recommended to extract only a few essential columns for analysis before performing clustering. It requires finding columns with unlabeled numeric data types that can be clustered from the preprocessed dataset in the previous step. And then, if vehicle attributes have similar characteristics, such as horsepower or torque, only one representative attribute will be categorized. If all the columns in this dataset were subject to clustering, the dimensionality mentioned above curse would make it difficult to measure the distance between the data. All of the columns below are numeric data types, but the blue columns will only be used for clustering.</p>
 <div class="alert alert-warning" role="alert">
-    <i>'back_legroom', 'city_fuel_economy', 'daysonmarket', 'engine_cylinders', 'engine_displacement', 'front_legroom', 'fuel_tank_volume', 'height', <font color='#ffffff'><b>'highway_fuel_economy'</b></font>, <font color='#ffffff'><b>'horsepower'</b></font>, 'latitude', 'length', 'longitude', 'maximum_seating', <font color='#ffffff'><b>'mileage'</b></font>, 'owner_count', <font color='#ffffff'><b>'price'</b></font>, 'savings_amount', 'seller_rating', <font color='#ffffff'><b>'wheelbase'</b></font>, 'width', <font color='#ffffff'><b>'year'</b></font>, 'rpm', 'torque_lbft'</i>
+    <i>'back_legroom', 'city_fuel_economy', 'daysonmarket', 'engine_cylinders', 'engine_displacement', 'front_legroom', 'fuel_tank_volume', 'height', <b>'highway_fuel_economy'</b>, <b>'horsepower'</b>, 'latitude', 'length', 'longitude', 'maximum_seating', <b>'mileage'</b>, 'owner_count', <b>'price'</b>, 'savings_amount', 'seller_rating', <b>'wheelbase'</b>, 'width', <b>'year'</b>, 'rpm', 'torque_lbft'</i>
 </div>
 <p>Although the columns below are boolean types rather than numeric types, some columns are added for clustering analysis. For this purpose, the boolean type variables must be converted to numeric type, i.e., True is converted to 1 and False to 0. </p>
 <div class="alert alert-warning" role="alert">
-  <i>'fleet', 'frame_damaged', 'franchise_dealer', <font color='#ffffff'><b>'has_accidents'</b></font>, 'isCab', 'is_new', 'salvage', 'theft_title'</i>
+  <i>'fleet', 'frame_damaged', 'franchise_dealer', <b>'has_accidents'</b>, 'isCab', 'is_new', 'salvage', 'theft_title'</i>
 </div>
 <br/>
 <h5><b><I>3. Normalization</I></b></h5>
@@ -582,13 +582,6 @@
 <br/>
 <h5><b>Related source code and dataset URLs</b></h5>
 <table class="table" style="font-size: 12px;">
-  <thead>
-    <tr style="text-align: right;">
-      <th>File Name</th>
-      <th>Link</th>
-      <th>Description</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
       <th>ml_clustering_data.py</th>
