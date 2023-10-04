@@ -5,7 +5,162 @@
     <div class="col">
         <img src="cl_img001.jpg" class="rounded" width="500">
     </div>
+</div>
+<br/>
+<p>In the plot above, The rate of change of WCSS at the elbow point starts to decrease sharply at k = 3, which is a reasonable estimate of k. Therefore, the optimal k is 3 using the Elbow Method. However, the Elbow Method is not an absolute criterion, so consideration should also be given to the results of another clustering metric, the Silhouette Score. Silhouette Score is the distance (a_i) of data point i in a cluster. It is obtained by calculating the average distance of data point i from other data points in the cluster it belongs to. Below is a plot to compare the average value of the Silhouette Score as k varies.</p>
+<div class="row">
     <div class="col">
-        <img src="cl_img001.jpg" class="rounded" width="500">
+        <img src="cl_img002.jpg" class="rounded" width="500">
     </div>
 </div>
+<br/>
+<p>In the plot above, k = 3 has the highest Silhouette Score. However, a high average Silhouette Score is only sometimes a guarantee that the clustering performed well. This metric is only one indicator of how good the clustering results are. It should be considered in conjunction with other metrics to find the optimal k that is more reliable. While a high Silhouette Score indicates that each cluster has a similar size and that the data points are well separated from each other, it is essential to check other metrics based on your actual data. Therefore, you should base your analysis on the visualization of the scatterplot and Silhouette Score for each cluster as you increase the value of k. Below is a plot of the scatterplot of the distribution for each cluster and the corresponding visualization of the silhouette score when k is 2, 3, 4, and 5.</p>
+<br/>
+
+
+<h5><b>Case 1: k = 2</b></h5>
+<p>Looking at the silhouette plot on the left, the deviation of the silhouette scores of the two clusters is not large, and they are all above the average. Also, looking at the distribution of each cluster on the right, the boundaries of each cluster are clear, even though there is a large distance between some internal data. However, the average value of the silhouette score for k = 2 is significantly lower than the average silhouette score for other k's. With such a low average silhouette score, it is difficult for the optimal k to be 2. </p>
+<div class="row">
+    <div class="col">
+        <img src="cl_img003.jpg" class="rounded" width="500">
+    </div>&nbsp;
+    <div class="col">
+        <img src="cl_img004.jpg" class="rounded" width="500">
+    </div>
+</div>
+
+<br/>
+<h5><b>Case 1: k = 3</b></h5>
+<p>The silhouette plot shows that each cluster's average silhouette scores are above average. However, we can see that the range for cluster 1 is smaller than for clusters 0 and 2. Related to this, the distribution by cluster on the right shows that clusters 0 and 2 have relatively well-clustered internal data, while cluster 1 has relatively large distances between internal data. However, the average silhouette score is higher when k = 3 than when k = 2, 4, or 5.</p>
+<div class="row">
+    <div class="col">
+        <img src="cl_img005.jpg" class="rounded" width="500">
+    </div>&nbsp;
+    <div class="col">
+        <img src="cl_img006.jpg" class="rounded" width="500">
+    </div>
+</div>
+
+<br/>
+<h5><b>Case 1: k = 4</b></h5>
+<p>The scatter plot on the right shows that the distribution of the clusters is relatively well clustered, but the silhouette plot on the left shows that clusters 0 and 1 have a large deviation in silhouette score from the other clusters 2 and 3. Also, the relatively small volume of clusters 0 and 1 means that the distance between the internal data is rather large. The average silhouette score is also lower than 0.4 when k = 3.</p>
+<div class="row">
+    <div class="col">
+        <img src="cl_img007.jpg" class="rounded" width="500">
+    </div>&nbsp;
+    <div class="col">
+        <img src="cl_img008.jpg" class="rounded" width="500">
+    </div>
+</div>
+
+<br/>
+<h5><b>Case 1: k = 5</b></h5>
+<p>The scatterplot on the right shows that the clustering is similar to k = 4. However, the silhouette plot on the left indicates that the silhouette average score is less than 0.4, and the volume of clusters 2, 3, and 4 is relatively small. It suggests that the distance between the data in these clusters is large, and the clustering quality is poor. Also, the silhouette score of cluster 2 is below the average score.</p>
+<div class="row">
+    <div class="col">
+        <img src="cl_img009.jpg" class="rounded" width="500">
+    </div>&nbsp;
+    <div class="col">
+        <img src="cl_img010.jpg" class="rounded" width="500">
+    </div>
+</div>
+<br/>
+
+<p>As a result, by analyzing the distribution of clusters through scatterplots and silhouette scores, the most effective clustering is achieved when k = 3, where the boundaries between clusters are unambiguous and do not overlap. In other words, k = 3 is the optimal k when clustering a k-means dataset. Let's analyze the data for each cluster when k is 3.</p>
+<table class="table" style="font-size: 12px;">
+    <thead>
+      <tr style="text-align: center;">
+        <th></th>
+        <th>horsepower</th>
+        <th>engine_cylinders</th>
+        <th>mileage</th>
+        <th>year</th>
+        <th>price</th>
+      </tr>
+      <tr>
+        <th>Cluster</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>0</th>
+        <td>-0.709988</td>
+        <td>-0.802119</td>
+        <td>-0.378845</td>
+        <td>0.338698</td>
+        <td>-0.314567</td>
+      </tr>
+      <tr>
+        <th>1</th>
+        <td>-0.091164</td>
+        <td>0.177777</td>
+        <td>1.726510</td>
+        <td>-1.733856</td>
+        <td>-1.049013</td>
+      </tr>
+      <tr>
+        <th>2</th>
+        <td>1.014929</td>
+        <td>1.024383</td>
+        <td>-0.231331</td>
+        <td>0.289675</td>
+        <td>0.888821</td>
+      </tr>
+    </tbody>
+</table>
+<br/>
+<p>Based on the resulting data above, the following can be analyzed: First, Cluster 0 is a cluster of cars with low horsepower and cylinder count, which appears to be a group with better-than-average mileage but lower prices. Insights from this cluster can be targeted to consumers looking for affordable used cars. Cluster 1 is a cluster of high-mileage, older cars with relatively low horsepower and cylinder counts. This cluster can be targeted to consumers with limited budgets, and insights can be drawn from the cheapest used car options. Finally, Cluster 2 is a group of older and more expensive cars with relatively high horsepower and cylinder counts. This cluster can be targeted to consumers looking for high-performance and high-value used cars.</p>  
+<img src="cl_img011.png" class="rounded" width="1000">
+<br/>
+<p>The following discusses the results of the second clustering technique, hierarchical clustering. While k-means clustering clusters data by using a predefined number of clusters and finding the center of each cluster, hierarchical clustering allows you to visualize the relationships between clusters and see clustering at different levels of similarity in the data. This hierarchical structure can be visualized as a tree-shaped dendrogram, and below is a dendrogram for a hierarchical structure. The primary purpose of hierarchical clustering is to perform clustering using the cosine similarity distance measure based on the data of the representative characteristics of the vehicles. Then, the cars can be clustered hierarchically, and the degree of price of the vehicles in each cluster can be understood. To do this, vehicle prices are discretized to create a label for the dendrogram to make them easier to identify in the dendrogram. The discretization method is based on the information about the price of the vehicle, and the top 30% of the cars are treated as 'High Price', the bottom 70% as 'Low Price', and the rest as 'Medium Price'.</p>
+
+<table class="table" style="font-size: 12px;">
+    <thead>
+      <tr style="text-align: center;">
+        <th>Cluster</th>
+        <th>horsepower</th>
+        <th>engine_cylinders</th>
+        <th>mileage</th>
+        <th>year</th>
+        <th>price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>0.9585572</td>
+        <td>1.0271026</td>
+        <td>0.2368893</td>
+        <td>-0.1904548</td>
+        <td>0.5767719</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>-0.7610399</td>
+        <td>-0.7932565</td>
+        <td>1.1203218</td>
+        <td>-0.6446950</td>
+        <td>-1.0113606</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>-0.7499970</td>
+        <td>-0.8125103</td>
+        <td>-0.7087069</td>
+        <td>0.4673782</td>
+        <td>-0.2299049</td>
+      </tr>
+    </tbody>
+  </table>
+<br/>
+<p>Analyzing the results based on the data averages for each cluster above, Cluster 1 is the highest-priced cluster, with high-performance vehicles with high horsepower, large engine cylinder counts, and average mileage and age, indicating that the vehicles in this cluster are relatively new. Cluster 2 is the lowest-priced cluster, with economy vehicles with low horsepower and small engine cylinder counts, high mileage, and below-average age, indicating that the vehicles in this cluster can be interpreted as economy or low-cost used vehicles. Finally, the vehicles in cluster 3 are similar in price to cluster 2, with moderately low horsepower and a small number of engine cylinders. Still, they have very low mileage, meaning that the low mileage significantly impacts the vehicle price.</p>
+<br/>
+<p>As a result of the hierarchical clustering above, it is generally difficult to directly find the optimal K via a dendrogram. A dendrogram is a visual representation of the distances between clusters. While it provides valuable information when partitioning data into a hierarchical structure, it is only sometimes used to explicitly determine the value of K. However, we set K to 3 to account for the rate of increase in inter-cluster distance seen in the dendrogram. However, this method also involves subjective judgment, so it can be challenging to determine a clear optimal K. In order to find the optimal K, we also considered other clustering evaluation metrics. The 'NbClust' library provided by R is utilized to find the number of clusters supported by each metric and select the one with the most support. The results below show that many metrics support K = 3.</p>
+<img src="cl_img012.png" class="rounded" width="800">
+<br/>
+<p>In conclusion, K-means and hierarchical clustering, one of the partitioned clustering techniques, yielded similar results based on the data of each characteristic of a car. The three clusters clustered by K-means focused on price and were analyzed as representing affordable used cars, limited-budget used cars, and high-performance used cars. Hierarchical clustering similarly provided insights into each cluster, with clusters 1, 2, and 3 representing high-priced, economy, and low-priced used cars, respectively. Both clustering methods offer essential insights into vehicle characteristics, and you should consider which clustering technique to choose by first understanding the advantages and disadvantages of each method and the nature and purpose of your data. Hierarchical clustering helps you better understand the structure of your data, while K-means provides faster clustering results. These analyses will help support decision-making for customer segmentation, marketing strategy, and more in the used car market.</p>
