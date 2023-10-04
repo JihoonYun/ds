@@ -19,7 +19,8 @@ df = pd.read_csv(file_path)
 # define a random state variable
 R_STATE = 7
 
-numeric_columns = ['horsepower', 'highway_fuel_economy', 'mileage', 'wheelbase', 'year', 'price']
+# numeric_columns = ['horsepower', 'highway_fuel_economy', 'mileage', 'wheelbase', 'year', 'price']
+numeric_columns = ['horsepower', 'engine_cylinders', 'mileage', 'year', 'price']
 boolean_columns = ['has_accidents']
 
 # # Extract numeric columns
@@ -28,15 +29,15 @@ numeric_df = df[numeric_columns]
 boolean_df = df[boolean_columns]
 
 # Create a new DataFrame by concatenating numeric and boolean DataFrames
-cluster_df = pd.concat([numeric_df, boolean_df], axis=1)
-# cluster_df = numeric_df
+# cluster_df = pd.concat([numeric_df, boolean_df], axis=1)
+cluster_df = numeric_df
 
 # # Convert boolean columns to numeric (True -> 1, False -> 0)
-for column in boolean_columns:
-    cluster_df[column] = cluster_df[column].astype(int)
+# for column in boolean_columns:
+#     cluster_df[column] = cluster_df[column].astype(int)
 
 # Define Max Cluster
-max_clusters = 9
+max_clusters = 6
 
 # # Create a scaler
 scaler = StandardScaler()
@@ -48,6 +49,8 @@ df_scaled = pd.DataFrame(scaler.fit_transform(cluster_df), columns=cluster_df.co
 print(df_scaled.head())  # Print the first 5 rows of the DataFrame
 print(df_scaled.info())
 
+
+silhouette_scores = []
 
 for k in range(2, max_clusters):
     df_scaled_copy = df_scaled.copy()
@@ -97,13 +100,16 @@ for k in range(2, max_clusters):
     plt.legend()
     plt.show()
 
+    silhouette_avg = silhouette_score(df_scaled, kmeans.labels_)
+    silhouette_scores.append(silhouette_avg)
 
+print(silhouette_avg)
 ################################################################################
 # Elbow Point
 ################################################################################
 
 # Use the Elbow Method to find the optimal number of clusters
-visualizer = KElbowVisualizer(KMeans(n_clusters=2, random_state=R_STATE), k=(1, max_clusters), timings=False)
+visualizer = KElbowVisualizer(KMeans(n_clusters=0, random_state=R_STATE), k=(1, max_clusters), timings=False)
 visualizer.fit(df_scaled)
 visualizer.show()
 
@@ -114,12 +120,12 @@ visualizer.show()
 
 # max_clusters_ss = 7
 # Calculate silhouette scores to find the optimal number of clusters
-silhouette_scores = []
-for k in range(2, max_clusters):
-       kmeans = KMeans(n_clusters=k, random_state=R_STATE).fit(df_scaled)
-       silhouette_avg = silhouette_score(df_scaled, kmeans.labels_)
-       silhouette_scores.append(silhouette_avg)
-       print(f'cluster: {k} // silhouette index: {silhouette_avg}')
+# silhouette_scores = []
+# for k in range(2, max_clusters):
+#        kmeans = KMeans(n_clusters=k, random_state=R_STATE).fit(df_scaled)
+#        silhouette_avg = silhouette_score(df_scaled, kmeans.labels_)
+#        silhouette_scores.append(silhouette_avg)
+#        print(f'cluster: {k} // silhouette index: {silhouette_avg}')
 
 # Display the Silhouette Score plot
 plt.figure(dpi=300)
