@@ -5,7 +5,7 @@
 
 <h5><b><I>K-means</I></b></h5>
 <p>The source code for the K-means clustering implementation consists of three main parts. Allocate 500 sampled data to a dataframe and perform scaling using the StandardScaler class provided by Python's sklearn library. The distribution of clusters and clustering results with K set from 2 to 5 is analyzed to find the optimal K. If the metric parameter of the KMeans class is not specified, Euclidean distance is used by default. Euclidean distance is one of the most commonly used distance measures and calculates the spatial distance between data points. Additionally, to select the appropriate number of clusters (K), two methods are utilized to choose the optimal K: Elbow Point and Silhouette Score.</p>
-<br/>
+
 <table class="table" style="font-size: 12px;">
   <tbody>
     <tr>
@@ -35,14 +35,11 @@
   </tbody>
 </table>
 
-<br/>
 <div class="line"></div>
-<br/>
 
 <h5><b><I>Hierarchical clustering</I></b></h5>
 <p>First, 80 random samples are taken from the 500 sampled data obtained in the data step. Then, after scaling the data, clustering is performed using the hclust library. The similarity between each data point is calculated using the cosine similarity. When running the hclust function, the value of method is set to ward. The advantage of Ward's linkage is that it is generally helpful for data to form balanced clusters and minimize the variance between clusters. Finally, we draw a dendrogram based on the clustering results and use it to analyze the hierarchical structure.</p>
 
-br/>
 <table class="table" style="font-size: 12px;">
   <tbody>
     <tr>
