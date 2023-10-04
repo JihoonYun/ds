@@ -4,24 +4,24 @@
 <p>To perform clustering based on the vehicle characteristics dataset, there are three main data processing steps: sampling, column extraction, and normalization.</p>
 <br/>
 <h5><b><I>1. Sampling</I></b></h5>
-<p>Sampling is performed to make clustering more effective. The total number of rows in the data preprocessed in the previous step is 607,681. If clustering is applied to such a large amount of data, the memory usage and computation time due to many calculations will increase significantly, and it may be challenging to visualize and interpret the clustering results. For this purpose, a random sampling process is applied to K-means to obtain 500 data from the existing data. However, in the case of hierarchical clustering, only 80 data are sampled, which is less, to identify the clusters' hierarchical structure precisely through a dendrogram.</p>
+<p>Sampling is performed to make clustering more effective. The total number of rows in the data preprocessed in the previous step is 607,681. If clustering is applied to such a large amount of data, the memory usage and computation time due to many calculations will increase significantly, and it may be challenging to visualize and interpret the clustering results. For this purpose, a random sampling process is applied to K-means to obtain 1,000 data from the existing data. However, in the case of hierarchical clustering, only 100 data are sampled, which is less, to identify the clusters' hierarchical structure precisely through a dendrogram.</p>
 <br/>
 <h5><b><I>2. Column Extraction</I></b></h5>
 <p>The data to be analyzed in this project contains characteristics of more than 60 cars. Applying clustering to all of this data poses several problems. Such data can increase computational complexity and make it challenging to identify clusters. Processing large amounts of data can reduce the resolution of the clusters and make it difficult to see the fine structure. Given these issues, it is recommended to extract only a few essential columns for analysis before performing clustering. It requires finding columns with unlabeled numeric data types that can be clustered from the preprocessed dataset in the previous step. And then, if vehicle attributes have similar characteristics, such as horsepower or torque, only one representative attribute will be categorized. If all the columns in this dataset were subject to clustering, the dimensionality mentioned above curse would make it difficult to measure the distance between the data. All of the columns below are numeric data types, but the blue columns will only be used for clustering.</p>
 <div class="alert alert-warning" role="alert">
-    <i>'back_legroom', 'city_fuel_economy', 'daysonmarket', 'engine_cylinders', 'engine_displacement', 'front_legroom', 'fuel_tank_volume', 'height', <b>'highway_fuel_economy'</b>, <b>'horsepower'</b>, 'latitude', 'length', 'longitude', 'maximum_seating', <b>'mileage'</b>, 'owner_count', <b>'price'</b>, 'savings_amount', 'seller_rating', <b>'wheelbase'</b>, 'width', <b>'year'</b>, 'rpm', 'torque_lbft'</i>
+    <i>'back_legroom', 'city_fuel_economy', 'daysonmarket', <b>'engine_cylinders'</b>, 'engine_displacement', 'front_legroom', 'fuel_tank_volume', 'height', 'highway_fuel_economy', <b>'horsepower'</b>, 'latitude', 'length', 'longitude', 'maximum_seating', <b>'mileage'</b>, 'owner_count', <b>'price'</b>, 'savings_amount', 'seller_rating', 'wheelbase', 'width', <b>'year'</b>, 'rpm', 'torque_lbft'</i>
 </div>
-<p>Although the columns below are boolean types rather than numeric types, some columns are added for clustering analysis. For this purpose, the boolean type variables must be converted to numeric type, i.e., True is converted to 1 and False to 0. </p>
+<!-- <p>Although the columns below are boolean types rather than numeric types, some columns are added for clustering analysis. For this purpose, the boolean type variables must be converted to numeric type, i.e., True is converted to 1 and False to 0. </p>
 <div class="alert alert-warning" role="alert">
   <i>'fleet', 'frame_damaged', 'franchise_dealer', <b>'has_accidents'</b>, 'isCab', 'is_new', 'salvage', 'theft_title'</i>
-</div>
+</div> -->
 <br/>
 <h5><b><I>3. Normalization</I></b></h5>
 <p>The dataset used in this project has several characteristics of used cars, and these characteristics may have different scales. Clustering algorithms form clusters based on the distance or similarity between variables, and other scales can distort distance measurements. Therefore, normalizing the data to make each variable have a constant scale is essential in clustering. Every column in the dataset performs a StandardScaler scale to scale the data to a constant range or mean and variance.</p>
 <br/>
 <p>First, the table below shows the dataframe structure before any preprocessing is performed. The first column on the left is the name of the column, and the subsequent columns from 0 to 4 show the data values in the first 1 to 5 rows. </p>
 <br/>
-<h7>[Data frame structure before conversion]</h7>
+<h6><b>Data frame structure before conversion</b></h6> 
 <table class="table" style="font-size: 12px;">
     <thead>
       <tr style="text-align: right;">
@@ -122,7 +122,7 @@
         <td>**VIP REWARDS PAC...</td>
         <td>**VIP REWARDS P...</td>
       </tr>
-      <tr>
+      <tr class="table-warning">
         <th>engine_cylinders</th>
         <td>6</td>
         <td>6</td>
@@ -202,7 +202,7 @@
         <td>Gasoline</td>
         <td>Gasoline</td>
       </tr>
-      <tr class="table-warning">
+      <tr>
         <th>has_accidents</th>
         <td>False</td>
         <td>False</td>
@@ -218,7 +218,7 @@
         <td>65.0</td>
         <td>57.0</td>
       </tr>
-      <tr class="table-warning">
+      <tr></tr>
         <th>highway_fuel_economy</th>
         <td>26</td>
         <td>26</td>
@@ -442,7 +442,7 @@
         <td>AWD</td>
         <td>AWD</td>
       </tr>
-      <tr class="table-warning">
+      <tr>
         <th>wheelbase</th>
         <td>111.0</td>
         <td>111.0</td>
@@ -503,74 +503,70 @@
 <br/>
 <p>The table below is a collection of the dataframe after all three preprocesses have been performed. The structure is the same as the previous table, showing the column names and the first five rows of data information.</p>
 <br/>
-<h7>[Data frame structure after conversion]</h7>
+<h6><b>Data frame structure after conversion</b></h6> 
 <table class="table" style="font-size: 12px;">
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
+      <th>horsepower</th>
+      <th>highway_fuel_economy</th>
+      <th>mileage</th>
+      <th>wheelbase</th>
+      <th>year</th>
+      <th>price</th>
+      <th>has_accidents</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>horsepower</th>
-      <td>0.494783</td>
-      <td>1.987149</td>
-      <td>0.469488</td>
-      <td>-1.731120</td>
-      <td>1.885972</td>
+      <th>0</th>
+      <td>-1.303717</td>
+      <td>0.970236</td>
+      <td>-0.684210</td>
+      <td>-0.978169</td>
+      <td>0.477650</td>
+      <td>-0.538550</td>
+      <td>-0.358703</td>
     </tr>
     <tr>
-      <th>highway_fuel_economy</th>
-      <td>-1.371717</td>
-      <td>-1.911622</td>
-      <td>-0.651845</td>
-      <td>1.867710</td>
-      <td>-1.551686</td>
+      <th>1</th>
+      <td>0.013194</td>
+      <td>-0.137339</td>
+      <td>-0.390347</td>
+      <td>0.509504</td>
+      <td>-0.262893</td>
+      <td>0.233767</td>
+      <td>-0.358703</td>
     </tr>
     <tr>
-      <th>mileage</th>
-      <td>2.128324</td>
-      <td>2.511508</td>
-      <td>-0.127835</td>
-      <td>-0.598928</td>
-      <td>3.200546</td>
+      <th>2</th>
+      <td>-0.823722</td>
+      <td>0.416448</td>
+      <td>-1.058071</td>
+      <td>-0.880936</td>
+      <td>0.847921</td>
+      <td>-0.396564</td>
+      <td>-0.358703</td>
     </tr>
     <tr>
-      <th>wheelbase</th>
-      <td>-1.582130</td>
-      <td>0.210287</td>
-      <td>0.662742</td>
-      <td>-0.973056</td>
-      <td>2.342046</td>
+      <th>3</th>
+      <td>-0.700646</td>
+      <td>0.970236</td>
+      <td>-0.764627</td>
+      <td>-0.793425</td>
+      <td>0.477650</td>
+      <td>-0.011252</td>
+      <td>-0.358703</td>
     </tr>
     <tr>
-      <th>year</th>
-      <td>-1.930795</td>
-      <td>-2.335744</td>
-      <td>0.903846</td>
-      <td>0.498897</td>
-      <td>-1.525847</td>
-    </tr>
-    <tr>
-      <th>price</th>
-      <td>-0.309485</td>
-      <td>-0.539024</td>
-      <td>-0.231194</td>
-      <td>-0.905900</td>
-      <td>-0.803728</td>
-    </tr>
-    <tr>
-      <th>has_accidents</th>
-      <td>-0.365769</td>
-      <td>-0.365769</td>
-      <td>-0.365769</td>
-      <td>-0.365769</td>
-      <td>-0.365769</td>
+      <th>4</th>
+      <td>0.751649</td>
+      <td>-0.875723</td>
+      <td>-1.068037</td>
+      <td>1.501285</td>
+      <td>1.218193</td>
+      <td>0.976068</td>
+      <td>-0.358703</td>
     </tr>
   </tbody>
 </table>
@@ -598,11 +594,6 @@
       <td>Dataset sampled in the clustering step</td>
       <td><a href="https://drive.google.com/file/d/1QTSzRdB228BOfzoC837v5bqvetd_FG-Q/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
     </tr>
-    <tr>
-      <th>used_cars_data_cleaned_final_ver_sampled_preprocessed.csv</th>
-      <td>Dataset sampled and preprocessed in the clustering step</td>
-      <td><a href="https://drive.google.com/file/d/1eEEbe_uMX0BFADYdrbgXz7cdqU7EUEAM/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
-    </tr>
   </tbody>
 </table>
 
@@ -610,5 +601,5 @@
   View Code
 </a> &nbsp;&nbsp;<h7>Click the <b>View Code</b> button to check the entire source code.</h7>
 <div class="collapse" id="collapseCode001">
-  <div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto;font-size: 11px;"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">import</span>&nbsp;pandas&nbsp;<span style="color:#ff3399">as</span>&nbsp;pd</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">from</span>&nbsp;sklearn.preprocessing&nbsp;<span style="color:#ff3399">import</span>&nbsp;StandardScaler</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">from</span>&nbsp;sklearn.preprocessing&nbsp;<span style="color:#ff3399">import</span>&nbsp;MinMaxScaler</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Set&nbsp;the&nbsp;path&nbsp;to&nbsp;the&nbsp;CSV&nbsp;file</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">file_path&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'/Users/jihoonyun/CUBoulder/R/workspace/used_cars_data_cleaned_final_ver.csv'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">file_path2&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'/Users/jihoonyun/CUBoulder/R/workspace/used_cars_data_cleaned_final_ver_sampled.csv'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">file_path3&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'/Users/jihoonyun/CUBoulder/R/workspace/used_cars_data_cleaned_final_ver_sampled_preprocessed.csv'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Load&nbsp;the&nbsp;CSV&nbsp;file&nbsp;into&nbsp;a&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;pd.read_csv(file_path)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Print&nbsp;the&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(df.head())&nbsp;&nbsp;<span style="color:#999999">#&nbsp;Print&nbsp;the&nbsp;first&nbsp;5&nbsp;rows&nbsp;of&nbsp;the&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;define&nbsp;a&nbsp;random&nbsp;state&nbsp;variable</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">R_STATE&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#c10aff">7</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(f<span style="color:#ffd500">'Total&nbsp;Rows&nbsp;of&nbsp;df:&nbsp;{df.shape[0]}'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">################################################################################</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Sampling</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">################################################################################</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sampled_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;df.sample(n<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">500</span>,&nbsp;random_state<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>R_STATE)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#sampled_df&nbsp;=&nbsp;df.sample(frac=0.01,&nbsp;random_state=R_STATE)</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(f<span style="color:#ffd500">'Total&nbsp;Rows&nbsp;of&nbsp;sampled_df:&nbsp;{sampled_df.shape[0]}'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sampled_df.to_csv(file_path2)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Extract&nbsp;numeric&nbsp;columns</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['back_legroom',&nbsp;'city_fuel_economy',</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'daysonmarket',&nbsp;'engine_cylinders',&nbsp;'engine_displacement',</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'front_legroom',&nbsp;'fuel_tank_volume',&nbsp;'height',&nbsp;'highway_fuel_economy',</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'horsepower',&nbsp;'latitude',&nbsp;'length',&nbsp;'longitude',</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'maximum_seating',&nbsp;'mileage',&nbsp;'owner_count',&nbsp;'price',&nbsp;'savings_amount',</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'seller_rating',&nbsp;'wheelbase',&nbsp;'width',&nbsp;'year',&nbsp;'rpm',</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'torque_lbft']</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">numeric_columns&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;[<span style="color:#ffd500">'horsepower'</span>,&nbsp;<span style="color:#ffd500">'highway_fuel_economy'</span>,&nbsp;<span style="color:#ffd500">'mileage'</span>,&nbsp;<span style="color:#ffd500">'wheelbase'</span>,&nbsp;<span style="color:#ffd500">'year'</span>,&nbsp;<span style="color:#ffd500">'price'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">numeric_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;sampled_df[numeric_columns]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;boolean_columns</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;['fleet',&nbsp;'frame_damaged',&nbsp;'franchise_dealer',&nbsp;'has_accidents',&nbsp;'isCab',&nbsp;'is_new',&nbsp;'salvage',&nbsp;'theft_title']</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">boolean_columns&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;[<span style="color:#ffd500">'has_accidents'</span>]</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Extract&nbsp;boolean&nbsp;columns</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">boolean_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;sampled_df[boolean_columns]</div><div style="padding:0 6px; white-space:pre; line-height:130%">boolean_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;boolean_df.astype(<span style="color:#4be6fa">int</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;The&nbsp;new&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;cluster_df&nbsp;=&nbsp;pd.concat([numeric_df],&nbsp;axis=1)</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">cluster_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;pd.concat([numeric_df,&nbsp;boolean_df],&nbsp;axis<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">1</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(<span style="color:#ffd500">"New&nbsp;DataFrame:"</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(cluster_df.info())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Create&nbsp;a&nbsp;scaler</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">scaler&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;StandardScaler()</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Apply&nbsp;Min-Max&nbsp;scaling&nbsp;to&nbsp;all&nbsp;columns</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df_scaled&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;pd.DataFrame(scaler.fit_transform(cluster_df),&nbsp;columns<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>cluster_df.columns)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Display&nbsp;the&nbsp;scaled&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(<span style="color:#ffd500">"Scaled&nbsp;DataFrame:"</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(df_scaled.info())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">df_scaled.to_csv(file_path3)</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#4f4f4ftext-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+  <div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto;font-size:11px;"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#ff3399">import</span>&nbsp;pandas&nbsp;<span style="color:#ff3399">as</span>&nbsp;pd</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Set&nbsp;the&nbsp;path&nbsp;to&nbsp;the&nbsp;CSV&nbsp;file</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">file_path&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'/Users/jihoonyun/CUBoulder/R/workspace/used_cars_data_cleaned_final_ver.csv'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">file_path2&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'/Users/jihoonyun/CUBoulder/R/workspace/used_cars_data_cleaned_final_ver_sampled.csv'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Load&nbsp;the&nbsp;CSV&nbsp;file&nbsp;into&nbsp;a&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;pd.read_csv(file_path)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Print&nbsp;the&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(df.head())&nbsp;&nbsp;<span style="color:#999999">#&nbsp;Print&nbsp;the&nbsp;first&nbsp;5&nbsp;rows&nbsp;of&nbsp;the&nbsp;DataFrame</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;define&nbsp;a&nbsp;random&nbsp;state&nbsp;variable</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">R_STATE&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#c10aff">2</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(f<span style="color:#ffd500">'Total&nbsp;Rows&nbsp;of&nbsp;df:&nbsp;{df.shape[0]}'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">################################################################################</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Sampling</span></div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">################################################################################</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">sampled_df&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;df.sample(n<span style="color:#0086b3"></span><span style="color:#ff3399">=</span><span style="color:#c10aff">1000</span>,&nbsp;random_state<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>R_STATE)</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#sampled_df&nbsp;=&nbsp;df.sample(frac=0.01,&nbsp;random_state=R_STATE)</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(f<span style="color:#ffd500">'Total&nbsp;Rows&nbsp;of&nbsp;sampled_df:&nbsp;{sampled_df.shape[0]}'</span>)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">sampled_df.to_csv(file_path2)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#4f4f4ftext-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
 </div>
