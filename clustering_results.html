@@ -30,7 +30,7 @@
 </div>
 
 <br/>
-<h5><b>Case 1: k = 3</b></h5>
+<h5><b>Case 2: k = 3</b></h5>
 <p>The silhouette plot shows that each cluster's average silhouette scores are above average. However, we can see that the range for cluster 1 is smaller than for clusters 0 and 2. Related to this, the distribution by cluster on the right shows that clusters 0 and 2 have relatively well-clustered internal data, while cluster 1 has relatively large distances between internal data. However, the average silhouette score is higher when k = 3 than when k = 2, 4, or 5.</p>
 <div class="row">
     <div class="col">
@@ -42,7 +42,7 @@
 </div>
 
 <br/>
-<h5><b>Case 1: k = 4</b></h5>
+<h5><b>Case 3: k = 4</b></h5>
 <p>The scatter plot on the right shows that the distribution of the clusters is relatively well clustered, but the silhouette plot on the left shows that clusters 0 and 1 have a large deviation in silhouette score from the other clusters 2 and 3. Also, the relatively small volume of clusters 0 and 1 means that the distance between the internal data is rather large. The average silhouette score is also lower than 0.4 when k = 3.</p>
 <div class="row">
     <div class="col">
@@ -54,7 +54,7 @@
 </div>
 
 <br/>
-<h5><b>Case 1: k = 5</b></h5>
+<h5><b>Case 4: k = 5</b></h5>
 <p>The scatterplot on the right shows that the clustering is similar to k = 4. However, the silhouette plot on the left indicates that the silhouette average score is less than 0.4, and the volume of clusters 2, 3, and 4 is relatively small. It suggests that the distance between the data in these clusters is large, and the clustering quality is poor. Also, the silhouette score of cluster 2 is below the average score.</p>
 <div class="row">
     <div class="col">
@@ -109,6 +109,7 @@
 <p>Based on the resulting data above, the following can be analyzed: First, Cluster 0 is a cluster of cars with low horsepower and cylinder count, which appears to be a group with better-than-average mileage but lower prices. Insights from this cluster can be targeted to consumers looking for affordable used cars. Cluster 1 is a cluster of high-mileage, older cars with relatively low horsepower and cylinder counts. This cluster can be targeted to consumers with limited budgets, and insights can be drawn from the cheapest used car options. Finally, Cluster 2 is a group of older and more expensive cars with relatively high horsepower and cylinder counts. This cluster can be targeted to consumers looking for high-performance and high-value used cars.</p>  
 <img src="cl_img011.png" class="rounded" width="1000">
 <br/>
+<br/>
 <p>The following discusses the results of the second clustering technique, hierarchical clustering. While k-means clustering clusters data by using a predefined number of clusters and finding the center of each cluster, hierarchical clustering allows you to visualize the relationships between clusters and see clustering at different levels of similarity in the data. This hierarchical structure can be visualized as a tree-shaped dendrogram, and below is a dendrogram for a hierarchical structure. The primary purpose of hierarchical clustering is to perform clustering using the cosine similarity distance measure based on the data of the representative characteristics of the vehicles. Then, the cars can be clustered hierarchically, and the degree of price of the vehicles in each cluster can be understood. To do this, vehicle prices are discretized to create a label for the dendrogram to make them easier to identify in the dendrogram. The discretization method is based on the information about the price of the vehicle, and the top 30% of the cars are treated as 'High Price', the bottom 70% as 'Low Price', and the rest as 'Medium Price'.</p>
 
 <table class="table" style="font-size: 12px;">
@@ -154,5 +155,6 @@
 <br/>
 <p>As a result of the hierarchical clustering above, it is generally difficult to directly find the optimal K via a dendrogram. A dendrogram is a visual representation of the distances between clusters. While it provides valuable information when partitioning data into a hierarchical structure, it is only sometimes used to explicitly determine the value of K. However, we set K to 3 to account for the rate of increase in inter-cluster distance seen in the dendrogram. However, this method also involves subjective judgment, so it can be challenging to determine a clear optimal K. In order to find the optimal K, we also considered other clustering evaluation metrics. The 'NbClust' library provided by R is utilized to find the number of clusters supported by each metric and select the one with the most support. The results below show that many metrics support K = 3.</p>
 <img src="cl_img012.png" class="rounded" width="800">
+<br/>
 <br/>
 <p>In conclusion, K-means and hierarchical clustering, one of the partitioned clustering techniques, yielded similar results based on the data of each characteristic of a car. The three clusters clustered by K-means focused on price and were analyzed as representing affordable used cars, limited-budget used cars, and high-performance used cars. Hierarchical clustering similarly provided insights into each cluster, with clusters 1, 2, and 3 representing high-priced, economy, and low-priced used cars, respectively. Both clustering methods offer essential insights into vehicle characteristics, and you should consider which clustering technique to choose by first understanding the advantages and disadvantages of each method and the nature and purpose of your data. Hierarchical clustering helps you better understand the structure of your data, while K-means provides faster clustering results. These analyses will help support decision-making for customer segmentation, marketing strategy, and more in the used car market.</p>
