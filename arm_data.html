@@ -1,2 +1,10 @@
 <h2>Association Rule Mining Data</h2>
-<p>...</p>
+<p>To perform association rule mining on used vehicle data, the given data needs to be converted into transactional data. This method mainly identifies relationships between discrete items (variables in the form of categories). Continuous variables are complex to use directly and need to be discretized. The process of converting used vehicle data into transaction data for association rule analysis can be done as follows:</p>
+<ul>
+    <li>10,000 data points are randomly sampled from the previously preprocessed data to perform smooth association rule mining.</li>
+    <li>For association rule analysis, select the features required for analysis. For each feature representing a vehicle, choose the following columns and assign them to a new data frame: (make_name, horsepower, torque_lbft, highway_fuel_economy, engine_cylinders, body_type, fuel_type, mileage, year, has_accidents, wheelbase, price)</li>
+    <li>When the columns have continuous numeric data types, it can be challenging to apply association rules analysis. To overcome this, the data is transformed through discretization. Quantiles are calculated for each feature, and these quantiles are used to divide each variable into multiple bins. String labels are defined for these discretized bins, effectively converting a continuous variable into a categorical one.</li>
+    <li>Following this transformation, information such as column names and row numbers is removed to create transactional data, which is then saved as a CSV file.</li>
+</ul>
+
+<p>Below is what the data frame looks like before and after conversion to transaction data.</p>
