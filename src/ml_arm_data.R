@@ -47,7 +47,7 @@ label_mappings <- list(
   year = c("1995 - 2014", "2015-2018", "2018-2021"),
   wheelbase = c("Short Wheelbase", "Medium Wheelbase", "Long Wheelbase", "Very Long Wheelbase"),
   price = c("Low Price", "Medium Price", "High Price", "Very High Price")
-)
+)  
 
 for (col in columns_to_discretize) {
   print(col)
