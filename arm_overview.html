@@ -1,2 +1,10 @@
 <h2>Association Rule Mining Overview</h2>
-<p>...</p>
+<br/>
+<p>Association rule analysis is an algorithm that creates a set of rules that tell how often two sets of items occur together. In simple terms, it's an algorithm that uses consumer purchase history data to conclude that "customers who buy item X are more likely to buy item Y." This allows people to identify patterns and correlations that occur in their data set and use those patterns to gain helpful information and insights. So, how do you define a "rule"? A rule in association rule analysis has two parts: an "antecedent" and a "consequent". The antecedent is the preceding part of the rule or the cause or condition that causes the result of the rule to occur, given some condition. The consequent is the following part of the rule or the result that occurs when the condition is met. For example, suppose you have a rule that says that if customers buy a pizza, they are more likely to buy a donut. The "if customers buy a pizza" part is the antecedent, and the "they are more likely to buy a donut" part is the consequent.</p>
+<br/>
+
+<p>So, what makes a good rule among the myriad of rules out there? Three main indicators reveal a rule's effectiveness: support, confidence, and lift. To make it easier to understand, the "pizza" and "donut" examples together will be used. First, support indicates the frequency of occurrence of a particular rule, i.e., it measures how often a particular rule occurs in a dataset, with higher support values indicating that the rule occurs more frequently. Support is calculated as follows.</p>
+<H5>S𝑢𝑝𝑝𝑜𝑟𝑡(𝐴) = 𝑃(𝐴)</H5>
+<br/>
+<p>Applying the pizza and donuts example, this is the probability of a customer making an intersection transaction that includes both "pizza" and "donuts" out of all purchases.</p>
+<img src="arm_img001.png" class="rounded" width="550">
