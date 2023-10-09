@@ -13,7 +13,7 @@
 <br/>
 <p>Below is a data frame collection with all the continuous number type data discretized.</p>
 <img src="arm_img006.png" class="rounded" width="1050">  
-<br/>
+<br/><br/>
 <p>The above data frame is the result of discretizing several numeric variables, which means that most numeric variables are discretized for each variable using the quantile function. This function can be utilized to handle continuous data better, making it simpler and easier to interpret. Each column ranges from three to four categories. If a column is discretized into four categories, it usually utilizes 0, 0.25, 5, 7.5, and 1 quantiles. If it is discretized into three categories, it is discretized at rates of approximately 0, 3, 6, and 10. The exception is the year column, typically a numeric variable but often used as a categorical variable. Therefore, this variable does not utilize quartiles but instead divides the values in the data into three categories. The three bins of the year are defined as 1995 - 2014, 2015 - 2017, and 2018-2021, and the discretization is performed. Below is the quantile ratio or data discretization criteria applied when performing the discretization for each column of each number type.</p>
 <br/>
 <table class="table  table-sm" style="font-size: 12px;">
@@ -156,9 +156,6 @@
       </tr>
     </tbody>
   </table>
-<br/>
-
-<br/>
 <div class="line"></div>
 <br/>
 <h5><b>Related source code and dataset URLs</b></h5>
