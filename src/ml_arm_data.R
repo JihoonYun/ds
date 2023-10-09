@@ -16,7 +16,7 @@ df_sampled <- df[sample(nrow(df), num_rows_to_sample, replace = FALSE), ]
 # store CSV 
 write.csv(df_sampled, "used_cars_data_cleaned_final_ver_arm_sampled.csv")
 df_sampled <- read.csv("used_cars_data_cleaned_final_ver_arm_sampled.csv")
-table(df_sampled$year)
+
 # Select the required columns from the dataframe
 # df_tx <- df_sampled %>%
 #   select(make_name, horsepower, torque_lbft, highway_fuel_economy, engine_cylinders, body_type, fuel_type, mileage, year, has_accidents, wheelbase, price)
@@ -24,16 +24,15 @@ df_tx <- df_sampled %>%
   select(make_name, horsepower, torque_lbft, highway_fuel_economy, engine_displacement, engine_cylinders, body_type, mileage, year, wheel_system, wheelbase, price)
 write.csv(df_tx, file = "used_cars_data_cleaned_final_ver_arm_sampled2.csv", row.names = FALSE)
 
-
 # Select columns to discretize
 columns_to_discretize <- c( "highway_fuel_economy", "engine_displacement", "engine_cylinders", "horsepower", "torque_lbft", "mileage", "year", "wheelbase", "price")
-
 
 # Define the interval to be discretized
 breaks <- list(
   highway_fuel_economy = quantile(df_tx$highway_fuel_economy, probs = c(0, 0.23, 0.66, 1)),
   engine_displacement = quantile(df_tx$engine_displacement, probs = c(0, 0.25, 0.75, 0.95, 1)),
-  engine_cylinders = quantile(df_tx$engine_cylinders, probs = c(0, 0.25, 0.75, 0.95, 1)),
+  # engine_cylinders = quantile(df_tx$engine_cylinders, probs = c(0, 0.25, 0.75, 0.95, 1)),
+  engine_cylinders = c(0, 3, 5, 8, 12),  #quantile(df_tx$year, probs = c(0, 0.1, 0.6, 1)),
   horsepower = quantile(df_tx$horsepower, probs = c(0, 0.25, 0.5, 0.75, 1)),
   torque_lbft = quantile(df_tx$torque_lbft, probs = c(0, 0.33, 0.66, 1)),
   mileage = quantile(df_tx$mileage, probs = c(0, 0.25, 0.5, 0.75, 1)),
@@ -71,3 +70,4 @@ df_transactions <- df_tx %>%
 
 # Save the data
 write.csv(df_transactions, file = "used_cars_data_cleaned_final_ver_arm_sampled_transactions.csv", row.names = FALSE)
+
