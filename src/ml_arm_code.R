@@ -63,16 +63,17 @@ convertToHTMLTable <- function(rules, num_top = 15, sort_by = "support", decreas
 ################################################################################################
 # Apriori > Low Price
 ################################################################################################
-PriceRules_low <- apriori(data=Usedcars, parameter = list(supp=.1, conf=.1, minlen=3),
+PriceRules_low <- apriori(data=Usedcars, parameter = list(supp=.095, conf=.1, minlen=3),
                       appearance = list(default="lhs", rhs="Low Price"),
                       control=list(verbose=FALSE))
 
 PriceRules_low <- unique(PriceRules_low)
+inspect(sort(PriceRules_low, decreasing=TRUE, by="support"))
 inspect(sort(PriceRules_low, decreasing=TRUE, by="support")[1:15])
 inspect(sort(PriceRules_low, decreasing=TRUE, by="confidence")[1:15])
 inspect(sort(PriceRules_low, decreasing=TRUE, by="lift")[1:15]) 
 
-convertToHTMLTable(PriceRules_low, 15, "support", TRUE)
+convertToHTMLTable(PriceRules_low, 15, "lift", TRUE)
 
 # Scatter Plot
 plot(PriceRules_low, method = "scatterplot")
@@ -83,16 +84,17 @@ saveWidget(plot(PriceRules_low, method="graph", engine="htmlwidget"), file = "ou
 ################################################################################################
 # Apriori > Medium Price
 ################################################################################################
-PriceRules_md <- apriori(data=Usedcars, parameter = list(supp=.1, conf=.1, minlen=3),
-                      appearance = list(default="lhs", rhs="Medium Price"),
-                      control=list(verbose=FALSE))
+PriceRules_md <- apriori(data=Usedcars, parameter = list(supp=.095, conf=.1, minlen=3),
+                         appearance = list(default="lhs", rhs="Medium Price"),
+                         control=list(verbose=FALSE))
 
 PriceRules_md <- unique(PriceRules_md)
+inspect(sort(PriceRules_md, decreasing=TRUE, by="support"))
 inspect(sort(PriceRules_md, decreasing=TRUE, by="support")[1:15])
 inspect(sort(PriceRules_md, decreasing=TRUE, by="confidence")[1:15])
 inspect(sort(PriceRules_md, decreasing=TRUE, by="lift")[1:15]) 
 
-convertToHTMLTable(PriceRules_md, 15, "support", TRUE)
+convertToHTMLTable(PriceRules_md, 15, "lift", TRUE)
 
 # Scatter Plot
 plot(PriceRules_md, method = "scatterplot")
@@ -103,16 +105,17 @@ saveWidget(plot(PriceRules_md, method="graph", engine="htmlwidget"), file = "out
 ################################################################################################
 # Apriori > High Price
 ################################################################################################
-PriceRules_high <- apriori(data=Usedcars, parameter = list(supp=.1, conf=.1, minlen=3),
-                      appearance = list(default="lhs", rhs="High Price"),
-                      control=list(verbose=FALSE))
+PriceRules_high <- apriori(data=Usedcars, parameter = list(supp=.095, conf=.1, minlen=3),
+                         appearance = list(default="lhs", rhs="High Price"),
+                         control=list(verbose=FALSE))
 
 PriceRules_high <- unique(PriceRules_high)
+inspect(sort(PriceRules_high, decreasing=TRUE, by="support"))
 inspect(sort(PriceRules_high, decreasing=TRUE, by="support")[1:15])
 inspect(sort(PriceRules_high, decreasing=TRUE, by="confidence")[1:15])
 inspect(sort(PriceRules_high, decreasing=TRUE, by="lift")[1:15]) 
 
-convertToHTMLTable(PriceRules_high, 15, "support", TRUE)
+convertToHTMLTable(PriceRules_high, 15, "lift", TRUE)
 
 # Scatter Plot
 plot(PriceRules_high, method = "scatterplot")
