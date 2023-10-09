@@ -108,9 +108,20 @@
     vehicles with a medium cylinder count manufactured in 2015-2017 are traded with a relatively high frequency in the
     used car market and that the mid-range price point and highway fuel economy are important factors.</p>
 <br />
-<p>When performing an association rule analysis, the thresholds (or support, confidence, and improvement thresholds) are related to the quality of the association rules, so setting these thresholds is a significant part of the analysis. Since the goal of association rule analysis is to find the characteristics of a car associated with each price category of a vehicle, a high threshold can be good for getting more general and reliable association rules. However, this may result in fewer association rules to analyze the data. Hence, it needs to be adjusted depending on the analysis's purpose and the data's nature. In this project, support is set to 0.95 and confidence to 0.1. Although support is a relatively low value, it is set to this value to derive enough association rules for analysis. Although confidence is set to 0.1, obtaining association rules with higher confidence in the actual data is possible. Lift is not set as a separate threshold but is used to analyze the association of each attribute through the results obtained. Finally, minlen is set to 3 to find association rules with more diverse features.</p>
-<br/>
-<p>The tables below are the results of an association rule analysis to find the association between vehicle price range (Low Price, Medium Price, High Price) and vehicle characteristics. First, the vehicle characteristics that are associated with Low Price are listed below.</p>
+<p>When performing an association rule analysis, the thresholds (or support, confidence, and improvement thresholds) are
+    related to the quality of the association rules, so setting these thresholds is a significant part of the analysis.
+    Since the goal of association rule analysis is to find the characteristics of a car associated with each price
+    category of a vehicle, a high threshold can be good for getting more general and reliable association rules.
+    However, this may result in fewer association rules to analyze the data. Hence, it needs to be adjusted depending on
+    the analysis's purpose and the data's nature. In this project, support is set to 0.95 and confidence to 0.1.
+    Although support is a relatively low value, it is set to this value to derive enough association rules for analysis.
+    Although confidence is set to 0.1, obtaining association rules with higher confidence in the actual data is
+    possible. Lift is not set as a separate threshold but is used to analyze the association of each attribute through
+    the results obtained. Finally, minlen is set to 3 to find association rules with more diverse features.</p>
+<br />
+<p>The tables below are the results of an association rule analysis to find the association between vehicle price range
+    (Low Price, Medium Price, High Price) and vehicle characteristics. First, the vehicle characteristics that are
+    associated with Low Price are listed below.</p>
 <table class="table  table-sm" style="font-size: 12px;">
     <tr>
         <th> </th>
@@ -257,9 +268,13 @@
         <td align="right"> 1336 </td>
     </tr>
 </table>
-<br/>
-<p>Looking at the results above, "Low Price" occurs 18.91% of the time when the "FWD" and "Medium Cylinder" conditions are met. "Low Price" appears 18.32% of the time when the "Low Torque" and "Medium Cylinder" conditions are met. "Low Price" occurs 15.93% of the time when the conditions "FWD" and "Low Torque" are met. The rest of the results can be analyzed using a similar approach. Low-priced vehicles generally have the following characteristics: FWD wheel system, 3-4 engine cylinders, low torque, and high fuel efficiency.</p>
-<br/>
+<br />
+<p>Looking at the results above, "Low Price" occurs 18.91% of the time when the "FWD" and "Medium Cylinder" conditions
+    are met. "Low Price" appears 18.32% of the time when the "Low Torque" and "Medium Cylinder" conditions are met. "Low
+    Price" occurs 15.93% of the time when the conditions "FWD" and "Low Torque" are met. The rest of the results can be
+    analyzed using a similar approach. Low-priced vehicles generally have the following characteristics: FWD wheel
+    system, 3-4 engine cylinders, low torque, and high fuel efficiency.</p>
+<br />
 <table class="table  table-sm" style="font-size: 12px;">
     <tr>
         <th> </th>
@@ -406,9 +421,17 @@
         <td align="right"> 1054 </td>
     </tr>
 </table>
-<br/>
-<p>Vehicles with "Medium Cylinder" and "Very High Mileage" have a strong association with the "Low Price" category. This rule has a support of 10.17% and a confidence of 88.74%, indicating vehicles with a low price compared to cars with a relatively high price. Vehicles with "Front Wheel Drive (FWD)" and "Very High Mileage" also have a strong association with the "Low Price" category. They have a support of 10.50% and a confidence of 86.92%, indicating that vehicles that fulfill these conditions are more likely to have a low price. The rest of the items are interpreted similarly. For example, the rule {FWD, Low Engine Displacement, Low Horsepower, Medium Cylinder, Short Wheelbase} => {Low Price} indicates that certain combinations of vehicle characteristics are associated with vehicles with low prices. In summary, 3-4 engine cylinders, very high mileage, low engine displacement, and small vehicle size are strongly associated with low-priced vehicles.</p>
-<br/>
+<br />
+<p>Vehicles with "Medium Cylinder" and "Very High Mileage" have a strong association with the "Low Price" category. This
+    rule has a support of 10.17% and a confidence of 88.74%, indicating vehicles with a low price compared to cars with
+    a relatively high price. Vehicles with "Front Wheel Drive (FWD)" and "Very High Mileage" also have a strong
+    association with the "Low Price" category. They have a support of 10.50% and a confidence of 86.92%, indicating that
+    vehicles that fulfill these conditions are more likely to have a low price. The rest of the items are interpreted
+    similarly. For example, the rule {FWD, Low Engine Displacement, Low Horsepower, Medium Cylinder, Short Wheelbase} =>
+    {Low Price} indicates that certain combinations of vehicle characteristics are associated with vehicles with low
+    prices. In summary, 3-4 engine cylinders, very high mileage, low engine displacement, and small vehicle size are
+    strongly associated with low-priced vehicles.</p>
+<br />
 <table class="table  table-sm" style="font-size: 12px;">
     <tr>
         <th> </th>
@@ -555,14 +578,484 @@
         <td align="right"> 1054 </td>
     </tr>
 </table>
-<br/>
-<p>The data above is in descending order of lift value. {Medium Cylinder, Very High Mileage} => {Low Price} This is the rule with the highest lift value, indicating that vehicles with "Medium Cylinder" and "Very High Mileage" have the strongest positive association with the "Low Price" category. It means that the lower the number of cylinders, the higher the mileage and the lower the price of the car. In addition, vehicles produced in 1989 - 2014, i.e., older cars and higher mileage, also have a strong positive association with Low Price. In conclusion, the results show that vehicle characteristics such as relatively low 3-4 engine cylinders, high mileage, FWD, low displacement, and low horsepower strongly correlate with Low Price.</p>
-<br/>
+<br />
+<p>The data above is in descending order of lift value. {Medium Cylinder, Very High Mileage} => {Low Price} This is the
+    rule with the highest lift value, indicating that vehicles with "Medium Cylinder" and "Very High Mileage" have the
+    strongest positive association with the "Low Price" category. It means that the lower the number of cylinders, the
+    higher the mileage and the lower the price of the car. In addition, vehicles produced in 1989 - 2014, i.e., older
+    cars and higher mileage, also have a strong positive association with Low Price. In conclusion, the results show
+    that vehicle characteristics such as relatively low 3-4 engine cylinders, high mileage, FWD, low displacement, and
+    low horsepower strongly correlate with Low Price.</p>
+<br />
 <img src="arm_img008.png" class="rounded" width="500">
-<p>The graph above is a plot that visualizes the results of the association rule analysis as a scatter plot. Scatter plots allow you to see the relationships between association rules visually. Scatter plots show the relative position and distribution of rules so you can see which rules are related to each other. This plot shows that, in general, rules with lower values of support are clustered with rules with higher values of confidence and lift.</p>
-<br/>
+<p>The graph above is a plot that visualizes the results of the association rule analysis as a scatter plot. Scatter
+    plots allow you to see the relationships between association rules visually. Scatter plots show the relative
+    position and distribution of rules so you can see which rules are related to each other. This plot shows that, in
+    general, rules with lower values of support are clustered with rules with higher values of confidence and lift.</p>
+<br />
 <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://jihoonyun.github.io/ds/output_low.html" allowfullscreen></iframe>
 </div>
+<br />
+<p>The plot above is a graphical visualization of the results of the association rule analysis, allowing you to see the
+    connections and structure between the rules. The rules associated with other rules can be visually seen through the
+    wraps. The relationship between nodes and edges (lines) helps you understand the associations between rules.</p>
+<br />
+
+<p>The table below shows the results of an association rule analysis to find vehicle characteristics that are associated with Medium Price. </p>
+<table class="table  table-sm" style="font-size: 12px;">
+    <tr>
+        <th> </th>
+        <th> rules </th>
+        <th> support </th>
+        <th> confidence </th>
+        <th> coverage </th>
+        <th> lift </th>
+        <th> count </th>
+    </tr>
+    <tr>
+        <td align="right"> 30 </td>
+        <td> {2015-2017,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.18 </td>
+        <td align="right"> 0.51 </td>
+        <td align="right"> 0.35 </td>
+        <td align="right"> 1.29 </td>
+        <td align="right"> 1781 </td>
+    </tr>
+    <tr>
+        <td align="right"> 29 </td>
+        <td> {2015-2017,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.17 </td>
+        <td align="right"> 0.52 </td>
+        <td align="right"> 0.32 </td>
+        <td align="right"> 1.30 </td>
+        <td align="right"> 1680 </td>
+    </tr>
+    <tr>
+        <td align="right"> 28 </td>
+        <td> {Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.16 </td>
+        <td align="right"> 0.59 </td>
+        <td align="right"> 0.28 </td>
+        <td align="right"> 1.47 </td>
+        <td align="right"> 1619 </td>
+    </tr>
+    <tr>
+        <td align="right"> 17 </td>
+        <td> {Low Torque,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.16 </td>
+        <td align="right"> 0.45 </td>
+        <td align="right"> 0.35 </td>
+        <td align="right"> 1.12 </td>
+        <td align="right"> 1556 </td>
+    </tr>
+    <tr>
+        <td align="right"> 23 </td>
+        <td> {HW Fuel Economy Average,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.15 </td>
+        <td align="right"> 0.50 </td>
+        <td align="right"> 0.31 </td>
+        <td align="right"> 1.25 </td>
+        <td align="right"> 1539 </td>
+    </tr>
+    <tr>
+        <td align="right"> 25 </td>
+        <td> {2015-2017,HW Fuel Economy Average} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.15 </td>
+        <td align="right"> 0.53 </td>
+        <td align="right"> 0.28 </td>
+        <td align="right"> 1.32 </td>
+        <td align="right"> 1483 </td>
+    </tr>
+    <tr>
+        <td align="right"> 13 </td>
+        <td> {Medium Cylinder,Short Wheelbase} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.14 </td>
+        <td align="right"> 0.46 </td>
+        <td align="right"> 0.30 </td>
+        <td align="right"> 1.14 </td>
+        <td align="right"> 1387 </td>
+    </tr>
+    <tr>
+        <td align="right"> 15 </td>
+        <td> {Low Engine Displacement,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.14 </td>
+        <td align="right"> 0.43 </td>
+        <td align="right"> 0.32 </td>
+        <td align="right"> 1.07 </td>
+        <td align="right"> 1378 </td>
+    </tr>
+    <tr>
+        <td align="right"> 26 </td>
+        <td> {FWD,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.14 </td>
+        <td align="right"> 0.41 </td>
+        <td align="right"> 0.33 </td>
+        <td align="right"> 1.02 </td>
+        <td align="right"> 1363 </td>
+    </tr>
+    <tr>
+        <td align="right"> 24 </td>
+        <td> {HW Fuel Economy Average,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.13 </td>
+        <td align="right"> 0.56 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 1.39 </td>
+        <td align="right"> 1348 </td>
+    </tr>
+    <tr>
+        <td align="right"> 22 </td>
+        <td> {2015-2017,Medium Engine Displacement} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.13 </td>
+        <td align="right"> 0.49 </td>
+        <td align="right"> 0.27 </td>
+        <td align="right"> 1.22 </td>
+        <td align="right"> 1343 </td>
+    </tr>
+    <tr>
+        <td align="right"> 3 </td>
+        <td> {Medium Cylinder,Medium Horsepower} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.13 </td>
+        <td align="right"> 0.55 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 1.36 </td>
+        <td align="right"> 1304 </td>
+    </tr>
+    <tr>
+        <td align="right"> 20 </td>
+        <td> {Medium Engine Displacement,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.13 </td>
+        <td align="right"> 0.48 </td>
+        <td align="right"> 0.26 </td>
+        <td align="right"> 1.21 </td>
+        <td align="right"> 1261 </td>
+    </tr>
+    <tr>
+        <td align="right"> 9 </td>
+        <td> {HW Fuel Economy Good,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.12 </td>
+        <td align="right"> 0.41 </td>
+        <td align="right"> 0.30 </td>
+        <td align="right"> 1.03 </td>
+        <td align="right"> 1230 </td>
+    </tr>
+    <tr>
+        <td align="right"> 21 </td>
+        <td> {Medium Cylinder,Medium Engine Displacement} =&gt; {Medium Price} </td>
+        <td align="right" class="text-primary"> 0.12 </td>
+        <td align="right"> 0.54 </td>
+        <td align="right"> 0.23 </td>
+        <td align="right"> 1.36 </td>
+        <td align="right"> 1222 </td>
+    </tr>
+</table>
 <br/>
-<p>The plot above is a graphical visualization of the results of the association rule analysis, allowing you to see the connections and structure between the rules. The rules associated with other rules can be visually seen through the wraps. The relationship between nodes and edges (lines) helps you understand the associations between rules.</p>
+<p>From the table above, Medium Price vehicles are more likely to be relatively new (4-6 years old), have 3-4 cylinders, and be SUV / Crossover vehicles.</p>
+<br/>
+<table class="table  table-sm" style="font-size: 12px;">
+    <tr>
+        <th> </th>
+        <th> rules </th>
+        <th> support </th>
+        <th> confidence </th>
+        <th> coverage </th>
+        <th> lift </th>
+        <th> count </th>
+    </tr>
+    <tr>
+        <td align="right"> 41 </td>
+        <td> {2015-2017,Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right" class="text-primary"> 0.63 </td>
+        <td align="right"> 0.18 </td>
+        <td align="right"> 1.58 </td>
+        <td align="right"> 1132 </td>
+    </tr>
+    <tr>
+        <td align="right"> 36 </td>
+        <td> {Low Torque,Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.62 </td>
+        <td align="right"> 0.15 </td>
+        <td align="right"> 1.54 </td>
+        <td align="right"> 952 </td>
+    </tr>
+    <tr>
+        <td align="right"> 16 </td>
+        <td> {Low Torque,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.62 </td>
+        <td align="right"> 0.16 </td>
+        <td align="right"> 1.54 </td>
+        <td align="right"> 959 </td>
+    </tr>
+    <tr>
+        <td align="right"> 40 </td>
+        <td> {2015-2017,HW Fuel Economy Average,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.61 </td>
+        <td align="right"> 0.16 </td>
+        <td align="right"> 1.54 </td>
+        <td align="right"> 974 </td>
+    </tr>
+    <tr>
+        <td align="right"> 34 </td>
+        <td> {Medium Cylinder,Short Wheelbase,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right" class="text-primary"> 0.61 </td>
+        <td align="right"> 0.18 </td>
+        <td align="right"> 1.51 </td>
+        <td align="right"> 1085 </td>
+    </tr>
+    <tr>
+        <td align="right"> 12 </td>
+        <td> {Short Wheelbase,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.12 </td>
+        <td align="right" class="text-primary"> 0.60 </td>
+        <td align="right"> 0.19 </td>
+        <td align="right"> 1.50 </td>
+        <td align="right"> 1151 </td>
+    </tr>
+    <tr>
+        <td align="right"> 38 </td>
+        <td> {HW Fuel Economy Average,Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.12 </td>
+        <td align="right" class="text-primary"> 0.60 </td>
+        <td align="right"> 0.21 </td>
+        <td align="right"> 1.49 </td>
+        <td align="right"> 1221 </td>
+    </tr>
+    <tr>
+        <td align="right"> 32 </td>
+        <td> {2015-2017,Medium Cylinder,Medium Horsepower} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.59 </td>
+        <td align="right"> 0.16 </td>
+        <td align="right"> 1.48 </td>
+        <td align="right"> 964 </td>
+    </tr>
+    <tr>
+        <td align="right"> 28 </td>
+        <td> {Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.16 </td>
+        <td align="right" class="text-primary"> 0.59 </td>
+        <td align="right"> 0.28 </td>
+        <td align="right"> 1.47 </td>
+        <td align="right"> 1619 </td>
+    </tr>
+    <tr>
+        <td align="right"> 6 </td>
+        <td> {AWD,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.58 </td>
+        <td align="right"> 0.17 </td>
+        <td align="right"> 1.46 </td>
+        <td align="right"> 964 </td>
+    </tr>
+    <tr>
+        <td align="right"> 10 </td>
+        <td> {2015-2017,Medium Torque} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right" class="text-primary"> 0.57 </td>
+        <td align="right"> 0.19 </td>
+        <td align="right"> 1.43 </td>
+        <td align="right"> 1087 </td>
+    </tr>
+    <tr>
+        <td align="right"> 4 </td>
+        <td> {2015-2017,Medium Horsepower} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.57 </td>
+        <td align="right"> 0.17 </td>
+        <td align="right"> 1.43 </td>
+        <td align="right"> 990 </td>
+    </tr>
+    <tr>
+        <td align="right"> 39 </td>
+        <td> {2015-2017,HW Fuel Economy Average,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right" class="text-primary"> 0.56 </td>
+        <td align="right"> 0.20 </td>
+        <td align="right"> 1.39 </td>
+        <td align="right"> 1115 </td>
+    </tr>
+    <tr>
+        <td align="right"> 24 </td>
+        <td> {HW Fuel Economy Average,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right"> 0.13 </td>
+        <td align="right" class="text-primary"> 0.56 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 1.39 </td>
+        <td align="right"> 1348 </td>
+    </tr>
+    <tr>
+        <td align="right"> 3 </td>
+        <td> {Medium Cylinder,Medium Horsepower} =&gt; {Medium Price} </td>
+        <td align="right"> 0.13 </td>
+        <td align="right" class="text-primary"> 0.55 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 1.36 </td>
+        <td align="right"> 1304 </td>
+    </tr>
+</table>
+<br/>
+<p>Looking at the results above, rule [41] means that Medium Price occurs 63.03% of the time when 2015-2017, Medium Cylinder, and SUV / Crossover are met. It implies that Medium Cylinder and SUV / Crossover are highly associated with Medium Price vehicles. Rule [16] also shows a relatively high confidence between Low Torque and SUV / Crossover. Other high associations include AWD with Medium Cylinder, 2015-2017 with Medium Horsepower, etc. In this way, highly relevant vehicle characteristics of medium-priced vehicles can be analyzed.</p>
+<br/>
+<table class="table  table-sm" style="font-size: 12px;">
+    <tr>
+        <th> </th>
+        <th> rules </th>
+        <th> support </th>
+        <th> confidence </th>
+        <th> coverage </th>
+        <th> lift </th>
+        <th> count </th>
+    </tr>
+    <tr>
+        <td align="right"> 41 </td>
+        <td> {2015-2017,Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right"> 0.63 </td>
+        <td align="right"> 0.18 </td>
+        <td align="right" class="text-primary"> 1.58 </td>
+        <td align="right"> 1132 </td>
+    </tr>
+    <tr>
+        <td align="right"> 36 </td>
+        <td> {Low Torque,Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.62 </td>
+        <td align="right"> 0.15 </td>
+        <td align="right" class="text-primary"> 1.54 </td>
+        <td align="right"> 952 </td>
+    </tr>
+    <tr>
+        <td align="right"> 16 </td>
+        <td> {Low Torque,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.62 </td>
+        <td align="right"> 0.16 </td>
+        <td align="right" class="text-primary"> 1.54 </td>
+        <td align="right"> 959 </td>
+    </tr>
+    <tr>
+        <td align="right"> 40 </td>
+        <td> {2015-2017,HW Fuel Economy Average,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.61 </td>
+        <td align="right"> 0.16 </td>
+        <td align="right" class="text-primary"> 1.54 </td>
+        <td align="right"> 974 </td>
+    </tr>
+    <tr>
+        <td align="right"> 34 </td>
+        <td> {Medium Cylinder,Short Wheelbase,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right"> 0.61 </td>
+        <td align="right"> 0.18 </td>
+        <td align="right" class="text-primary"> 1.51 </td>
+        <td align="right"> 1085 </td>
+    </tr>
+    <tr>
+        <td align="right"> 12 </td>
+        <td> {Short Wheelbase,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.12 </td>
+        <td align="right"> 0.60 </td>
+        <td align="right"> 0.19 </td>
+        <td align="right" class="text-primary"> 1.50 </td>
+        <td align="right"> 1151 </td>
+    </tr>
+    <tr>
+        <td align="right"> 38 </td>
+        <td> {HW Fuel Economy Average,Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.12 </td>
+        <td align="right"> 0.60 </td>
+        <td align="right"> 0.21 </td>
+        <td align="right" class="text-primary"> 1.49 </td>
+        <td align="right"> 1221 </td>
+    </tr>
+    <tr>
+        <td align="right"> 32 </td>
+        <td> {2015-2017,Medium Cylinder,Medium Horsepower} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.59 </td>
+        <td align="right"> 0.16 </td>
+        <td align="right" class="text-primary"> 1.48 </td>
+        <td align="right"> 964 </td>
+    </tr>
+    <tr>
+        <td align="right"> 28 </td>
+        <td> {Medium Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.16 </td>
+        <td align="right"> 0.59 </td>
+        <td align="right"> 0.28 </td>
+        <td align="right" class="text-primary"> 1.47 </td>
+        <td align="right"> 1619 </td>
+    </tr>
+    <tr>
+        <td align="right"> 6 </td>
+        <td> {AWD,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.58 </td>
+        <td align="right"> 0.17 </td>
+        <td align="right" class="text-primary"> 1.46 </td>
+        <td align="right"> 964 </td>
+    </tr>
+    <tr>
+        <td align="right"> 10 </td>
+        <td> {2015-2017,Medium Torque} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right"> 0.57 </td>
+        <td align="right"> 0.19 </td>
+        <td align="right" class="text-primary"> 1.43 </td>
+        <td align="right"> 1087 </td>
+    </tr>
+    <tr>
+        <td align="right"> 4 </td>
+        <td> {2015-2017,Medium Horsepower} =&gt; {Medium Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.57 </td>
+        <td align="right"> 0.17 </td>
+        <td align="right" class="text-primary"> 1.43 </td>
+        <td align="right"> 990 </td>
+    </tr>
+    <tr>
+        <td align="right"> 39 </td>
+        <td> {2015-2017,HW Fuel Economy Average,SUV / Crossover} =&gt; {Medium Price} </td>
+        <td align="right"> 0.11 </td>
+        <td align="right"> 0.56 </td>
+        <td align="right"> 0.20 </td>
+        <td align="right" class="text-primary"> 1.39 </td>
+        <td align="right"> 1115 </td>
+    </tr>
+    <tr>
+        <td align="right"> 24 </td>
+        <td> {HW Fuel Economy Average,Medium Cylinder} =&gt; {Medium Price} </td>
+        <td align="right"> 0.13 </td>
+        <td align="right"> 0.56 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right" class="text-primary"> 1.39 </td>
+        <td align="right"> 1348 </td>
+    </tr>
+    <tr>
+        <td align="right"> 3 </td>
+        <td> {Medium Cylinder,Medium Horsepower} =&gt; {Medium Price} </td>
+        <td align="right"> 0.13 </td>
+        <td align="right"> 0.55 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right" class="text-primary"> 1.36 </td>
+        <td align="right"> 1304 </td>
+    </tr>
+</table>
+<br/>
+<p>In the results above, rule [41], {2015-2017, Medium Cylinder, SUV / Crossover} => {Medium Price}, has a Lift value of 1.5765, indicating that this rule is positively correlated with the result item Medium Price, with Medium Price occurring more often when the condition items occur. In addition, rule [40], {2015-2017, HW Fuel Economy Average, Medium Cylinder} => {Medium Price}, has a Lift value of 1.5370, which is also positively correlated with the result item Medium Price. In addition, the top few rules all have large Lift values and strong positive correlations with the result item Medium Price. It means that Medium Price occurs more often when these condition items occur.</p>
+<br/>
+<img src="arm_img009.png" class="rounded" width="500">
+<p>TThis plot also shows that rules with lower support values are clustered with higher values of confidence and lift, like the scatter plot in Low Price.</p>
+<br />
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://jihoonyun.github.io/ds/output_medium.html" allowfullscreen></iframe>
+</div>
+<br />
+<p>The plot above is a graphical visualization of the results of the association rule analysis for Medium Price vehicles and vehicle attributes, showing the connections and structure between the rules.</p>
+<br />
