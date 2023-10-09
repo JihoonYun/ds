@@ -14,7 +14,7 @@
 <p>Below is a data frame collection with all the continuous number type data discretized.</p>
 <img src="arm_img006.png" class="rounded" width="1050">  
 <br/><br/>
-<p>The above data frame is the result of discretizing several numeric variables, which means that most numeric variables are discretized for each variable using the quantile function. This function can be utilized to handle continuous data better, making it simpler and easier to interpret. Each column ranges from three to four categories. If a column is discretized into four categories, it usually utilizes 0, 0.25, 5, 7.5, and 1 quantiles. If it is discretized into three categories, it is discretized at rates of approximately 0, 3, 6, and 10. The exception is the year column, typically a numeric variable but often used as a categorical variable. Therefore, this variable does not utilize quartiles but instead divides the values in the data into three categories. The three bins of the year are defined as 1995 - 2014, 2015 - 2017, and 2018-2021, and the discretization is performed. Below is the quantile ratio or data discretization criteria applied when performing the discretization for each column of each number type.</p>
+<p>The above data frame is the result of discretizing a number of numeric variables, most of which were discretized for each variable using the quantile function. If a column was discretized into four categories, the quantiles were typically 0, 0.25, 5, 7.5, and 1. If a column was discretized into three categories, the quantiles were roughly 0, 3, 6, and 10. The exception is year, where vehicle years can be explicitly identified based on the data labels, so year was discretized into three bins: 1995 - 2014, 2015 - 2017, and 2018 - 2021. Also, the number of engine cylinders is a numeric variable. Still, it is treated as a categorical variable, so quartiles are not utilized when discretizing this variable but instead, it is discretized into four categories based on the number of engine cylinders: 1-3, 4-5, 6-8, and 9-12. Below, the quantile ratio or data discretization criteria applied when discretizing each continuous column are indicated.</p>
 <br/>
 <table class="table  table-sm" style="font-size: 12px;">
     <thead>
@@ -56,21 +56,9 @@
         <td>0.95 <= Value <= 1: <B>Very High Engine Displacement</B></td>
       </tr>
       <tr>
-        <td rowspan="4">engine_cylinders</td>
-        <td>0</td>
-        <td>0 <= Value < 0.25: <B>Low Cylinder</B></td>
-      </tr>
-      <tr>
-        <td>0.25</td>
-        <td>0.25 <= Value < 0.75: <B>Medium Cylinder</B></td>
-      </tr>
-      <tr>
-        <td>0.75</td>
-        <td>0.75 <= Value < 0.95: <B>High Cylinder</B></td>
-      </tr>
-      <tr>
-        <td>0.95</td>
-        <td>0.95 <= Value <= 1: <B>Very High Cylinder</B></td>
+        <td>engine_cylinders</td>
+        <td>-</td>
+        <td>1 - 3: <B>Low Cylinder</B><br>4 - 5: <B>Medium Cylinder</B><br>6 - 8: <B>High Cylinder</B><br>9 - 12: <B>Very High Cylinder</B></td>
       </tr>
       <tr>
         <td rowspan="4">horsepower</td>
