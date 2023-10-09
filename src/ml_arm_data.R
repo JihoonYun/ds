@@ -51,7 +51,7 @@ label_mappings <- list(
   horsepower = c("Low Horsepower", "Medium Horsepower", "High Horsepower", "Very High Horsepower"),
   torque_lbft = c("Low Torque", "Medium Torque", "High Torque"),
   mileage = c("Low Mileage", "Medium Mileage", "High Mileage", "Very High Mileage"),
-  year = c("1995 - 2014", "2015-2017", "2018-2021"),
+  year = c("1989 - 2014", "2015-2017", "2018-2021"),
   wheelbase = c("Short Wheelbase", "Medium Wheelbase", "Long Wheelbase", "Very Long Wheelbase"),
   price = c("Low Price", "Medium Price", "High Price")
   # price = c("Low Price", "Medium Price", "High Price", "Very High Price")
