@@ -14,7 +14,8 @@
 <p>Below is a data frame collection with all the continuous number type data discretized.</p>
 <img src="arm_img006.png" class="rounded" width="1050">  
 <br/>
-<p>The above data frame is the result of discretizing a number of numeric variables, most of which were discretized for each variable using the quantile function. If a column was discretized into four categories, the quantiles were typically 0, 0.25, 5, 7.5, and 1. If a column was discretized into three categories, the quantiles were roughly 0, 3, 6, and 10. The exception is year, where vehicle years can be explicitly identified based on the data labels, so year was discretized into three bins: 1995 - 2014, 2015 - 2017, and 2018 - 2021. Below, the quantile ratio or data discretization criteria applied when discretizing each continuous column are indicated.</p>
+<p>The above data frame is the result of discretizing several numeric variables, which means that most numeric variables are discretized for each variable using the quantile function. This function can be utilized to handle continuous data better, making it simpler and easier to interpret. Each column ranges from three to four categories. If a column is discretized into four categories, it usually utilizes 0, 0.25, 5, 7.5, and 1 quantiles. If it is discretized into three categories, it is discretized at rates of approximately 0, 3, 6, and 10. The exception is the year column, typically a numeric variable but often used as a categorical variable. Therefore, this variable does not utilize quartiles but instead divides the values in the data into three categories. The three bins of the year are defined as 1995 - 2014, 2015 - 2017, and 2018-2021, and the discretization is performed. Below is the quantile ratio or data discretization criteria applied when performing the discretization for each column of each number type.</p>
+<br/>
 <table class="table  table-sm" style="font-size: 12px;">
     <thead>
       <tr>
@@ -27,131 +28,131 @@
       <tr>
         <td rowspan="3">highway_fuel_economy</td>
         <td>0</td>
-        <td>0 <= Value < 0.23: "HW Fuel Economy Poor"</td>
+        <td>0 <= Value < 0.23: <B>HW Fuel Economy Poor</B></td>
       </tr>
       <tr>
         <td>0.23</td>
-        <td>0.23 <= Value < 0.66: "HW Fuel Economy Average"</td>
+        <td>0.23 <= Value < 0.66: <B>HW Fuel Economy Average</B></td>
       </tr>
       <tr>
         <td>0.66</td>
-        <td>0.66 <= Value <= 1: "HW Fuel Economy Good"</td>
+        <td>0.66 <= Value <= 1: <B>HW Fuel Economy Good</B></td>
       </tr>
       <tr>
         <td rowspan="4">engine_displacement</td>
         <td>0</td>
-        <td>0 <= Value < 0.25: "Low Engine Displacement"</td>
+        <td>0 <= Value < 0.25: <B>Low Engine Displacement</B></td>
       </tr>
       <tr>
         <td>0.25</td>
-        <td>0.25 <= Value < 0.75: "Medium Engine Displacement"</td>
+        <td>0.25 <= Value < 0.75: <B>Medium Engine Displacement</B></td>
       </tr>
       <tr>
         <td>0.75</td>
-        <td>0.75 <= Value < 0.95: "High Engine Displacement"</td>
+        <td>0.75 <= Value < 0.95: <B>High Engine Displacement</B></td>
       </tr>
       <tr>
         <td>0.95</td>
-        <td>0.95 <= Value <= 1: "Very High Engine Displacement"</td>
+        <td>0.95 <= Value <= 1: <B>Very High Engine Displacement</B></td>
       </tr>
       <tr>
         <td rowspan="4">engine_cylinders</td>
         <td>0</td>
-        <td>0 <= Value < 0.25: "Low Cylinder"</td>
+        <td>0 <= Value < 0.25: <B>Low Cylinder</B></td>
       </tr>
       <tr>
         <td>0.25</td>
-        <td>0.25 <= Value < 0.75: "Medium Cylinder"</td>
+        <td>0.25 <= Value < 0.75: <B>Medium Cylinder</B></td>
       </tr>
       <tr>
         <td>0.75</td>
-        <td>0.75 <= Value < 0.95: "High Cylinder"</td>
+        <td>0.75 <= Value < 0.95: <B>High Cylinder</B></td>
       </tr>
       <tr>
         <td>0.95</td>
-        <td>0.95 <= Value <= 1: "Very High Cylinder"</td>
+        <td>0.95 <= Value <= 1: <B>Very High Cylinder</B></td>
       </tr>
       <tr>
         <td rowspan="4">horsepower</td>
         <td>0</td>
-        <td>0 <= Value < 0.25: "Low Horsepower"</td>
+        <td>0 <= Value < 0.25: <B>Low Horsepower</B></td>
       </tr>
       <tr>
         <td>0.25</td>
-        <td>0.25 <= Value < 0.5: "Medium Horsepower"</td>
+        <td>0.25 <= Value < 0.5: <B>Medium Horsepower</B></td>
       </tr>
       <tr>
         <td>0.5</td>
-        <td>0.5 <= Value < 0.75: "High Horsepower"</td>
+        <td>0.5 <= Value < 0.75: <B>High Horsepower</B></td>
       </tr>
       <tr>
         <td>0.75</td>
-        <td>0.75 <= Value <= 1: "Very High Horsepower"</td>
+        <td>0.75 <= Value <= 1: <B>Very High Horsepower</B></td>
       </tr>
       <tr>
         <td rowspan="3">torque_lbft</td>
         <td>0</td>
-        <td>0 <= Value < 0.33: "Low Torque"</td>
+        <td>0 <= Value < 0.33: <B>Low Torque</B></td>
       </tr>
       <tr>
         <td>0.33</td>
-        <td>0.33 <= Value < 0.66: "Medium Torque"</td>
+        <td>0.33 <= Value < 0.66: <B>Medium Torque</B></td>
       </tr>
       <tr>
         <td>0.66</td>
-        <td>0.66 <= Value <= 1: "High Torque"</td>
+        <td>0.66 <= Value <= 1: <B>High Torque</B></td>
       </tr>
       <tr>
         <td rowspan="4">mileage</td>
         <td>0</td>
-        <td>0 <= Value < 0.25: "Low Mileage"</td>
+        <td>0 <= Value < 0.25: <B>Low Mileage</B></td>
       </tr>
       <tr>
         <td>0.25</td>
-        <td>0.25 <= Value < 0.5: "Medium Mileage"</td>
+        <td>0.25 <= Value < 0.5: <B>Medium Mileage</B></td>
       </tr>
       <tr>
         <td>0.5</td>
-        <td>0.5 <= Value < 0.75: "High Mileage"</td>
+        <td>0.5 <= Value < 0.75: <B>High Mileage</B></td>
       </tr>
       <tr>
         <td>0.75</td>
-        <td>0.75 <= Value <= 1: "Very High Mileage"</td>
+        <td>0.75 <= Value <= 1: <B>Very High Mileage</B></td>
       </tr>
       <tr>
         <td>year</td>
         <td>N/A</td>
-        <td>Before 1989: "Before 1989"<br>1989 - 2014: "1995 - 2014"<br>2015 - 2017: "2015-2017"<br>2018 - 2021: "2018-2021"</td>
+        <td>Before 1989: <B>Before 1989"<br>1989 - 2014: <B>1995 - 2014"<br>2015 - 2017: <B>2015-2017"<br>2018 - 2021: <B>2018-2021</B></td>
       </tr>
       <tr>
         <td rowspan="4">wheelbase</td>
         <td>0</td>
-        <td>0 <= Value < 0.25: "Short Wheelbase"</td>
+        <td>0 <= Value < 0.25: <B>Short Wheelbase</B></td>
       </tr>
       <tr>
         <td>0.25</td>
-        <td>0.25 <= Value < 0.5: "Medium Wheelbase"</td>
+        <td>0.25 <= Value < 0.5: <B>Medium Wheelbase</B></td>
       </tr>
       <tr>
         <td>0.5</td>
-        <td>0.5 <= Value < 0.75: "Long Wheelbase"</td>
+        <td>0.5 <= Value < 0.75: <B>Long Wheelbase</B></td>
       </tr>
       <tr>
         <td>0.75</td>
-        <td>0.75 <= Value <= 1: "Very Long Wheelbase"</td>
+        <td>0.75 <= Value <= 1: <B>Very Long Wheelbase</B></td>
       </tr>
       <tr>
         <td rowspan="3">price</td>
         <td>0</td>
-        <td>0 <= Value < 0.3: "Low Price"</td>
+        <td>0 <= Value < 0.3: <B>Low Price</B></td>
       </tr>
       <tr>
         <td>0.3</td>
-        <td>0.3 <= Value < 0.7: "Medium Price"</td>
+        <td>0.3 <= Value < 0.7: <B>Medium Price</B></td>
       </tr>
       <tr>
         <td>0.7</td>
-        <td>0.7 <= Value <= 1: "High Price"</td>
+        <td>0.7 <= Value <= 1: <B>High Price</B></td>
       </tr>
     </tbody>
   </table>
