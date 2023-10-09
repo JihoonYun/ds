@@ -14,6 +14,150 @@
 <p>Below is a data frame collection with all the continuous number type data discretized.</p>
 <img src="arm_img006.png" class="rounded" width="1050">  
 <br/>
+<p>The above data frame is the result of discretizing a number of numeric variables, most of which were discretized for each variable using the quantile function. If a column was discretized into four categories, the quantiles were typically 0, 0.25, 5, 7.5, and 1. If a column was discretized into three categories, the quantiles were roughly 0, 3, 6, and 10. The exception is year, where vehicle years can be explicitly identified based on the data labels, so year was discretized into three bins: 1995 - 2014, 2015 - 2017, and 2018 - 2021. Below, the quantile ratio or data discretization criteria applied when discretizing each continuous column are indicated.</p>
+<table class="table  table-sm" style="font-size: 12px;">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Quantiles</th>
+        <th>Discretization Criteria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="3">highway_fuel_economy</td>
+        <td>0</td>
+        <td>0 <= Value < 0.23: "HW Fuel Economy Poor"</td>
+      </tr>
+      <tr>
+        <td>0.23</td>
+        <td>0.23 <= Value < 0.66: "HW Fuel Economy Average"</td>
+      </tr>
+      <tr>
+        <td>0.66</td>
+        <td>0.66 <= Value <= 1: "HW Fuel Economy Good"</td>
+      </tr>
+      <tr>
+        <td rowspan="4">engine_displacement</td>
+        <td>0</td>
+        <td>0 <= Value < 0.25: "Low Engine Displacement"</td>
+      </tr>
+      <tr>
+        <td>0.25</td>
+        <td>0.25 <= Value < 0.75: "Medium Engine Displacement"</td>
+      </tr>
+      <tr>
+        <td>0.75</td>
+        <td>0.75 <= Value < 0.95: "High Engine Displacement"</td>
+      </tr>
+      <tr>
+        <td>0.95</td>
+        <td>0.95 <= Value <= 1: "Very High Engine Displacement"</td>
+      </tr>
+      <tr>
+        <td rowspan="4">engine_cylinders</td>
+        <td>0</td>
+        <td>0 <= Value < 0.25: "Low Cylinder"</td>
+      </tr>
+      <tr>
+        <td>0.25</td>
+        <td>0.25 <= Value < 0.75: "Medium Cylinder"</td>
+      </tr>
+      <tr>
+        <td>0.75</td>
+        <td>0.75 <= Value < 0.95: "High Cylinder"</td>
+      </tr>
+      <tr>
+        <td>0.95</td>
+        <td>0.95 <= Value <= 1: "Very High Cylinder"</td>
+      </tr>
+      <tr>
+        <td rowspan="4">horsepower</td>
+        <td>0</td>
+        <td>0 <= Value < 0.25: "Low Horsepower"</td>
+      </tr>
+      <tr>
+        <td>0.25</td>
+        <td>0.25 <= Value < 0.5: "Medium Horsepower"</td>
+      </tr>
+      <tr>
+        <td>0.5</td>
+        <td>0.5 <= Value < 0.75: "High Horsepower"</td>
+      </tr>
+      <tr>
+        <td>0.75</td>
+        <td>0.75 <= Value <= 1: "Very High Horsepower"</td>
+      </tr>
+      <tr>
+        <td rowspan="3">torque_lbft</td>
+        <td>0</td>
+        <td>0 <= Value < 0.33: "Low Torque"</td>
+      </tr>
+      <tr>
+        <td>0.33</td>
+        <td>0.33 <= Value < 0.66: "Medium Torque"</td>
+      </tr>
+      <tr>
+        <td>0.66</td>
+        <td>0.66 <= Value <= 1: "High Torque"</td>
+      </tr>
+      <tr>
+        <td rowspan="4">mileage</td>
+        <td>0</td>
+        <td>0 <= Value < 0.25: "Low Mileage"</td>
+      </tr>
+      <tr>
+        <td>0.25</td>
+        <td>0.25 <= Value < 0.5: "Medium Mileage"</td>
+      </tr>
+      <tr>
+        <td>0.5</td>
+        <td>0.5 <= Value < 0.75: "High Mileage"</td>
+      </tr>
+      <tr>
+        <td>0.75</td>
+        <td>0.75 <= Value <= 1: "Very High Mileage"</td>
+      </tr>
+      <tr>
+        <td>year</td>
+        <td>N/A</td>
+        <td>Before 1989: "Before 1989"<br>1989 - 2014: "1995 - 2014"<br>2015 - 2017: "2015-2017"<br>2018 - 2021: "2018-2021"</td>
+      </tr>
+      <tr>
+        <td rowspan="4">wheelbase</td>
+        <td>0</td>
+        <td>0 <= Value < 0.25: "Short Wheelbase"</td>
+      </tr>
+      <tr>
+        <td>0.25</td>
+        <td>0.25 <= Value < 0.5: "Medium Wheelbase"</td>
+      </tr>
+      <tr>
+        <td>0.5</td>
+        <td>0.5 <= Value < 0.75: "Long Wheelbase"</td>
+      </tr>
+      <tr>
+        <td>0.75</td>
+        <td>0.75 <= Value <= 1: "Very Long Wheelbase"</td>
+      </tr>
+      <tr>
+        <td rowspan="3">price</td>
+        <td>0</td>
+        <td>0 <= Value < 0.3: "Low Price"</td>
+      </tr>
+      <tr>
+        <td>0.3</td>
+        <td>0.3 <= Value < 0.7: "Medium Price"</td>
+      </tr>
+      <tr>
+        <td>0.7</td>
+        <td>0.7 <= Value <= 1: "High Price"</td>
+      </tr>
+    </tbody>
+  </table>
+<br/>
+
+<br/>
 <div class="line"></div>
 <br/>
 <h5><b>Related source code and dataset URLs</b></h5>
