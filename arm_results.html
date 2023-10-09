@@ -1,1151 +1,265 @@
 <h2>Association Rule Mining Results</h2>
-<br/>
-<p>To interpret the results of the association rule analysis based on the vehicle characteristics data, frequent items are first identified from the transaction data. This analysis can reveal whether certain items play a role in rule generation and association rules. For example, by analyzing frequent items, you can discover patterns in your dataset and extract various useful information through association rules. The plot below shows the top 20 most frequent items in transaction data in a bar plot. The 20 most frequent items represent the most frequent in the data set, which suggests that they play an essential role in the data.</p>
+<br />
+<p>To interpret the results of the association rule analysis based on the vehicle characteristics data, frequent items
+    are first identified from the transaction data. This analysis can reveal whether certain items play a role in rule
+    generation and association rules. For example, by analyzing frequent items, you can discover patterns in your
+    dataset and extract various useful information through association rules. The plot below shows the top 20 most
+    frequent items in transaction data in a bar plot. The 20 most frequent items represent the most frequent in the data
+    set, which suggests that they play an essential role in the data.</p>
 
 <div class="row">
     <div class="col">
-        <img src="arm_img007.png" class="rounded" width="600">  
+        <img src="arm_img007.png" class="rounded" width="600">
     </div>&nbsp;
     <div class="col">
-        <table class="table  table-sm" style="font-size: 12px;">
-            <thead>
-             <tr>
-              <th style="text-align:left;">   </th>
-              <th style="text-align:right;"> x </th>
-             </tr>
-            </thead>
-           <tbody>
-             <tr>
-              <td style="text-align:left;"> 2015-2017 </td>
-              <td style="text-align:right;"> 0.6079 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Medium Cylinder </td>
-              <td style="text-align:right;"> 0.5484 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> SUV / Crossover </td>
-              <td style="text-align:right;"> 0.5100 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> FWD </td>
-              <td style="text-align:right;"> 0.4543 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> High Cylinder </td>
-              <td style="text-align:right;"> 0.4476 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> HW Fuel Economy Average </td>
-              <td style="text-align:right;"> 0.4447 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Medium Engine Displacement </td>
-              <td style="text-align:right;"> 0.4261 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Medium Price </td>
-              <td style="text-align:right;"> 0.3998 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Low Torque </td>
-              <td style="text-align:right;"> 0.3495 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> High Torque </td>
-              <td style="text-align:right;"> 0.3309 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Low Engine Displacement </td>
-              <td style="text-align:right;"> 0.3256 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Short Wheelbase </td>
-              <td style="text-align:right;"> 0.3225 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Medium Torque </td>
-              <td style="text-align:right;"> 0.3185 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> HW Fuel Economy Good </td>
-              <td style="text-align:right;"> 0.3034 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Low Price </td>
-              <td style="text-align:right;"> 0.3002 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> High Price </td>
-              <td style="text-align:right;"> 0.2999 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> AWD </td>
-              <td style="text-align:right;"> 0.2813 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Sedan </td>
-              <td style="text-align:right;"> 0.2796 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Medium Horsepower </td>
-              <td style="text-align:right;"> 0.2585 </td>
-             </tr>
-             <tr>
-              <td style="text-align:left;"> Low Horsepower </td>
-              <td style="text-align:right;"> 0.2563 </td>
-             </tr>
-           </tbody>
-           </table>
+        <table class="table  table-sm" style="font-size: 11px;">
+            <tbody>
+                <tr>
+                    <td style="text-align:left;"> 2015-2017 </td>
+                    <td style="text-align:right;"> 0.6079 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Medium Cylinder </td>
+                    <td style="text-align:right;"> 0.5484 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> SUV / Crossover </td>
+                    <td style="text-align:right;"> 0.5100 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> FWD </td>
+                    <td style="text-align:right;"> 0.4543 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> High Cylinder </td>
+                    <td style="text-align:right;"> 0.4476 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> HW Fuel Economy Average </td>
+                    <td style="text-align:right;"> 0.4447 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Medium Engine Displacement </td>
+                    <td style="text-align:right;"> 0.4261 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Medium Price </td>
+                    <td style="text-align:right;"> 0.3998 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Low Torque </td>
+                    <td style="text-align:right;"> 0.3495 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> High Torque </td>
+                    <td style="text-align:right;"> 0.3309 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Low Engine Displacement </td>
+                    <td style="text-align:right;"> 0.3256 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Short Wheelbase </td>
+                    <td style="text-align:right;"> 0.3225 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Medium Torque </td>
+                    <td style="text-align:right;"> 0.3185 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> HW Fuel Economy Good </td>
+                    <td style="text-align:right;"> 0.3034 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Low Price </td>
+                    <td style="text-align:right;"> 0.3002 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> High Price </td>
+                    <td style="text-align:right;"> 0.2999 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> AWD </td>
+                    <td style="text-align:right;"> 0.2813 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Sedan </td>
+                    <td style="text-align:right;"> 0.2796 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Medium Horsepower </td>
+                    <td style="text-align:right;"> 0.2585 </td>
+                </tr>
+                <tr>
+                    <td style="text-align:left;"> Low Horsepower </td>
+                    <td style="text-align:right;"> 0.2563 </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+<br />
+<p>Looking at the information in the plot and table above, several things can be seen. The year category "2015-2017" is
+    one of the most frequent items in the data. This category represents the year of vehicle manufacture, indicating
+    that many vehicles in the data fall into that year category. Given that the latest year of the cars in this
+    transaction data is 2021, a large percentage of the vehicles in the data are relatively young. In addition, the
+    number of engine cylinders in the data is mostly 3-4 (Medium Cylinder), and the vehicles in the data are
+    predominantly SUV / Crossover vehicles. In addition, based on the above results, it seems that SUVs and crossover
+    vehicles with a medium cylinder count manufactured in 2015-2017 are traded with a relatively high frequency in the
+    used car market and that the mid-range price point and highway fuel economy are important factors.</p>
+<br />
+<p>When performing an association rule analysis, the thresholds (or support, confidence, and improvement thresholds) are related to the quality of the association rules, so setting these thresholds is a significant part of the analysis. Since the goal of association rule analysis is to find the characteristics of a car associated with each price category of a vehicle, a high threshold can be good for getting more general and reliable association rules. However, this may result in fewer association rules to analyze the data. Hence, it needs to be adjusted depending on the analysis's purpose and the data's nature. In this project, support is set to 0.95 and confidence to 0.1. Although support is a relatively low value, it is set to this value to derive enough association rules for analysis. Although confidence is set to 0.1, obtaining association rules with higher confidence in the actual data is possible. Lift is not set as a separate threshold but is used to analyze the association of each attribute through the results obtained. Finally, minlen is set to 3 to find association rules with more diverse features.</p>
 <br/>
-<p>Looking at the information in the plot and table above, several things can be seen. The year category "2015-2017" is one of the most frequent items in the data. This category represents the year of vehicle manufacture, indicating that many vehicles in the data fall into that year category. Given that the latest year of the cars in this transaction data is 2021, a large percentage of the vehicles in the data are relatively young. In addition, the number of engine cylinders in the data is mostly 3-4 (Medium Cylinder), and the vehicles in the data are predominantly SUV / Crossover vehicles. In addition, based on the above results, it seems that SUVs and crossover vehicles with a medium cylinder count manufactured in 2015-2017 are traded with a relatively high frequency in the used car market and that the mid-range price point and highway fuel economy are important factors.</p>
-
-
-
-
-
-
-
+<p>The tables below are the results of an association rule analysis to find the association between vehicle price range (Low Price, Medium Price, High Price) and vehicle characteristics. First, the vehicle characteristics that are associated with Low Price are listed below.</p>
 <table class="table  table-sm" style="font-size: 12px;">
     <tr>
         <th> </th>
         <th> rules </th>
-        <th class="text-primary"> support </th>
+        <th> support </th>
         <th> confidence </th>
         <th> coverage </th>
         <th> lift </th>
         <th> count </th>
     </tr>
     <tr>
-        <td align="right"> 23 </td>
-        <td> {Gasoline,No Accident} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.18 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 0.83 </td>
-        <td align="right"> 0.89 </td>
-        <td align="right"> 1832 </td>
-    </tr>
-    <tr>
-        <td align="right"> 20 </td>
-        <td> {Gasoline,Low Cylinder} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.18 </td>
+        <td align="right"> 30 </td>
+        <td> {FWD,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.19 </td>
+        <td align="right"> 0.57 </td>
         <td align="right"> 0.33 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 1.32 </td>
-        <td align="right"> 1771 </td>
-    </tr>
-    <tr>
-        <td align="right"> 19 </td>
-        <td> {Low Cylinder,No Accident} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.15 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 1.26 </td>
-        <td align="right"> 1511 </td>
-    </tr>
-    <tr>
-        <td align="right"> 14 </td>
-        <td> {Low Cylinder,Low Torque} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.15 </td>
-        <td align="right"> 0.44 </td>
-        <td align="right"> 0.35 </td>
-        <td align="right"> 1.74 </td>
-        <td align="right"> 1508 </td>
-    </tr>
-    <tr>
-        <td align="right"> 17 </td>
-        <td> {Gasoline,Low Torque} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.15 </td>
-        <td align="right"> 0.43 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.73 </td>
-        <td align="right"> 1486 </td>
-    </tr>
-    <tr>
-        <td align="right"> 37 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.15 </td>
-        <td align="right"> 0.43 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.72 </td>
-        <td align="right"> 1464 </td>
-    </tr>
-    <tr>
-        <td align="right"> 42 </td>
-        <td> {Gasoline,Low Cylinder,No Accident} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.14 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.47 </td>
-        <td align="right"> 1.23 </td>
-        <td align="right"> 1447 </td>
-    </tr>
-    <tr>
-        <td align="right"> 2 </td>
-        <td> {Gasoline,Very High Mileage} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.14 </td>
-        <td align="right"> 0.62 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 2.48 </td>
-        <td align="right"> 1388 </td>
-    </tr>
-    <tr>
-        <td align="right"> 22 </td>
-        <td> {2015-2018,Gasoline} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.14 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 0.62 </td>
-        <td align="right"> 0.88 </td>
-        <td align="right"> 1361 </td>
-    </tr>
-    <tr>
-        <td align="right"> 13 </td>
-        <td> {Gasoline,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.13 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 1.60 </td>
-        <td align="right"> 1261 </td>
-    </tr>
-    <tr>
-        <td align="right"> 18 </td>
-        <td> {2015-2018,Low Cylinder} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.13 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 0.37 </td>
-        <td align="right"> 1.37 </td>
-        <td align="right"> 1261 </td>
-    </tr>
-    <tr>
-        <td align="right"> 16 </td>
-        <td> {Low Torque,No Accident} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.13 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.66 </td>
-        <td align="right"> 1254 </td>
-    </tr>
-    <tr>
-        <td align="right"> 11 </td>
-        <td> {Low Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.64 </td>
-        <td align="right"> 1241 </td>
-    </tr>
-    <tr>
-        <td align="right"> 36 </td>
-        <td> {Low Cylinder,Low Torque,No Accident} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.65 </td>
-        <td align="right"> 1231 </td>
-    </tr>
-    <tr>
-        <td align="right"> 39 </td>
-        <td> {Gasoline,Low Torque,No Accident} =&gt; {Low Price} </td>
-        <td align="right" class="text-primary"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.63 </td>
-        <td align="right"> 1218 </td>
-    </tr>
-</table>
-
-
-<table class="table  table-sm" style="font-size: 12px;">
-    <tr>
-        <th> </th>
-        <th> rules </th>
-        <th> support </th>
-        <th class="text-primary"> confidence </th>
-        <th> coverage </th>
-        <th> lift </th>
-        <th> count </th>
-    </tr>
-    <tr>
-        <td align="right"> 2 </td>
-        <td> {Gasoline,Very High Mileage} =&gt; {Low Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right" class="text-primary"> 0.62 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 2.48 </td>
-        <td align="right"> 1388 </td>
-    </tr>
-    <tr>
-        <td align="right"> 24 </td>
-        <td> {Gasoline,No Accident,Very High Mileage} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.60 </td>
-        <td align="right"> 0.18 </td>
-        <td align="right"> 2.41 </td>
-        <td align="right"> 1065 </td>
-    </tr>
-    <tr>
-        <td align="right"> 1 </td>
-        <td> {No Accident,Very High Mileage} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right" class="text-primary"> 0.60 </td>
-        <td align="right"> 0.20 </td>
-        <td align="right"> 2.39 </td>
-        <td align="right"> 1183 </td>
-    </tr>
-    <tr>
-        <td align="right"> 3 </td>
-        <td> {Low Horsepower,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right" class="text-primary"> 0.54 </td>
-        <td align="right"> 0.19 </td>
-        <td align="right"> 2.15 </td>
-        <td align="right"> 1011 </td>
-    </tr>
-    <tr>
-        <td align="right"> 10 </td>
-        <td> {Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.49 </td>
-        <td align="right"> 0.23 </td>
-        <td align="right"> 1.94 </td>
-        <td align="right"> 1128 </td>
-    </tr>
-    <tr>
-        <td align="right"> 30 </td>
-        <td> {Low Cylinder,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.23 </td>
-        <td align="right"> 1.94 </td>
-        <td align="right"> 1111 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right"> 1.94 </td>
-        <td align="right"> 1185 </td>
-    </tr>
-    <tr>
-        <td align="right"> 25 </td>
-        <td> {Low Cylinder,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right"> 1.93 </td>
-        <td align="right"> 1165 </td>
-    </tr>
-    <tr>
-        <td align="right"> 8 </td>
-        <td> {Low Cylinder,Sedan} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 1.93 </td>
-        <td align="right"> 1052 </td>
-    </tr>
-    <tr>
-        <td align="right"> 31 </td>
-        <td> {Gasoline,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.23 </td>
-        <td align="right"> 1.92 </td>
-        <td align="right"> 1091 </td>
-    </tr>
-    <tr>
-        <td align="right"> 5 </td>
-        <td> {Low Cylinder,Low Horsepower} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.25 </td>
-        <td align="right"> 1.91 </td>
-        <td align="right"> 1210 </td>
-    </tr>
-    <tr>
-        <td align="right"> 45 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 1.91 </td>
-        <td align="right"> 1074 </td>
-    </tr>
-    <tr>
-        <td align="right"> 26 </td>
-        <td> {Gasoline,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right"> 1.91 </td>
-        <td align="right"> 1148 </td>
-    </tr>
-    <tr>
-        <td align="right"> 44 </td>
-        <td> {Gasoline,Low Cylinder,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right" class="text-primary"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right"> 1.90 </td>
-        <td align="right"> 1128 </td>
-    </tr>
-    <tr>
-        <td align="right"> 29 </td>
-        <td> {Gasoline,Low Cylinder,Sedan} =&gt; {Low Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right" class="text-primary"> 0.47 </td>
-        <td align="right"> 0.21 </td>
-        <td align="right"> 1.89 </td>
-        <td align="right"> 1007 </td>
-    </tr>
-</table>
-
-
-<table class="table  table-sm" style="font-size: 12px;">
-    <tr>
-        <th> </th>
-        <th> rules </th>
-        <th> support </th>
-        <th> confidence </th>
-        <th> coverage </th>
-        <th class="text-primary"> lift </th>
-        <th> count </th>
-    </tr>
-    <tr>
-        <td align="right"> 2 </td>
-        <td> {Gasoline,Very High Mileage} =&gt; {Low Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.62 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right" class="text-primary"> 2.48 </td>
-        <td align="right"> 1388 </td>
-    </tr>
-    <tr>
-        <td align="right"> 24 </td>
-        <td> {Gasoline,No Accident,Very High Mileage} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.60 </td>
-        <td align="right"> 0.18 </td>
-        <td align="right" class="text-primary"> 2.41 </td>
-        <td align="right"> 1065 </td>
-    </tr>
-    <tr>
-        <td align="right"> 1 </td>
-        <td> {No Accident,Very High Mileage} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.60 </td>
-        <td align="right"> 0.20 </td>
-        <td align="right" class="text-primary"> 2.39 </td>
-        <td align="right"> 1183 </td>
-    </tr>
-    <tr>
-        <td align="right"> 3 </td>
-        <td> {Low Horsepower,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 0.19 </td>
-        <td align="right" class="text-primary"> 2.15 </td>
-        <td align="right"> 1011 </td>
-    </tr>
-    <tr>
-        <td align="right"> 10 </td>
-        <td> {Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.49 </td>
-        <td align="right"> 0.23 </td>
-        <td align="right" class="text-primary"> 1.94 </td>
-        <td align="right"> 1128 </td>
-    </tr>
-    <tr>
-        <td align="right"> 30 </td>
-        <td> {Low Cylinder,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.23 </td>
-        <td align="right" class="text-primary"> 1.94 </td>
-        <td align="right"> 1111 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right" class="text-primary"> 1.94 </td>
-        <td align="right"> 1185 </td>
-    </tr>
-    <tr>
-        <td align="right"> 25 </td>
-        <td> {Low Cylinder,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right" class="text-primary"> 1.93 </td>
-        <td align="right"> 1165 </td>
-    </tr>
-    <tr>
-        <td align="right"> 8 </td>
-        <td> {Low Cylinder,Sedan} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right" class="text-primary"> 1.93 </td>
-        <td align="right"> 1052 </td>
-    </tr>
-    <tr>
-        <td align="right"> 31 </td>
-        <td> {Gasoline,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.23 </td>
-        <td align="right" class="text-primary"> 1.92 </td>
-        <td align="right"> 1091 </td>
-    </tr>
-    <tr>
-        <td align="right"> 5 </td>
-        <td> {Low Cylinder,Low Horsepower} =&gt; {Low Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.25 </td>
-        <td align="right" class="text-primary"> 1.91 </td>
-        <td align="right"> 1210 </td>
-    </tr>
-    <tr>
-        <td align="right"> 45 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.22 </td>
-        <td align="right" class="text-primary"> 1.91 </td>
-        <td align="right"> 1074 </td>
-    </tr>
-    <tr>
-        <td align="right"> 26 </td>
-        <td> {Gasoline,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right" class="text-primary"> 1.91 </td>
-        <td align="right"> 1148 </td>
-    </tr>
-    <tr>
-        <td align="right"> 44 </td>
-        <td> {Gasoline,Low Cylinder,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right" class="text-primary"> 1.90 </td>
-        <td align="right"> 1128 </td>
-    </tr>
-    <tr>
-        <td align="right"> 29 </td>
-        <td> {Gasoline,Low Cylinder,Sedan} =&gt; {Low Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.47 </td>
-        <td align="right"> 0.21 </td>
-        <td align="right" class="text-primary"> 1.89 </td>
-        <td align="right"> 1007 </td>
-    </tr>
-</table>
-
-<!---->
-
-<table class="table  table-sm" style="font-size: 12px;">
-    <tr>
-        <th> </th>
-        <th> rules </th>
-        <th> support </th>
-        <th> confidence </th>
-        <th> coverage </th>
-        <th> lift </th>
-        <th> count </th>
-    </tr>
-    <tr>
-        <td align="right"> 16 </td>
-        <td> {Gasoline,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.20 </td>
-        <td align="right"> 0.25 </td>
-        <td align="right"> 0.83 </td>
-        <td align="right"> 0.99 </td>
-        <td align="right"> 2035 </td>
-    </tr>
-    <tr>
-        <td align="right"> 13 </td>
-        <td> {Gasoline,Low Cylinder} =&gt; {Medium Price} </td>
-        <td align="right"> 0.19 </td>
-        <td align="right"> 0.35 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 1.41 </td>
-        <td align="right"> 1890 </td>
-    </tr>
-    <tr>
-        <td align="right"> 15 </td>
-        <td> {2015-2018,Gasoline} =&gt; {Medium Price} </td>
-        <td align="right"> 0.17 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 0.62 </td>
-        <td align="right"> 1.12 </td>
-        <td align="right"> 1740 </td>
-    </tr>
-    <tr>
-        <td align="right"> 12 </td>
-        <td> {Low Cylinder,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.17 </td>
-        <td align="right"> 0.35 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 1.41 </td>
-        <td align="right"> 1699 </td>
-    </tr>
-    <tr>
-        <td align="right"> 27 </td>
-        <td> {Gasoline,Low Cylinder,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.17 </td>
-        <td align="right"> 0.36 </td>
-        <td align="right"> 0.47 </td>
-        <td align="right"> 1.43 </td>
-        <td align="right"> 1682 </td>
-    </tr>
-    <tr>
-        <td align="right"> 14 </td>
-        <td> {2015-2018,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.56 </td>
-        <td align="right"> 1.10 </td>
-        <td align="right"> 1540 </td>
+        <td align="right"> 1.88 </td>
+        <td align="right"> 1891 </td>
     </tr>
     <tr>
         <td align="right"> 28 </td>
-        <td> {2015-2018,Gasoline,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 1.11 </td>
-        <td align="right"> 1492 </td>
-    </tr>
-    <tr>
-        <td align="right"> 11 </td>
-        <td> {2015-2018,Low Cylinder} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.38 </td>
-        <td align="right"> 0.37 </td>
-        <td align="right"> 1.53 </td>
-        <td align="right"> 1412 </td>
-    </tr>
-    <tr>
-        <td align="right"> 26 </td>
-        <td> {2015-2018,Gasoline,Low Cylinder} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.39 </td>
-        <td align="right"> 0.36 </td>
-        <td align="right"> 1.55 </td>
-        <td align="right"> 1396 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Low Cylinder,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
+        <td> {Low Torque,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.18 </td>
+        <td align="right"> 0.53 </td>
         <td align="right"> 0.35 </td>
-        <td align="right"> 1.60 </td>
-        <td align="right"> 1386 </td>
+        <td align="right"> 1.76 </td>
+        <td align="right"> 1832 </td>
     </tr>
     <tr>
-        <td align="right"> 6 </td>
-        <td> {Gasoline,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.61 </td>
-        <td align="right"> 1382 </td>
+        <td align="right"> 27 </td>
+        <td> {FWD,Low Torque} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.16 </td>
+        <td align="right"> 0.65 </td>
+        <td align="right"> 0.25 </td>
+        <td align="right"> 2.15 </td>
+        <td align="right"> 1593 </td>
     </tr>
     <tr>
-        <td align="right"> 20 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.61 </td>
-        <td align="right"> 1374 </td>
-    </tr>
-    <tr>
-        <td align="right"> 10 </td>
-        <td> {Gasoline,SUV / Crossover} =&gt; {Medium Price} </td>
-        <td align="right"> 0.13 </td>
-        <td align="right"> 0.26 </td>
-        <td align="right"> 0.50 </td>
-        <td align="right"> 1.05 </td>
-        <td align="right"> 1302 </td>
-    </tr>
-    <tr>
-        <td align="right"> 5 </td>
-        <td> {Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.65 </td>
-        <td align="right"> 1250 </td>
-    </tr>
-    <tr>
-        <td align="right"> 19 </td>
-        <td> {Low Cylinder,Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.66 </td>
-        <td align="right"> 1242 </td>
-    </tr>
-</table>
-
-<table class="table  table-sm" style="font-size: 12px;">
-    <tr>
-        <th> </th>
-        <th> rules </th>
-        <th> support </th>
-        <th> confidence </th>
-        <th> coverage </th>
-        <th> lift </th>
-        <th> count </th>
-    </tr>
-    <tr>
-        <td align="right"> 29 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.29 </td>
-        <td align="right"> 1.67 </td>
-        <td align="right"> 1230 </td>
-    </tr>
-    <tr>
-        <td align="right"> 21 </td>
-        <td> {Gasoline,Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.66 </td>
-        <td align="right"> 1238 </td>
-    </tr>
-    <tr>
-        <td align="right"> 19 </td>
-        <td> {Low Cylinder,Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.66 </td>
-        <td align="right"> 1242 </td>
-    </tr>
-    <tr>
-        <td align="right"> 5 </td>
-        <td> {Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.65 </td>
-        <td align="right"> 1250 </td>
-    </tr>
-    <tr>
-        <td align="right"> 20 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.61 </td>
-        <td align="right"> 1374 </td>
-    </tr>
-    <tr>
-        <td align="right"> 6 </td>
-        <td> {Gasoline,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.61 </td>
-        <td align="right"> 1382 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Low Cylinder,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.35 </td>
-        <td align="right"> 1.60 </td>
-        <td align="right"> 1386 </td>
-    </tr>
-    <tr>
-        <td align="right"> 30 </td>
-        <td> {2015-2018,Gasoline,Low Cylinder,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.39 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 1.56 </td>
-        <td align="right"> 1214 </td>
-    </tr>
-    <tr>
-        <td align="right"> 25 </td>
-        <td> {2015-2018,Low Cylinder,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.39 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 1.55 </td>
-        <td align="right"> 1230 </td>
-    </tr>
-    <tr>
-        <td align="right"> 26 </td>
-        <td> {2015-2018,Gasoline,Low Cylinder} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.39 </td>
-        <td align="right"> 0.36 </td>
-        <td align="right"> 1.55 </td>
-        <td align="right"> 1396 </td>
-    </tr>
-    <tr>
-        <td align="right"> 11 </td>
-        <td> {2015-2018,Low Cylinder} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.38 </td>
-        <td align="right"> 0.37 </td>
-        <td align="right"> 1.53 </td>
-        <td align="right"> 1412 </td>
-    </tr>
-    <tr>
-        <td align="right"> 7 </td>
-        <td> {Low Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.38 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 1.52 </td>
-        <td align="right"> 1045 </td>
-    </tr>
-    <tr>
-        <td align="right"> 22 </td>
-        <td> {Gasoline,Low Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.38 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 1.51 </td>
-        <td align="right"> 1033 </td>
-    </tr>
-    <tr>
-        <td align="right"> 17 </td>
-        <td> {Gasoline,Low Cylinder,Short Wheelbase} =&gt; {Medium Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.37 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.46 </td>
-        <td align="right"> 1083 </td>
+        <td align="right"> 69 </td>
+        <td> {FWD,Low Torque,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.16 </td>
+        <td align="right"> 0.65 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 2.15 </td>
+        <td align="right"> 1579 </td>
     </tr>
     <tr>
         <td align="right"> 18 </td>
-        <td> {Gasoline,No Accident,Short Wheelbase} =&gt; {Medium Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.36 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 1.46 </td>
-        <td align="right"> 1004 </td>
-    </tr>
-</table>
-
-<table class="table  table-sm" style="font-size: 12px;">
-    <tr>
-        <th> </th>
-        <th> rules </th>
-        <th> support </th>
-        <th> confidence </th>
-        <th> coverage </th>
-        <th> lift </th>
-        <th> count </th>
-    </tr>
-    <tr>
-        <td align="right"> 29 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.29 </td>
-        <td align="right"> 1.67 </td>
-        <td align="right"> 1230 </td>
-    </tr>
-    <tr>
-        <td align="right"> 21 </td>
-        <td> {Gasoline,Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.42 </td>
+        <td> {HW Fuel Economy Good,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.15 </td>
+        <td align="right"> 0.52 </td>
         <td align="right"> 0.30 </td>
-        <td align="right"> 1.66 </td>
-        <td align="right"> 1238 </td>
-    </tr>
-    <tr>
-        <td align="right"> 19 </td>
-        <td> {Low Cylinder,Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.66 </td>
-        <td align="right"> 1242 </td>
-    </tr>
-    <tr>
-        <td align="right"> 5 </td>
-        <td> {Low Torque,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.65 </td>
-        <td align="right"> 1250 </td>
-    </tr>
-    <tr>
-        <td align="right"> 20 </td>
-        <td> {Gasoline,Low Cylinder,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.61 </td>
-        <td align="right"> 1374 </td>
-    </tr>
-    <tr>
-        <td align="right"> 6 </td>
-        <td> {Gasoline,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.61 </td>
-        <td align="right"> 1382 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Low Cylinder,Low Torque} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.35 </td>
-        <td align="right"> 1.60 </td>
-        <td align="right"> 1386 </td>
-    </tr>
-    <tr>
-        <td align="right"> 30 </td>
-        <td> {2015-2018,Gasoline,Low Cylinder,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.39 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 1.56 </td>
-        <td align="right"> 1214 </td>
-    </tr>
-    <tr>
-        <td align="right"> 25 </td>
-        <td> {2015-2018,Low Cylinder,No Accident} =&gt; {Medium Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.39 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 1.55 </td>
-        <td align="right"> 1230 </td>
-    </tr>
-    <tr>
-        <td align="right"> 26 </td>
-        <td> {2015-2018,Gasoline,Low Cylinder} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.39 </td>
-        <td align="right"> 0.36 </td>
-        <td align="right"> 1.55 </td>
-        <td align="right"> 1396 </td>
-    </tr>
-    <tr>
-        <td align="right"> 11 </td>
-        <td> {2015-2018,Low Cylinder} =&gt; {Medium Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.38 </td>
-        <td align="right"> 0.37 </td>
-        <td align="right"> 1.53 </td>
-        <td align="right"> 1412 </td>
-    </tr>
-    <tr>
-        <td align="right"> 7 </td>
-        <td> {Low Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.38 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 1.52 </td>
-        <td align="right"> 1045 </td>
-    </tr>
-    <tr>
-        <td align="right"> 22 </td>
-        <td> {Gasoline,Low Cylinder,SUV / Crossover} =&gt; {Medium Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.38 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 1.51 </td>
-        <td align="right"> 1033 </td>
+        <td align="right"> 1.73 </td>
+        <td align="right"> 1546 </td>
     </tr>
     <tr>
         <td align="right"> 17 </td>
-        <td> {Gasoline,Low Cylinder,Short Wheelbase} =&gt; {Medium Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.37 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.46 </td>
-        <td align="right"> 1083 </td>
-    </tr>
-    <tr>
-        <td align="right"> 18 </td>
-        <td> {Gasoline,No Accident,Short Wheelbase} =&gt; {Medium Price} </td>
-        <td align="right"> 0.10 </td>
-        <td align="right"> 0.36 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 1.46 </td>
-        <td align="right"> 1004 </td>
-    </tr>
-</table>
-
-
-<!---->
-
-
-<table class="table  table-sm" style="font-size: 12px;">
-    <tr>
-        <th> </th>
-        <th> rules </th>
-        <th> support </th>
-        <th> confidence </th>
-        <th> coverage </th>
-        <th> lift </th>
-        <th> count </th>
-    </tr>
-    <tr>
-        <td align="right"> 12 </td>
-        <td> {Gasoline,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.83 </td>
-        <td align="right"> 1.06 </td>
-        <td align="right"> 2192 </td>
-    </tr>
-    <tr>
-        <td align="right"> 11 </td>
-        <td> {2015-2018,Gasoline} =&gt; {High Price} </td>
-        <td align="right"> 0.17 </td>
-        <td align="right"> 0.27 </td>
+        <td> {FWD,HW Fuel Economy Good} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.15 </td>
         <td align="right"> 0.62 </td>
-        <td align="right"> 1.09 </td>
-        <td align="right"> 1682 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 2.05 </td>
+        <td align="right"> 1500 </td>
     </tr>
     <tr>
-        <td align="right"> 7 </td>
-        <td> {Gasoline,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.16 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.50 </td>
-        <td align="right"> 1.26 </td>
-        <td align="right"> 1554 </td>
+        <td align="right"> 23 </td>
+        <td> {Medium Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.15 </td>
+        <td align="right"> 0.49 </td>
+        <td align="right"> 0.30 </td>
+        <td align="right"> 1.63 </td>
+        <td align="right"> 1481 </td>
     </tr>
     <tr>
-        <td align="right"> 10 </td>
-        <td> {2015-2018,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.56 </td>
-        <td align="right"> 1.09 </td>
-        <td align="right"> 1523 </td>
-    </tr>
-    <tr>
-        <td align="right"> 17 </td>
-        <td> {2015-2018,Gasoline,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 1.11 </td>
-        <td align="right"> 1488 </td>
-    </tr>
-    <tr>
-        <td align="right"> 6 </td>
-        <td> {No Accident,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.45 </td>
-        <td align="right"> 1.26 </td>
-        <td align="right"> 1407 </td>
-    </tr>
-    <tr>
-        <td align="right"> 15 </td>
-        <td> {Gasoline,No Accident,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.14 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 0.43 </td>
-        <td align="right"> 1.28 </td>
-        <td align="right"> 1393 </td>
+        <td align="right"> 58 </td>
+        <td> {FWD,HW Fuel Economy Good,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.15 </td>
+        <td align="right"> 0.62 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 2.06 </td>
+        <td align="right"> 1473 </td>
     </tr>
     <tr>
         <td align="right"> 9 </td>
-        <td> {Gasoline,Low Cylinder} =&gt; {High Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.23 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 0.92 </td>
-        <td align="right"> 1233 </td>
+        <td> {Low Horsepower,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.15 </td>
+        <td align="right"> 0.57 </td>
+        <td align="right"> 0.25 </td>
+        <td align="right"> 1.91 </td>
+        <td align="right"> 1451 </td>
     </tr>
     <tr>
-        <td align="right"> 2 </td>
-        <td> {Gasoline,Medium Torque} =&gt; {High Price} </td>
-        <td align="right"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.29 </td>
-        <td align="right"> 1.64 </td>
-        <td align="right"> 1199 </td>
-    </tr>
-    <tr>
-        <td align="right"> 8 </td>
-        <td> {Low Cylinder,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
+        <td align="right"> 7 </td>
+        <td> {Low Horsepower,Low Torque} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.14 </td>
+        <td align="right"> 0.58 </td>
         <td align="right"> 0.24 </td>
-        <td align="right"> 0.48 </td>
-        <td align="right"> 0.95 </td>
-        <td align="right"> 1143 </td>
+        <td align="right"> 1.92 </td>
+        <td align="right"> 1408 </td>
+    </tr>
+    <tr>
+        <td align="right"> 45 </td>
+        <td> {Low Horsepower,Low Torque,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.14 </td>
+        <td align="right"> 0.58 </td>
+        <td align="right"> 0.24 </td>
+        <td align="right"> 1.92 </td>
+        <td align="right"> 1395 </td>
+    </tr>
+    <tr>
+        <td align="right"> 32 </td>
+        <td> {2015-2017,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.14 </td>
+        <td align="right"> 0.40 </td>
+        <td align="right"> 0.35 </td>
+        <td align="right"> 1.32 </td>
+        <td align="right"> 1372 </td>
+    </tr>
+    <tr>
+        <td align="right"> 26 </td>
+        <td> {Low Engine Displacement,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.14 </td>
+        <td align="right"> 0.42 </td>
+        <td align="right"> 0.32 </td>
+        <td align="right"> 1.40 </td>
+        <td align="right"> 1357 </td>
     </tr>
     <tr>
         <td align="right"> 16 </td>
-        <td> {Gasoline,Low Cylinder,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
+        <td> {HW Fuel Economy Good,Low Torque} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.13 </td>
+        <td align="right"> 0.57 </td>
         <td align="right"> 0.24 </td>
-        <td align="right"> 0.47 </td>
-        <td align="right"> 0.97 </td>
-        <td align="right"> 1138 </td>
+        <td align="right"> 1.88 </td>
+        <td align="right"> 1343 </td>
     </tr>
     <tr>
-        <td align="right"> 5 </td>
-        <td> {2015-2018,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.29 </td>
-        <td align="right"> 1111 </td>
-    </tr>
-    <tr>
-        <td align="right"> 1 </td>
-        <td> {Medium Torque,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 1.59 </td>
-        <td align="right"> 1102 </td>
-    </tr>
-    <tr>
-        <td align="right"> 14 </td>
-        <td> {2015-2018,Gasoline,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 1.32 </td>
-        <td align="right"> 1099 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Gasoline,Medium Cylinder} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 1.37 </td>
-        <td align="right"> 1093 </td>
+        <td align="right"> 12 </td>
+        <td> {FWD,Sedan} =&gt; {Low Price} </td>
+        <td align="right" class="text-primary"> 0.13 </td>
+        <td align="right"> 0.62 </td>
+        <td align="right"> 0.22 </td>
+        <td align="right"> 2.05 </td>
+        <td align="right"> 1336 </td>
     </tr>
 </table>
-
-
+<br/>
+<p>Looking at the results above, "Low Price" occurs 18.91% of the time when the "FWD" and "Medium Cylinder" conditions are met. "Low Price" appears 18.32% of the time when the "Low Torque" and "Medium Cylinder" conditions are met. "Low Price" occurs 15.93% of the time when the conditions "FWD" and "Low Torque" are met. The rest of the results can be analyzed using a similar approach. Low-priced vehicles generally have the following characteristics: FWD wheel system, 3-4 engine cylinders, low torque, and high fuel efficiency.</p>
+<br/>
 <table class="table  table-sm" style="font-size: 12px;">
     <tr>
         <th> </th>
@@ -1157,142 +271,144 @@
         <th> count </th>
     </tr>
     <tr>
-        <td align="right"> 13 </td>
-        <td> {Gasoline,Medium Torque,No Accident} =&gt; {High Price} </td>
+        <td align="right"> 3 </td>
+        <td> {Medium Cylinder,Very High Mileage} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.89 </td>
         <td align="right"> 0.11 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.26 </td>
-        <td align="right"> 1.70 </td>
-        <td align="right"> 1087 </td>
+        <td align="right"> 2.96 </td>
+        <td align="right"> 1017 </td>
     </tr>
     <tr>
         <td align="right"> 2 </td>
-        <td> {Gasoline,Medium Torque} =&gt; {High Price} </td>
+        <td> {FWD,Very High Mileage} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.87 </td>
         <td align="right"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.29 </td>
-        <td align="right"> 1.64 </td>
-        <td align="right"> 1199 </td>
+        <td align="right"> 2.90 </td>
+        <td align="right"> 1050 </td>
     </tr>
     <tr>
         <td align="right"> 1 </td>
-        <td> {Medium Torque,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 1.59 </td>
-        <td align="right"> 1102 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Gasoline,Medium Cylinder} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 1.37 </td>
-        <td align="right"> 1093 </td>
-    </tr>
-    <tr>
-        <td align="right"> 3 </td>
-        <td> {Medium Cylinder,No Accident} =&gt; {High Price} </td>
+        <td> {1989 - 2014,Very High Mileage} =&gt; {Low Price} </td>
         <td align="right"> 0.10 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.32 </td>
-        <td align="right"> 1000 </td>
+        <td align="right" class="text-primary"> 0.84 </td>
+        <td align="right"> 0.12 </td>
+        <td align="right"> 2.80 </td>
+        <td align="right"> 1030 </td>
     </tr>
     <tr>
-        <td align="right"> 14 </td>
-        <td> {2015-2018,Gasoline,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 1.32 </td>
-        <td align="right"> 1099 </td>
+        <td align="right"> 103 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Medium Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right"> 2.47 </td>
+        <td align="right"> 953 </td>
     </tr>
     <tr>
-        <td align="right"> 5 </td>
-        <td> {2015-2018,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.29 </td>
-        <td align="right"> 1111 </td>
+        <td align="right"> 79 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right"> 2.46 </td>
+        <td align="right"> 959 </td>
     </tr>
     <tr>
-        <td align="right"> 15 </td>
-        <td> {Gasoline,No Accident,SUV / Crossover} =&gt; {High Price} </td>
+        <td align="right"> 100 </td>
+        <td> {FWD,HW Fuel Economy Good,Low Engine Displacement,Low Horsepower,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right"> 2.46 </td>
+        <td align="right"> 961 </td>
+    </tr>
+    <tr>
+        <td align="right"> 73 </td>
+        <td> {FWD,HW Fuel Economy Good,Low Engine Displacement,Low Horsepower} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right"> 2.45 </td>
+        <td align="right"> 967 </td>
+    </tr>
+    <tr>
+        <td align="right"> 104 </td>
+        <td> {FWD,Low Horsepower,Low Torque,Medium Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.73 </td>
         <td align="right"> 0.14 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 0.43 </td>
-        <td align="right"> 1.28 </td>
-        <td align="right"> 1393 </td>
+        <td align="right"> 2.42 </td>
+        <td align="right"> 1019 </td>
     </tr>
     <tr>
-        <td align="right"> 6 </td>
-        <td> {No Accident,SUV / Crossover} =&gt; {High Price} </td>
+        <td align="right"> 94 </td>
+        <td> {FWD,Low Engine Displacement,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.73 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right"> 2.42 </td>
+        <td align="right"> 952 </td>
+    </tr>
+    <tr>
+        <td align="right"> 81 </td>
+        <td> {FWD,Low Horsepower,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.73 </td>
         <td align="right"> 0.14 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.45 </td>
-        <td align="right"> 1.26 </td>
-        <td align="right"> 1407 </td>
+        <td align="right"> 2.42 </td>
+        <td align="right"> 1031 </td>
     </tr>
     <tr>
-        <td align="right"> 7 </td>
-        <td> {Gasoline,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.16 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.50 </td>
-        <td align="right"> 1.26 </td>
-        <td align="right"> 1554 </td>
+        <td align="right"> 83 </td>
+        <td> {FWD,Low Horsepower,Medium Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.73 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right"> 2.42 </td>
+        <td align="right"> 1034 </td>
     </tr>
     <tr>
-        <td align="right"> 17 </td>
-        <td> {2015-2018,Gasoline,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 1.11 </td>
-        <td align="right"> 1488 </td>
+        <td align="right"> 39 </td>
+        <td> {FWD,Low Horsepower,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.72 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right"> 2.41 </td>
+        <td align="right"> 1046 </td>
     </tr>
     <tr>
-        <td align="right"> 11 </td>
-        <td> {2015-2018,Gasoline} =&gt; {High Price} </td>
-        <td align="right"> 0.17 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.62 </td>
-        <td align="right"> 1.09 </td>
-        <td align="right"> 1682 </td>
+        <td align="right"> 105 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Low Torque,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.72 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right"> 2.41 </td>
+        <td align="right"> 1022 </td>
     </tr>
     <tr>
-        <td align="right"> 10 </td>
-        <td> {2015-2018,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.56 </td>
-        <td align="right"> 1.09 </td>
-        <td align="right"> 1523 </td>
+        <td align="right"> 84 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right" class="text-primary"> 0.72 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right"> 2.40 </td>
+        <td align="right"> 1028 </td>
     </tr>
     <tr>
-        <td align="right"> 12 </td>
-        <td> {Gasoline,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.83 </td>
-        <td align="right"> 1.06 </td>
-        <td align="right"> 2192 </td>
-    </tr>
-    <tr>
-        <td align="right"> 16 </td>
-        <td> {Gasoline,Low Cylinder,No Accident} =&gt; {High Price} </td>
+        <td align="right"> 86 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Medium Cylinder} =&gt; {Low Price} </td>
         <td align="right"> 0.11 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right"> 0.47 </td>
-        <td align="right"> 0.97 </td>
-        <td align="right"> 1138 </td>
+        <td align="right" class="text-primary"> 0.72 </td>
+        <td align="right"> 0.15 </td>
+        <td align="right"> 2.39 </td>
+        <td align="right"> 1054 </td>
     </tr>
 </table>
-
+<br/>
+<p>Vehicles with "Medium Cylinder" and "Very High Mileage" have a strong association with the "Low Price" category. This rule has a support of 10.17% and a confidence of 88.74%, indicating vehicles with a low price compared to cars with a relatively high price. Vehicles with "Front Wheel Drive (FWD)" and "Very High Mileage" also have a strong association with the "Low Price" category. They have a support of 10.50% and a confidence of 86.92%, indicating that vehicles that fulfill these conditions are more likely to have a low price. The rest of the items are interpreted similarly. For example, the rule {FWD, Low Engine Displacement, Low Horsepower, Medium Cylinder, Short Wheelbase} => {Low Price} indicates that certain combinations of vehicle characteristics are associated with vehicles with low prices. In summary, 3-4 engine cylinders, very high mileage, low engine displacement, and small vehicle size are strongly associated with low-priced vehicles.</p>
+<br/>
 <table class="table  table-sm" style="font-size: 12px;">
     <tr>
         <th> </th>
@@ -1304,143 +420,149 @@
         <th> count </th>
     </tr>
     <tr>
-        <td align="right"> 13 </td>
-        <td> {Gasoline,Medium Torque,No Accident} =&gt; {High Price} </td>
+        <td align="right"> 3 </td>
+        <td> {Medium Cylinder,Very High Mileage} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.89 </td>
         <td align="right"> 0.11 </td>
-        <td align="right"> 0.42 </td>
-        <td align="right"> 0.26 </td>
-        <td align="right"> 1.70 </td>
-        <td align="right"> 1087 </td>
+        <td align="right" class="text-primary"> 2.96 </td>
+        <td align="right"> 1017 </td>
     </tr>
     <tr>
         <td align="right"> 2 </td>
-        <td> {Gasoline,Medium Torque} =&gt; {High Price} </td>
+        <td> {FWD,Very High Mileage} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.87 </td>
         <td align="right"> 0.12 </td>
-        <td align="right"> 0.41 </td>
-        <td align="right"> 0.29 </td>
-        <td align="right"> 1.64 </td>
-        <td align="right"> 1199 </td>
+        <td align="right" class="text-primary"> 2.90 </td>
+        <td align="right"> 1050 </td>
     </tr>
     <tr>
         <td align="right"> 1 </td>
-        <td> {Medium Torque,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.40 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 1.59 </td>
-        <td align="right"> 1102 </td>
-    </tr>
-    <tr>
-        <td align="right"> 4 </td>
-        <td> {Gasoline,Medium Cylinder} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 1.37 </td>
-        <td align="right"> 1093 </td>
-    </tr>
-    <tr>
-        <td align="right"> 3 </td>
-        <td> {Medium Cylinder,No Accident} =&gt; {High Price} </td>
+        <td> {1989 - 2014,Very High Mileage} =&gt; {Low Price} </td>
         <td align="right"> 0.10 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 0.30 </td>
-        <td align="right"> 1.32 </td>
-        <td align="right"> 1000 </td>
+        <td align="right"> 0.84 </td>
+        <td align="right"> 0.12 </td>
+        <td align="right" class="text-primary"> 2.80 </td>
+        <td align="right"> 1030 </td>
     </tr>
     <tr>
-        <td align="right"> 14 </td>
-        <td> {2015-2018,Gasoline,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 0.33 </td>
-        <td align="right"> 1.32 </td>
-        <td align="right"> 1099 </td>
+        <td align="right"> 103 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Medium Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right" class="text-primary"> 2.47 </td>
+        <td align="right"> 953 </td>
     </tr>
     <tr>
-        <td align="right"> 5 </td>
-        <td> {2015-2018,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.11 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 0.34 </td>
-        <td align="right"> 1.29 </td>
-        <td align="right"> 1111 </td>
+        <td align="right"> 79 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right" class="text-primary"> 2.46 </td>
+        <td align="right"> 959 </td>
     </tr>
     <tr>
-        <td align="right"> 15 </td>
-        <td> {Gasoline,No Accident,SUV / Crossover} =&gt; {High Price} </td>
+        <td align="right"> 100 </td>
+        <td> {FWD,HW Fuel Economy Good,Low Engine Displacement,Low Horsepower,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right" class="text-primary"> 2.46 </td>
+        <td align="right"> 961 </td>
+    </tr>
+    <tr>
+        <td align="right"> 73 </td>
+        <td> {FWD,HW Fuel Economy Good,Low Engine Displacement,Low Horsepower} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.74 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right" class="text-primary"> 2.45 </td>
+        <td align="right"> 967 </td>
+    </tr>
+    <tr>
+        <td align="right"> 104 </td>
+        <td> {FWD,Low Horsepower,Low Torque,Medium Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.73 </td>
         <td align="right"> 0.14 </td>
-        <td align="right"> 0.32 </td>
-        <td align="right"> 0.43 </td>
-        <td align="right"> 1.28 </td>
-        <td align="right"> 1393 </td>
+        <td align="right" class="text-primary"> 2.42 </td>
+        <td align="right"> 1019 </td>
     </tr>
     <tr>
-        <td align="right"> 6 </td>
-        <td> {No Accident,SUV / Crossover} =&gt; {High Price} </td>
+        <td align="right"> 94 </td>
+        <td> {FWD,Low Engine Displacement,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.73 </td>
+        <td align="right"> 0.13 </td>
+        <td align="right" class="text-primary"> 2.42 </td>
+        <td align="right"> 952 </td>
+    </tr>
+    <tr>
+        <td align="right"> 81 </td>
+        <td> {FWD,Low Horsepower,Low Torque,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.73 </td>
         <td align="right"> 0.14 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.45 </td>
-        <td align="right"> 1.26 </td>
-        <td align="right"> 1407 </td>
+        <td align="right" class="text-primary"> 2.42 </td>
+        <td align="right"> 1031 </td>
     </tr>
     <tr>
-        <td align="right"> 7 </td>
-        <td> {Gasoline,SUV / Crossover} =&gt; {High Price} </td>
-        <td align="right"> 0.16 </td>
-        <td align="right"> 0.31 </td>
-        <td align="right"> 0.50 </td>
-        <td align="right"> 1.26 </td>
-        <td align="right"> 1554 </td>
+        <td align="right"> 83 </td>
+        <td> {FWD,Low Horsepower,Medium Cylinder,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.73 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right" class="text-primary"> 2.42 </td>
+        <td align="right"> 1034 </td>
     </tr>
     <tr>
-        <td align="right"> 17 </td>
-        <td> {2015-2018,Gasoline,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.28 </td>
-        <td align="right"> 0.54 </td>
-        <td align="right"> 1.11 </td>
-        <td align="right"> 1488 </td>
+        <td align="right"> 39 </td>
+        <td> {FWD,Low Horsepower,Short Wheelbase} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.72 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right" class="text-primary"> 2.41 </td>
+        <td align="right"> 1046 </td>
     </tr>
     <tr>
-        <td align="right"> 11 </td>
-        <td> {2015-2018,Gasoline} =&gt; {High Price} </td>
-        <td align="right"> 0.17 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.62 </td>
-        <td align="right"> 1.09 </td>
-        <td align="right"> 1682 </td>
+        <td align="right"> 105 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Low Torque,Medium Cylinder} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.72 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right" class="text-primary"> 2.41 </td>
+        <td align="right"> 1022 </td>
     </tr>
     <tr>
-        <td align="right"> 10 </td>
-        <td> {2015-2018,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.15 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.56 </td>
-        <td align="right"> 1.09 </td>
-        <td align="right"> 1523 </td>
+        <td align="right"> 84 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Low Torque} =&gt; {Low Price} </td>
+        <td align="right"> 0.10 </td>
+        <td align="right"> 0.72 </td>
+        <td align="right"> 0.14 </td>
+        <td align="right" class="text-primary"> 2.40 </td>
+        <td align="right"> 1028 </td>
     </tr>
     <tr>
-        <td align="right"> 12 </td>
-        <td> {Gasoline,No Accident} =&gt; {High Price} </td>
-        <td align="right"> 0.22 </td>
-        <td align="right"> 0.27 </td>
-        <td align="right"> 0.83 </td>
-        <td align="right"> 1.06 </td>
-        <td align="right"> 2192 </td>
-    </tr>
-    <tr>
-        <td align="right"> 16 </td>
-        <td> {Gasoline,Low Cylinder,No Accident} =&gt; {High Price} </td>
+        <td align="right"> 86 </td>
+        <td> {FWD,Low Engine Displacement,Low Horsepower,Medium Cylinder} =&gt; {Low Price} </td>
         <td align="right"> 0.11 </td>
-        <td align="right"> 0.24 </td>
-        <td align="right"> 0.47 </td>
-        <td align="right"> 0.97 </td>
-        <td align="right"> 1138 </td>
+        <td align="right"> 0.72 </td>
+        <td align="right"> 0.15 </td>
+        <td align="right" class="text-primary"> 2.39 </td>
+        <td align="right"> 1054 </td>
     </tr>
 </table>
-
-
+<br/>
+<p>The data above is in descending order of lift value. {Medium Cylinder, Very High Mileage} => {Low Price} This is the rule with the highest lift value, indicating that vehicles with "Medium Cylinder" and "Very High Mileage" have the strongest positive association with the "Low Price" category. It means that the lower the number of cylinders, the higher the mileage and the lower the price of the car. In addition, vehicles produced in 1989 - 2014, i.e., older cars and higher mileage, also have a strong positive association with Low Price. In conclusion, the results show that vehicle characteristics such as relatively low 3-4 engine cylinders, high mileage, FWD, low displacement, and low horsepower strongly correlate with Low Price.</p>
+<br/>
+<img src="arm_img008.png" class="rounded" width="500">
+<p>The graph above is a plot that visualizes the results of the association rule analysis as a scatter plot. Scatter plots allow you to see the relationships between association rules visually. Scatter plots show the relative position and distribution of rules so you can see which rules are related to each other. This plot shows that, in general, rules with lower values of support are clustered with rules with higher values of confidence and lift.</p>
+<br/>
 <div class="embed-responsive embed-responsive-16by9">
     <iframe class="embed-responsive-item" src="https://jihoonyun.github.io/ds/output_low.html" allowfullscreen></iframe>
 </div>
+<br/>
+<p>The plot above is a graphical visualization of the results of the association rule analysis, allowing you to see the connections and structure between the rules. The rules associated with other rules can be visually seen through the wraps. The relationship between nodes and edges (lines) helps you understand the associations between rules.</p>
