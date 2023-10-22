@@ -434,8 +434,9 @@
 <b>Split training and test data</b>
 <p>To evaluate the performance of machine learning models, including decision trees, and to ensure generalization, data is split into a training set and a test set. This split helps to evaluate the generalization ability and determine how well the model will perform when applied to new data. The data is split randomly, with a 7:3 split between training and test data. To split the data in this way, a function called 'sample' is utilized to perform random sampling. This function randomly samples the dataset to the given 0.7 ratio and returns an index of the sampled dataset. Using these indices, the original dataset is split into a training and test set. The command below shows the index assigned to the training dataset. The index is extracted from the original data, the df_dt dataset, and the training dataset is defined as a dataset named df_dt_train, with the remaining data as the test data, df_dt_test. It makes the training and test datasets have a disjoint relationship.</p>
 <img src="dt_img009.png" class="rounded" width="1200">
+<br/>
 <p>The images below show simple information about the partitioned training dataset (left) and test dataset (right).</p>
-<div class="col">
+<div class="row">
     <div class="col">
         <img src="dt_img010.png" class="rounded" width="500">
     </div>&nbsp;
