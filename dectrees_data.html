@@ -1,2 +1,429 @@
 <h2>Decision Trees Data</h2>
-<p>...</p>
+<br />
+<p>One type of supervised learning, decision trees, requires additional preprocessing of preprocessed data. The
+    procedure to change the data so that the model built on the decision tree can understand and analyze the data
+    correctly can significantly impact the results of the analysis. To this end, we perform the following preprocessing
+    procedures.</p>
+<br />
+<b>Sampling</b>
+<p>In general, the more data you have, the more time it takes to build a decision tree. Decision trees evaluate multiple
+    attributes for each data point and recursively explore the data to find the best split, so more data can increase
+    the time it takes to train the model. For this reason, decision tree modeling is performed by randomly sampling only
+    100,000 data points out of approximately 600,000 rows of data.</p>
+<br />
+<b>Determine labeling and features</b>
+<p>To perform supervised learning decision trees, the data must first be labeled. In this project, one of the main
+    objectives is to analyze the characteristics of vehicles and use them to predict the price of a vehicle. Therefore,
+    in this analysis, the label is defined as the price of the vehicle. Decision trees can perform classification and
+    regression methods, but classification is used in this analysis. To do this, it is necessary to convert price, a
+    continuous numeric type, into a categorical type. In this case, price is categorized into three categories: low,
+    medium, and high. This categorical conversion is performed by discretization using the average used vehicle price
+    information for 2021. After researching the average used car price in 2021, the median price is approximately
+    $30,000. Based on this, the categories of low and high are usually defined. In addition, reducing the complexity of
+    the model by removing unnecessary variables and selecting essential variables can improve the model's performance
+    and increase its interpretability. For example, enhancing the quality of the decision tree involves removing data
+    such as VINs, vehicle descriptions, etc., or categorical variables with too many categories, such as vehicle model,
+    vehicle color, etc. Categorical variables such as fuel type and transmission type are converted to continuous
+    numeric types using one-hot encoding to improve performance. One-hot encoding is a vector representation of words
+    where the size of the word set is the dimension of the vector, the index of the word you want to represent is
+    assigned a value of 1, and the other indexes are assigned 0. This way, you can preprocess the data into a suitable
+    data type for performing decision trees. The dataset below shows the dataset after the preprocessing above.</p>
+
+<div style="width: 1200px; overflow-x: auto;">
+    <table class="table  table-sm" style="font-size: 12px;">
+        <thead>
+            <tr>
+                <th style="text-align:right;"> back_legroom </th>
+                <th style="text-align:right;"> city_fuel_economy </th>
+                <th style="text-align:right;"> daysonmarket </th>
+                <th style="text-align:right;"> engine_cylinders </th>
+                <th style="text-align:right;"> engine_displacement </th>
+                <th style="text-align:left;"> fleet </th>
+                <th style="text-align:left;"> frame_damaged </th>
+                <th style="text-align:left;"> franchise_dealer </th>
+                <th style="text-align:right;"> front_legroom </th>
+                <th style="text-align:right;"> fuel_tank_volume </th>
+                <th style="text-align:left;"> has_accidents </th>
+                <th style="text-align:right;"> height </th>
+                <th style="text-align:right;"> highway_fuel_economy </th>
+                <th style="text-align:right;"> horsepower </th>
+                <th style="text-align:left;"> isCab </th>
+                <th style="text-align:left;"> is_new </th>
+                <th style="text-align:right;"> length </th>
+                <th style="text-align:right;"> maximum_seating </th>
+                <th style="text-align:right;"> mileage </th>
+                <th style="text-align:right;"> owner_count </th>
+                <th style="text-align:left;"> salvage </th>
+                <th style="text-align:right;"> savings_amount </th>
+                <th style="text-align:right;"> seller_rating </th>
+                <th style="text-align:left;"> theft_title </th>
+                <th style="text-align:right;"> wheelbase </th>
+                <th style="text-align:right;"> width </th>
+                <th style="text-align:right;"> year </th>
+                <th style="text-align:right;"> rpm </th>
+                <th style="text-align:right;"> torque_lbft </th>
+                <th style="text-align:right;"> transmissionA </th>
+                <th style="text-align:right;"> transmissionCVT </th>
+                <th style="text-align:right;"> transmissionDual Clutch </th>
+                <th style="text-align:right;"> transmissionM </th>
+                <th style="text-align:right;"> fuel_typeBiodiesel </th>
+                <th style="text-align:right;"> fuel_typeDiesel </th>
+                <th style="text-align:right;"> fuel_typeFlex Fuel Vehicle </th>
+                <th style="text-align:right;"> fuel_typeGasoline </th>
+                <th style="text-align:right;"> fuel_typeHybrid </th>
+                <th style="text-align:right;"> wheel_system4WD </th>
+                <th style="text-align:right;"> wheel_system4X2 </th>
+                <th style="text-align:right;"> wheel_systemAWD </th>
+                <th style="text-align:right;"> wheel_systemFWD </th>
+                <th style="text-align:right;"> wheel_systemRWD </th>
+                <th style="text-align:right;"> body_typeConvertible </th>
+                <th style="text-align:right;"> body_typeCoupe </th>
+                <th style="text-align:right;"> body_typeHatchback </th>
+                <th style="text-align:right;"> body_typeMinivan </th>
+                <th style="text-align:right;"> body_typePickup Truck </th>
+                <th style="text-align:right;"> body_typeSedan </th>
+                <th style="text-align:right;"> body_typeSUV / Crossover </th>
+                <th style="text-align:right;"> body_typeVan </th>
+                <th style="text-align:right;"> body_typeWagon </th>
+                <th style="text-align:left;"> label </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align:right;"> 35.0 </td>
+                <td style="text-align:right;"> 16 </td>
+                <td style="text-align:right;"> 4 </td>
+                <td style="text-align:right;"> 6 </td>
+                <td style="text-align:right;"> 3800 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> TRUE </td>
+                <td style="text-align:right;"> 45.7 </td>
+                <td style="text-align:right;"> 20.3 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 58.3 </td>
+                <td style="text-align:right;"> 25 </td>
+                <td style="text-align:right;"> 311 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 196.5 </td>
+                <td style="text-align:right;"> 5 </td>
+                <td style="text-align:right;"> 42750 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 663 </td>
+                <td style="text-align:right;"> 3.666667 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 118.5 </td>
+                <td style="text-align:right;"> 74.4 </td>
+                <td style="text-align:right;"> 2017 </td>
+                <td style="text-align:right;"> 6000 </td>
+                <td style="text-align:right;"> 293 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:left;"> Moderate </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"> 38.9 </td>
+                <td style="text-align:right;"> 25 </td>
+                <td style="text-align:right;"> 13 </td>
+                <td style="text-align:right;"> 4 </td>
+                <td style="text-align:right;"> 2500 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> TRUE </td>
+                <td style="text-align:right;"> 41.6 </td>
+                <td style="text-align:right;"> 17.0 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 57.9 </td>
+                <td style="text-align:right;"> 35 </td>
+                <td style="text-align:right;"> 178 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 190.9 </td>
+                <td style="text-align:right;"> 5 </td>
+                <td style="text-align:right;"> 23142 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 215 </td>
+                <td style="text-align:right;"> 4.136364 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 109.3 </td>
+                <td style="text-align:right;"> 71.7 </td>
+                <td style="text-align:right;"> 2016 </td>
+                <td style="text-align:right;"> 6000 </td>
+                <td style="text-align:right;"> 170 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:left;"> Moderate </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"> 38.3 </td>
+                <td style="text-align:right;"> 20 </td>
+                <td style="text-align:right;"> 13 </td>
+                <td style="text-align:right;"> 6 </td>
+                <td style="text-align:right;"> 3500 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> TRUE </td>
+                <td style="text-align:right;"> 42.0 </td>
+                <td style="text-align:right;"> 16.0 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 65.0 </td>
+                <td style="text-align:right;"> 28 </td>
+                <td style="text-align:right;"> 279 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 184.4 </td>
+                <td style="text-align:right;"> 5 </td>
+                <td style="text-align:right;"> 68717 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 2346 </td>
+                <td style="text-align:right;"> 3.137931 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 105.7 </td>
+                <td style="text-align:right;"> 73.7 </td>
+                <td style="text-align:right;"> 2017 </td>
+                <td style="text-align:right;"> 6200 </td>
+                <td style="text-align:right;"> 252 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:left;"> Moderate </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"> 35.3 </td>
+                <td style="text-align:right;"> 17 </td>
+                <td style="text-align:right;"> 28 </td>
+                <td style="text-align:right;"> 6 </td>
+                <td style="text-align:right;"> 3700 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> TRUE </td>
+                <td style="text-align:right;"> 44.3 </td>
+                <td style="text-align:right;"> 20.0 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 62.7 </td>
+                <td style="text-align:right;"> 24 </td>
+                <td style="text-align:right;"> 325 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 186.8 </td>
+                <td style="text-align:right;"> 5 </td>
+                <td style="text-align:right;"> 42620 </td>
+                <td style="text-align:right;"> 4 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 1674 </td>
+                <td style="text-align:right;"> 4.692308 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 113.4 </td>
+                <td style="text-align:right;"> 71.0 </td>
+                <td style="text-align:right;"> 2016 </td>
+                <td style="text-align:right;"> 7000 </td>
+                <td style="text-align:right;"> 267 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:left;"> Moderate </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"> 41.1 </td>
+                <td style="text-align:right;"> 18 </td>
+                <td style="text-align:right;"> 22 </td>
+                <td style="text-align:right;"> 6 </td>
+                <td style="text-align:right;"> 3300 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> TRUE </td>
+                <td style="text-align:right;"> 40.9 </td>
+                <td style="text-align:right;"> 21.1 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 69.1 </td>
+                <td style="text-align:right;"> 25 </td>
+                <td style="text-align:right;"> 276 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 201.4 </td>
+                <td style="text-align:right;"> 8 </td>
+                <td style="text-align:right;"> 21536 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 1088 </td>
+                <td style="text-align:right;"> 3.833333 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 120.5 </td>
+                <td style="text-align:right;"> 89.3 </td>
+                <td style="text-align:right;"> 2018 </td>
+                <td style="text-align:right;"> 6000 </td>
+                <td style="text-align:right;"> 248 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:left;"> Moderate </td>
+            </tr>
+            <tr>
+                <td style="text-align:right;"> 37.6 </td>
+                <td style="text-align:right;"> 18 </td>
+                <td style="text-align:right;"> 26 </td>
+                <td style="text-align:right;"> 6 </td>
+                <td style="text-align:right;"> 3500 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> TRUE </td>
+                <td style="text-align:right;"> 40.5 </td>
+                <td style="text-align:right;"> 20.0 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 71.3 </td>
+                <td style="text-align:right;"> 24 </td>
+                <td style="text-align:right;"> 296 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 200.2 </td>
+                <td style="text-align:right;"> 7 </td>
+                <td style="text-align:right;"> 43196 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 1326 </td>
+                <td style="text-align:right;"> 4.177778 </td>
+                <td style="text-align:left;"> FALSE </td>
+                <td style="text-align:right;"> 119.3 </td>
+                <td style="text-align:right;"> 78.1 </td>
+                <td style="text-align:right;"> 2017 </td>
+                <td style="text-align:right;"> 6200 </td>
+                <td style="text-align:right;"> 263 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 1 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:right;"> 0 </td>
+                <td style="text-align:left;"> Moderate </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br />
+<p>The table above is the dataset on which preprocessing was performed. On the right side of the table above, the column
+    names that are a combination of the variable name and the category name of the data are the columns created as a
+    result of one-hot encoding. Moreover, the car price information defined as label is located on the rightmost side of
+    the table.</p>
