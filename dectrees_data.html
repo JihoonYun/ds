@@ -427,3 +427,20 @@
     names that are a combination of the variable name and the category name of the data are the columns created as a
     result of one-hot encoding. Moreover, the car price information defined as label is located on the rightmost side of
     the table.</p>
+
+
+<br/>
+<b>Split training and test data</b>
+<p>To evaluate the performance of machine learning models, including decision trees, and to ensure generalization, data is split into a training set and a test set. This split helps to evaluate the generalization ability and determine how well the model will perform when applied to new data. The data is split randomly, with a 7:3 split between training and test data. To split the data in this way, a function called 'sample' is utilized to perform random sampling. This function randomly samples the dataset to the given 0.7 ratio and returns an index of the sampled dataset. Using these indices, the original dataset is split into a training and test set. The command below shows the index assigned to the training dataset. The index is extracted from the original data, the df_dt dataset, and the training dataset is defined as a dataset named df_dt_train, with the remaining data as the test data, df_dt_test. It makes the training and test datasets have a disjoint relationship.</p>
+<img src="dt_img009.png" class="rounded" width="1200">
+<p>The images below show simple information about the partitioned training dataset (left) and test dataset (right).</p>
+<div class="row">
+    <div class="col">
+        <img src="dt_img010.png" class="rounded" width="600">
+    </div>&nbsp;
+    <div class="col">
+        <img src="dt_img011.png" class="rounded" width="600">
+    </div>
+</div>
+<br/>
+<p>The main reason to divide your data into a training set and a test set is to prevent overfitting and ensure that you can trust your model's performance. Overfitting is when a model is overfitted to the training data and fails to generalize to new data. When a model is overfitted, it can perform well on training data but poorly on actual data. To avoid this overfitting and evaluate the model, you need to split your data into a training and test set. The training set is used to train the model, and the test set is used to evaluate the performance of the trained model. This split prevents the model from overfitting the training data. In other words, if a model performs well on the training data but poorly on the test data, this could indicate that the model is overfitted. Therefore, by training and evaluating a model on a separate training set and test set, you can measure the model's ability to generalize and understand its ability to predict new data.</p>
