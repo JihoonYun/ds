@@ -9,15 +9,15 @@
 <p>In the tree above, the various attributes are printed out, which gives an idea of the importance of the attributes. The analysis shows that 'torque_lbft', 'year', 'mileage', 'height', 'length', and 'horsepower' are the most critical attributes that affect the price of a vehicle, which suggests that these attributes play an essential role in determining the price range of a vehicle. Looking more closely at the values of each node in the tree, the entire dataset is classified. At the initial node, the 70000 observations are divided into Moderate, Low, and High categories, with proportions of 0.13, 0.64, and 0.23, respectively. Then, at the first branch, the data is categorized based on whether "torque_lbft" is less than 294: if torque_lbft < 294, the proportion of Moderate is high, and if torque_lbft >= 294, the proportion of High is high. The torque value, which measures the rotational force of the engine, or the force needed to move the vehicle, is 294, so if the value is higher than 294, it means that there are more vehicles in the higher price range. Next, the data is categorized based on the 'year' attribute: if year < 2015, it falls into Low, and if year >= 2015, it falls into Moderate. It means that vehicles older than 2014 are categorized as lower priced. In addition, for 'mileage', a value greater than 19,000 is associated with a lower price point. Using this approach with other characteristics, it can be observed that FWD is more expensive than AWD, and the newer the car, the higher the price.</p>
 <br/>
 <p>This model allows us to understand the importance of the variables (characteristics). The bar plot below shows the impact of each variable on the overall model's predictions for a given dataset. </p>
-<img src="dt_img013.png" class="rounded" width="800">
+<img src="dt_img013.png" class="rounded" width="600">
 <br/>
 <p>This importance is calculated based on how much information a given attribute provides to the model's predictions. Variables with high importance have a large impact on the model's predictions, while variables with low importance may be less important to the predictions or can be ignored. Thus, 'horsepower' and 'torque_lbft' have the highest importance, while 'width', 'owner_count', 'length', 'mileage', 'fuel_tank_volume', etc. have medium importance.</p>
 <br/>
 <p>Based on this model, predictions were made based on the test data. It allows the model to predict which class each sample in the test dataset belongs to, which can be represented as a confusion matrix. You can generate a confusion matrix based on the model's predictions. To do this, you can compare the actual label with the label predicted by the model and calculate True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN) for each combination. You can construct a confusion matrix based on these values to evaluate your model's classification performance. Here's a quick primer on this</p>
 
-<table class="table table-borderless" >
+<table class="table table-borderless" style="width: 100%;">
     <tr>
-        <td><b>- True Positives (TP):</b></td>
+        <td style="width: 200px;"><b>- True Positives (TP):</b></td>
         <td>The number of times you correctly predicted a vehicle price as "low" when it was actually "low".</td>
     </tr>
     <tr>
@@ -40,7 +40,7 @@
 <br/>
 <p>Based on the confusion matrix above, we can get four evaluation metrics for this model as follows. The Method below is the impurity measure, Gini means that the Gini Index is applied, and Minsplit and Maxdepth are -1, which means that the default values are applied.</p>
 <br/>
-<table class="table  table-sm" style="font-size: 12px;">
+<table class="table table-sm" style="font-size: 12px;">
     <thead>
      <tr>
       <th style="text-align:left;"> X.Method </th>
