@@ -14,9 +14,8 @@
 <p>This importance is calculated based on how much information a given attribute provides to the model's predictions. Variables with high importance have a large impact on the model's predictions, while variables with low importance may be less important to the predictions or can be ignored. Thus, 'horsepower' and 'torque_lbft' have the highest importance, while 'width', 'owner_count', 'length', 'mileage', 'fuel_tank_volume', etc. have medium importance.</p>
 <br/>
 <p>Based on this model, predictions were made based on the test data. It allows the model to predict which class each sample in the test dataset belongs to, which can be represented as a confusion matrix. You can generate a confusion matrix based on the model's predictions. To do this, you can compare the actual label with the label predicted by the model and calculate True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN) for each combination. You can construct a confusion matrix based on these values to evaluate your model's classification performance. Here's a quick primer on this</p>
-<br/>
 
-<table class="table  table-sm" style="font-size: 12px;">
+<table class="table table-borderless" style="font-size: 12px;">
     <tr>
         <td><b>- True Positives (TP):</b></td>
         <td>The number of times you correctly predicted a vehicle price as "low" when it was actually "low".</td>
@@ -33,6 +32,7 @@
         <td><b>- False Negatives (FN):</b></td>
         <td>The number of times the model incorrectly predicted a vehicle price as 'low' when it was actually 'low' (the model failed to classify it as 'low').</td>
     </tr>
+</table>
 <br/>
 <p>The result of performing a decision tree with the Gini index can be represented as a confusion matrix.</p>
 <br/>
