@@ -1,2 +1,88 @@
 <h2>Decision Trees Results</h2>
-<p>...</p>
+<br/>
+<p>This analysis identified the specific factors that influence vehicle pricing by categorizing vehicles into specific price ranges based on a decision tree. It also allowed us to determine which characteristics have the most significant impact on deciding vehicle pricing. Two primary impurity measures, Gini Impurity and Information Gain, were applied when performing the decision tree.</p>
+<br/>
+<b>Gini Index</b>
+<p>First, perform a decision tree analysis based on the training data. The rpart function provided by the 'rpart' package was utilized. The default impurity parameter of the rpart function is gini. Therefore, if you do not add a separate parameter, build a trained decision tree model based on gini impurity. The visualization of this model in the form of a tree is shown below.</p>
+<img src="dt_img012.png" class="rounded" width="1100">
+<br/>
+<p>In the tree above, the various attributes are printed out, which gives an idea of the importance of the attributes. The analysis shows that 'torque_lbft', 'year', 'mileage', 'height', 'length', and 'horsepower' are the most critical attributes that affect the price of a vehicle, which suggests that these attributes play an essential role in determining the price range of a vehicle. Looking more closely at the values of each node in the tree, the entire dataset is classified. At the initial node, the 70000 observations are divided into Moderate, Low, and High categories, with proportions of 0.13, 0.64, and 0.23, respectively. Then, at the first branch, the data is categorized based on whether "torque_lbft" is less than 294: if torque_lbft < 294, the proportion of Moderate is high, and if torque_lbft >= 294, the proportion of High is high. The torque value, which measures the rotational force of the engine, or the force needed to move the vehicle, is 294, so if the value is higher than 294, it means that there are more vehicles in the higher price range. Next, the data is categorized based on the 'year' attribute: if year < 2015, it falls into Low, and if year >= 2015, it falls into Moderate. It means that vehicles older than 2014 are categorized as lower priced. In addition, for 'mileage', a value greater than 19,000 is associated with a lower price point. Using this approach with other characteristics, it can be observed that FWD is more expensive than AWD, and the newer the car, the higher the price.</p>
+<br/>
+<p>This model allows us to understand the importance of the variables (characteristics). The bar plot below shows the impact of each variable on the overall model's predictions for a given dataset. </p>
+<img src="dt_img013.png" class="rounded" width="1100">
+<br/>
+<p>This importance is calculated based on how much information a given attribute provides to the model's predictions. Variables with high importance have a large impact on the model's predictions, while variables with low importance may be less important to the predictions or can be ignored. Thus, 'horsepower' and 'torque_lbft' have the highest importance, while 'width', 'owner_count', 'length', 'mileage', 'fuel_tank_volume', etc. have medium importance.</p>
+<br/>
+<p>Based on this model, predictions were made based on the test data. It allows the model to predict which class each sample in the test dataset belongs to, which can be represented as a confusion matrix. You can generate a confusion matrix based on the model's predictions. To do this, you can compare the actual label with the label predicted by the model and calculate True Positives (TP), True Negatives (TN), False Positives (FP), and False Negatives (FN) for each combination. You can construct a confusion matrix based on these values to evaluate your model's classification performance. Here's a quick primer on this</p>
+<br/>
+<p>&bsp;- True Positives (TP): The number of times you correctly predicted a vehicle price as "low" when it was actually "low".</p>
+<p>&bsp;- True Negatives (TN): Number of cases where the price of a vehicle was correctly predicted as 'medium' when it was actually 'medium'.</p>
+<p>&bsp;- False Positives (FP): The number of times the model incorrectly predicted a vehicle price as 'low' when it was actually 'medium' or 'high' (the model incorrectly categorized it as 'low').</p>
+<p>&bsp;- False Negatives (FN): The number of times the model incorrectly predicted a vehicle price as 'low' when it was actually 'low' (the model failed to classify it as 'low').</p>
+<br/>
+<p>The result of performing a decision tree with the Gini index can be represented as a confusion matrix.</p>
+<br/>
+<img src="dt_img014.png" class="rounded" width="700">
+<br/>
+<p>Based on the confusion matrix above, we can get four evaluation metrics for this model as follows. The Method below is the impurity measure, Gini means that the Gini Index is applied, and Minsplit and Maxdepth are -1, which means that the default values are applied.</p>
+<br/>
+<table class="table  table-sm" style="font-size: 12px;">
+    <thead>
+     <tr>
+      <th style="text-align:left;"> X.Method </th>
+      <th style="text-align:right;"> Minsplit </th>
+      <th style="text-align:right;"> Maxdepth </th>
+      <th style="text-align:left;"> Class </th>
+      <th style="text-align:right;"> Accuracy </th>
+      <th style="text-align:right;"> Precision </th>
+      <th style="text-align:right;"> Recall </th>
+      <th style="text-align:right;"> F1_Score </th>
+     </tr>
+    </thead>
+   <tbody>
+     <tr>
+      <td style="text-align:left;"> Gini </td>
+      <td style="text-align:right;"> -1 </td>
+      <td style="text-align:right;"> -1 </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8235667 </td>
+      <td style="text-align:right;"> 0.5518781 </td>
+      <td style="text-align:right;"> 0.7877765 </td>
+      <td style="text-align:right;"> 0.6490578 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> Gini </td>
+      <td style="text-align:right;"> -1 </td>
+      <td style="text-align:right;"> -1 </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8235667 </td>
+      <td style="text-align:right;"> 0.9060092 </td>
+      <td style="text-align:right;"> 0.8332455 </td>
+      <td style="text-align:right;"> 0.8681053 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> Gini </td>
+      <td style="text-align:right;"> -1 </td>
+      <td style="text-align:right;"> -1 </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8235667 </td>
+      <td style="text-align:right;"> 0.7450279 </td>
+      <td style="text-align:right;"> 0.8070366 </td>
+      <td style="text-align:right;"> 0.7747935 </td>
+     </tr>
+   </tbody>
+   </table>
+   <br/>
+   <p>Let's look at the above results for each class. First, for the Low class, the accuracy is 0.8235667, meaning that 82.36% of the vehicles in the 'Low' class were correctly classified. Precision is 0.5518781, meaning that 55.19% of the vehicles predicted to be in the 'Low' class actually belong to the 'Low' class. The recall is 0.7877765, meaning that the model correctly detected 78.78% of the vehicles actually in the 'Low' class. The F1_Score is 0.6490578, the harmonic mean of Accuracy and Recall, and comprehensively evaluates the model's predictive performance for class 'Low'.</p>
+   <br/>
+   <p>Next, for the Moderate class, the accuracy is 0.8235667, meaning that 82.36% of the vehicles in the 'Moderate' class were correctly classified. Precision is 0.9060092, meaning that 90.60% of the vehicles predicted to be in the 'Moderate' class are actually in the 'Moderate' class. The recall is 0.8332455, meaning that the model correctly detected 83.32% of the vehicles actually in the 'Moderate' class. The model's prediction performance for class 'Moderate' is evaluated by the F1_Score, which is 0.8681053, which is the harmonized average of precision and recall.</p>
+   <br/>
+   <p>Finally, for the High class, the accuracy is 0.8235667, meaning that 82.36% of the vehicles in the 'High' class were correctly classified. Precision is 0.7450279, meaning that 74.50% of the vehicles predicted to be in the 'High' class belong to the 'High' class. The recall is 0.8070366, meaning that the model correctly detected 80.70% of the vehicles belonging to the 'High' class. F1_Score is 0.7747935, the harmonic mean of precision and recall, and comprehensively evaluates the model's prediction performance for class 'High'.</p>
+   <br/>
+   <p>Based on the above results, the accuracy for each class (price category) is the same at 0.8235667. Looking at the differences between the classes, the 'Low' class has a relatively low precision and a high recall, which suggests that the model can identify most of the 'Low' class samples. However, some of the samples belonging to the 'Low' class are misclassified into other classes. The 'Moderate' class also shows a high precision and recall. It indicates that the model tends to make more accurate predictions for the 'Moderate' class. Finally, the 'High' class has medium precision and high recall, suggesting that the model can identify most of the 'High' class samples, although some of the 'High' class samples are misclassified to other classes.</p>
+   
+
+
+
+
+
