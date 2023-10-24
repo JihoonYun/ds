@@ -24,5 +24,31 @@ Event B: Some data has a dependent variable of 7. (labeled 7)</p>
 <br/>
 <p>The challenge in this project is that, unlike the example above, the modeling needs to be performed based on data with multiple vehicle characteristics, so there are more than two independent variables. In other words, considering the above equation, the complexity of the equation increases significantly when there are more than two independent variables, and the calculation is complex and requires many operations. Therefore, it is usually assumed that all independent events are independent in Naïve Bayesian models. Independent events do not affect each other's occurrence, and the combined probability of independent events can be calculated as the product of the single occurrence probabilities of each event. Based on these assumptions, the expression for calculating the posterior probability is as follows.</p>
 <img src="nb_img005.png" class="rounded" width="430">
+<br/><br/>
+<p>There are three main types of Naive Bayes models. The multinomial distribution model is used when the independent variables are discrete, the Bernoulli model is used when the independent variables are binary, and the Gaussian model assumes a normal distribution and computes posterior probabilities when the independent variables are continuous.</p>
+<br/>
+<B>The multinomial Naïve Bayes</B>
+<p>Multinomial Naïve Bayes is one of the probabilistic classification algorithms used to deal with categorical variables. It is mainly used in various natural language processing problems such as document classification, spam filtering, and sentiment analysis. This study uses multinomial Naïve Bayes to classify vehicle price categories based on vehicle characteristics. Multinomial Bayes assumes that the characteristics of the given data follow a multinomial distribution. A multinomial distribution is a probability distribution in which a categorical variable has multiple categories, each with a given probability of occurrence. It also makes the strong assumption that all the characteristics are conditionally independent, making it straightforward to compute the joint probability of all the characteristics.</p>
+<p>Multinomial distribution Naïve Bayes is an appropriate model for classifying vehicle prices based on vehicle characteristics because it can handle a wide range of categorical data. First, select the proper independent variables for classification from the original dataset, i.e., vehicle characteristics. Then, estimate each category's probability based on the occurrence frequency of each category and classify vehicle prices based on vehicle characteristics. Here's a simple example of how this works. </p>
+<P>
+    Horsepower: (Low, Medium, High)<br/>
+    Year: (2015 or earlier, 2016 through 2019, 2020 or later)<br/>
+    Mileage: (less than 30000 miles, more than 30000, less than 90000, more than 90000)   
+</P>
 
 
+<P>First, the frequency of occurrence of the categories for each of the above characteristics is collected. Then, based on that, the price category for each vehicle is predicted. For example, let's say that a particular vehicle has the following characteristics.</P>
+<p>
+Horsepower: High<br/>
+Year: 2020 or newer<br/>
+Mileage: 30000 miles or less
+</p>
+<p>Using the above information, the probability for each price category can be calculated, and the conditional probability can be used to predict the most appropriate price category.</p>
+<img src="nb_img006.png" class="rounded" width="430">
+<p>
+    P(Ck|x) is the probability of being in category Ck for a given attribute x.<br/>
+P(Ck) is the prior probability of category Ck.<br/>
+P(xi|Ck) is the probability of characteristic xi for a given category Ck .<br/>
+P(x) is the evidence for a given trait (i.e., the sum of the conditional probabilities over all categories).
+</p>
+<p>This can be used to categorize the price categories of vehicles based on the characteristics of a given vehicle. In this step, the e1071 package provided by R is used to implement and train a multinomial distribution Naïve Bayes model and then predict it with new data.</p>
