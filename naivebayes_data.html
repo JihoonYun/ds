@@ -29,38 +29,39 @@
       <tr>
        <td style="text-align:left;"> highway_fuel_economy </td>
        <td style="text-align:left;"> HW Fuel Economy Poor, HW Fuel Economy Average, HW Fuel Economy Good </td>
-       <td style="text-align:left;"> 12, 24, 31, 75 </td>
+       <td style="text-align:left;"> 12, 24, 31, 75 / probs = c(0, 0.23, 0.66, 1)</td>
       </tr>
       <tr>
        <td style="text-align:left;"> horsepower </td>
        <td style="text-align:left;"> Low Horsepower, Medium Horsepower, High Horsepower, Very High Horsepower </td>
-       <td style="text-align:left;"> 70, 178, 245, 295, 789 </td>
+       <td style="text-align:left;"> 70, 178, 245, 295, 789 /probs = c(0, 0.25, 0.5, 0.75, 1)</td>
       </tr>
       <tr>
        <td style="text-align:left;"> torque_lbft </td>
        <td style="text-align:left;"> Low Torque, Medium Torque, High Torque </td>
-       <td style="text-align:left;"> 68, 184, 267, 811 </td>
+       <td style="text-align:left;"> 68, 184, 267, 811 / probs = c(0, 0.33, 0.66, 1)</td>
       </tr>
       <tr>
        <td style="text-align:left;"> fuel_tank_volume </td>
        <td style="text-align:left;"> Small Fuel Tank, Medium Fuel Tank, Large Fuel Tank </td>
-       <td style="text-align:left;"> 8.7, 15.9, 19, 38 </td>
+       <td style="text-align:left;"> 8.7, 15.9, 19, 38 / probs = c(0, 0.33, 0.66, 1)</td>
       </tr>
       <tr>
        <td style="text-align:left;"> mileage </td>
        <td style="text-align:left;"> Low Mileage, Medium Mileage, High Mileage, Very High Mileage </td>
-       <td style="text-align:left;"> 0, 22777, 35391, 57683, 399496 </td>
+       <td style="text-align:left;"> 0, 22777, 35391, 57683, 399496 / probs = c(0, 0.25, 0.5, 0.75, 1)</td>
       </tr>
       <tr>
        <td style="text-align:left;"> wheelbase </td>
        <td style="text-align:left;"> Short Wheelbase, Medium Wheelbase, Long Wheelbase, Very Long Wheelbase </td>
-       <td style="text-align:left;"> 73.5, 106.3, 110.5, 115.5, 164.6 </td>
+       <td style="text-align:left;"> 73.5, 106.3, 110.5, 115.5, 164.6 / probs = c(0, 0.25, 0.5, 0.75, 1)</td>
       </tr>
     </tbody>
 </table>
 <br/>
 <p>The dataframe below is a dataset created after performing the data preprocessing described above.</p>
 <img src="nb_img009.png" class="rounded" width="1000">
+<br/>
 <br/>
 <b>Partitioning the data (training dataset + test dataset)</b>
 <p>In supervised learning, the data is split into training and test data to evaluate a model and measure its generalization performance. The training dataset is used to train the model, and the test dataset is used to assess the model's performance. It allows seeing how well the model performs on new data. Suppose a model has been created with one dataset. In that case, it's possible that the model was created by overfitting to one dataset, meaning that it is only suitable for the training data and not applicable to the actual data. To avoid overfitting the training dataset, using the test dataset is required to see if the model generalizes. This step randomly splits the training and test data in a 7:3 ratio. The two images below outline the information in the training data (left) and test data (right).</p>
@@ -97,17 +98,17 @@
     <tr>
       <th>used_cars_data_cleaned_final_ver_nb_sampled_preprocessed_data.csv</th>
       <td>Train dataset in the Naive Bayesstep</td>
-      <td><a href="https://drive.google.com/file/d/1zCW-kaRM6oNfLnrQpMQIUfgxCMvsnmSE/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
+      <td><a href="https://drive.google.com/file/d/1bHh3jj2eFKKssr9FZ1FmgerdFIW-DbrC/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
     </tr>
     <tr>
       <th>used_cars_data_cleaned_final_ver_nb_sampled_preprocessed_train_data.csv</th>
       <td>Test dataset in the Naive Bayes step</td>
-      <td><a href="https://drive.google.com/file/d/1JQYCENtN-VuB6q8toF1Zm3SFNZiGatoI/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
+      <td><a href="https://drive.google.com/file/d/1MqyLXK_BsEePcaCYRls7vpwvdLfl5TRZ/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
     </tr>
     <tr>
       <th>used_cars_data_cleaned_final_ver_nb_sampled_preprocessed_test_data.csv</th>
       <td>Test dataset in the Naive Bayes step</td>
-      <td><a href="https://drive.google.com/file/d/14prVvX7uPj_QjmgmSb42iIxGKZduPouR/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
+      <td><a href="https://drive.google.com/file/d/1ztx2HSCerXJBVgmhUpAgQDV6v_lz-dPM/view?usp=sharing" target="_blank"><button type="button" class="btn btn-outline-warning btn-sm">Link</button></a></td>
     </tr>
   </tbody>
 </table>
