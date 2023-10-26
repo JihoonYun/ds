@@ -1,2 +1,273 @@
 <h2>Naive Bayes Results</h2>
-<p>...</p>
+<br/>
+<p>Build a Naïve Bayes model based on the preprocessed data. First, the features used in the model include all the independent variables in the dataset, and we build a Naïve Bayes model based on them. Here are the characteristics of the vehicles in the dataset.</p>
+<table class="table" style="font-size: 12px;">
+      <tr>
+       <td style="text-align:right;"> horsepower </td>
+       <td style="text-align:left;"> The horsepower of a vehicle is an important characteristic that directly affects the performance and power of the vehicle. </td>
+      </tr>
+      <tr>
+       <td style="text-align:right;"> torque_lbft </td>
+       <td style="text-align:left;"> Torque represents the power of a vehicle, and is an important factor in a vehicle's acceleration and power, especially when climbing rocks in the mountains.</td>
+      </tr>
+      <tr>
+       <td style="text-align:right;"> fuel_tank_volume </td>
+       <td style="text-align:left;"> A large fuel tank volume represents better mileage and fuel economy.</td>
+      </tr>
+      <tr>
+       <td style="text-align:right;"> mileage </td>
+       <td style="text-align:left;"> The mileage indicates the condition and frequency of use of the vehicle, and a high mileage can indicate the durability and endurance of the vehicle.</td>
+      </tr>
+      <tr>
+       <td style="text-align:right;"> year </td>
+       <td style="text-align:left;"> The age of the vehicle indicates the condition and performance of the vehicle, and newer models are more likely to include new technology and improved features. </td>
+      </tr>
+      <tr>
+       <td style="text-align:right;"> highway_fuel_economy </td>
+       <td style="text-align:left;"> Fuel economy is a characteristic that directly affects the cost of ownership and operation; more efficient fuel consumption can reduce the cost of ownership. </td>
+      </tr>
+</table>
+<br/>
+
+<p>The dependent variable, vehicle price, is categorized into three classes (Low, Moderate, and High), and the vehicle price is classified based on the prior probability of the class and the conditional probability of the given vehicle characteristics for each class. To classify vehicle prices based on the training dataset, we first perform a Naïve Bayes classification, including all vehicle characteristics. The class prior probabilities obtained from this classification model result are shown below.</p>
+
+<img src="nb_img012.png" class="rounded" width="450">
+<br/>
+<p>In simple terms, the bar plot above shows the percentage of the total data that each class represents, meaning that the Moderate class has the highest prior probability, followed by the Low class, and the High class has the lowest prior probability. From this, it can be seen that the Moderate class has the most data and the High class has the least, indicating that there is an imbalance between the classes.</p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto;font-size:11px;"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">$horsepower</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horsepower</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;Horsepower&nbsp;Low&nbsp;Horsepower&nbsp;Medium&nbsp;Horsepower&nbsp;Very&nbsp;High&nbsp;Horsepower</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.312508101&nbsp;&nbsp;&nbsp;&nbsp;0.002808382&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.083949017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.600734500</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.189240657&nbsp;&nbsp;&nbsp;&nbsp;0.474252162&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.285011505&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.051495676</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.246688767&nbsp;&nbsp;&nbsp;&nbsp;0.302454437&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.310952359&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.139904437</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">$torque_lbft</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;torque_lbft</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;Torque&nbsp;&nbsp;Low&nbsp;Torque&nbsp;Medium&nbsp;Torque</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.734586304&nbsp;0.007690646&nbsp;&nbsp;&nbsp;0.257723050</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.138855828&nbsp;0.563834008&nbsp;&nbsp;&nbsp;0.297310164</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;0.221926507&nbsp;0.432678091&nbsp;&nbsp;&nbsp;0.345395402</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">$fuel_tank_volume</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fuel_tank_volume</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Large&nbsp;Fuel&nbsp;Tank&nbsp;Medium&nbsp;Fuel&nbsp;Tank&nbsp;Small&nbsp;Fuel&nbsp;Tank</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.70836034&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.22894794&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.06269173</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.19558835&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.34214076&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.46227089</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.22205102&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.34492848&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.43302050</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">$mileage</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mileage</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;High&nbsp;Mileage&nbsp;Low&nbsp;Mileage&nbsp;Medium&nbsp;Mileage&nbsp;Very&nbsp;High&nbsp;Mileage</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.21711891&nbsp;&nbsp;0.41876944&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.29869513&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.06541652</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.11607426&nbsp;&nbsp;0.01626468&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.04046334&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.82719772</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;&nbsp;&nbsp;0.28814456&nbsp;&nbsp;0.23505424&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.27354511&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.20325608</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">$highway_fuel_economy</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;highway_fuel_economy</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HW&nbsp;Fuel&nbsp;Economy&nbsp;Average&nbsp;HW&nbsp;Fuel&nbsp;Economy&nbsp;Good&nbsp;HW&nbsp;Fuel&nbsp;Economy&nbsp;Poor</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.39987038&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.05210629&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.54802333</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.37755912&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.45754642&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.16489446</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.47453696&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.36982101&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.15564202</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">$year</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1989&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1991&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1992&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1993&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1994&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1995&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1996&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1997&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1998&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1999&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2000</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.000000e+00&nbsp;0.000000e+00&nbsp;4.320588e-05&nbsp;0.000000e+00&nbsp;0.000000e+00&nbsp;4.320588e-05&nbsp;0.000000e+00&nbsp;8.641175e-05&nbsp;1.296176e-04&nbsp;4.320588e-05&nbsp;4.320588e-05</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.000000e+00&nbsp;7.933989e-05&nbsp;1.586798e-04&nbsp;7.933989e-05&nbsp;2.380197e-04&nbsp;3.173596e-04&nbsp;7.933989e-05&nbsp;2.380197e-04&nbsp;5.553792e-04&nbsp;3.966995e-04&nbsp;2.142177e-03</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;1.556396e-05&nbsp;0.000000e+00&nbsp;0.000000e+00&nbsp;1.556396e-05&nbsp;3.112792e-05&nbsp;0.000000e+00&nbsp;3.112792e-05&nbsp;1.556396e-05&nbsp;1.556396e-05&nbsp;6.225584e-05&nbsp;3.112792e-05</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2001&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2002&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2003&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2004&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2005&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2006&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2007&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2008&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2009&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2010&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2011</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.641175e-05&nbsp;0.000000e+00&nbsp;4.320588e-05&nbsp;8.641175e-05&nbsp;8.641175e-05&nbsp;1.728235e-04&nbsp;4.320588e-04&nbsp;6.048823e-04&nbsp;2.160294e-04&nbsp;4.752646e-04&nbsp;5.616764e-04</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.300857e-03&nbsp;3.252936e-03&nbsp;4.839733e-03&nbsp;8.013329e-03&nbsp;1.134560e-02&nbsp;1.848619e-02&nbsp;2.895906e-02&nbsp;3.998731e-02&nbsp;3.657569e-02&nbsp;6.251983e-02&nbsp;8.108537e-02</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;6.225584e-05&nbsp;1.867675e-04&nbsp;1.400756e-04&nbsp;2.178954e-04&nbsp;2.178954e-04&nbsp;3.735350e-04&nbsp;8.093259e-04&nbsp;1.105041e-03&nbsp;1.494140e-03&nbsp;3.066100e-03&nbsp;6.241148e-03</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;year</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2012&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2013&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2014&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2015&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2016&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2017&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2018&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2019&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2020&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2021</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.123353e-03&nbsp;2.894794e-03&nbsp;6.264852e-03&nbsp;2.125729e-02&nbsp;4.761288e-02&nbsp;2.955714e-01&nbsp;2.354288e-01&nbsp;2.549147e-01&nbsp;1.317779e-01&nbsp;0.000000e+00</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.034592e-01&nbsp;1.255950e-01&nbsp;1.318629e-01&nbsp;1.225801e-01&nbsp;9.179626e-02&nbsp;6.323389e-02&nbsp;2.983180e-02&nbsp;2.975246e-02&nbsp;2.380197e-04&nbsp;0.000000e+00</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;1.014770e-02&nbsp;2.200744e-02&nbsp;3.682433e-02&nbsp;5.800688e-02&nbsp;9.447324e-02&nbsp;3.487261e-01&nbsp;1.734759e-01&nbsp;2.048062e-01&nbsp;3.730681e-02&nbsp;9.338376e-05</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">$wheelbase</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wheelbase</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Long&nbsp;Wheelbase&nbsp;Medium&nbsp;Wheelbase&nbsp;Short&nbsp;Wheelbase&nbsp;Very&nbsp;Long&nbsp;Wheelbase</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.28006049&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.10473104&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.04748326&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.56772521</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.15488376&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.24383083&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.48893121&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.11235420</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.25400383&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.20483728&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.37893574&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.16222316</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">$owner_count</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;owner_count</div><div style="padding:0 6px; white-space:pre; line-height:130%">Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.824800e-01&nbsp;1.001944e-01&nbsp;1.378267e-02&nbsp;2.592353e-03&nbsp;6.048823e-04&nbsp;2.592353e-04&nbsp;4.320588e-05&nbsp;4.320588e-05&nbsp;0.000000e+00&nbsp;0.000000e+00</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.841638e-01&nbsp;3.943193e-01&nbsp;1.578070e-01&nbsp;4.577912e-02&nbsp;1.293240e-02&nbsp;3.252936e-03&nbsp;1.507458e-03&nbsp;2.380197e-04&nbsp;0.000000e+00&nbsp;0.000000e+00</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;7.863380e-01&nbsp;1.754370e-01&nbsp;3.105010e-02&nbsp;5.556334e-03&nbsp;9.960934e-04&nbsp;4.513548e-04&nbsp;1.400756e-04&nbsp;0.000000e+00&nbsp;1.556396e-05&nbsp;1.556396e-05</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+<br/>
+<p>The results above show the conditional probability of each class on the vehicle characteristics, indicating the probability that a vehicle in a given class's price category has a particular characteristic value. This allows you to compare the class-specific probabilities for each value of each characteristic to assess how important the characteristic is to classification. It also allows you to see how the probability of being classified into a particular class changes with other characteristic values. Let's look at the conditional probabilities for a few key characteristics. First, if the conditional probability of 'horsepower' for each price category (Low, Moderate, and High) is examined, it can be seen that the 'High' price category contains many vehicles with high horsepower. If the difference in the distribution of 'horsepower' across each price category is examined, the largest difference is between the 'Low' and 'High' price categories. The conditional probability results for Mileage also show that vehicles with High Mileage have the highest probability of being in the 'High' class, while Low Mileage and Very High Mileage have a high probability of being in the 'Low' class. Medium Mileage has a high probability for the 'Moderate' class. For 'torque_lbft', it is observed that 'High' class vehicles tend to have high torque values, while 'Low' class vehicles have relatively low torque values. For 'fuel_tank_volume', it is observed that 'High' class vehicles mostly have large fuel tanks, while 'Low' class vehicles mostly have small fuel tanks. 'Moderate' class vehicles are more likely to have medium-sized fuel tanks. For 'highway_fuel_economy', it appears that 'High' class vehicles mostly have large fuel tanks, while 'Low' class vehicles mostly have small fuel tanks. 'Moderate' class vehicles are more likely to have medium-sized fuel tanks. 'year' may have a different distribution of vehicle classes in a given year. For example, a significant increase in the probability of 'High' class vehicles can be observed in 2017 and 2018. Regarding 'wheelbase', the wheelbase of the vehicle can play an important role in dividing the classes: 'High' class vehicles mostly have a very long wheelbase, while 'Low' class vehicles are more likely to have a short wheelbase. Finally, for 'owner_count', the number of owners a vehicle has can play a role in determining its class: 'High' class vehicles are likely to have one owner, while 'Low' class vehicles are likely to have multiple owners.</p>
+<p>The predictions were run on the test dataset and the results were evaluated as follows.</p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important; position:relative !important;overflow:auto;font-size:11px;"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, 'Liberation Mono', Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">Confusion&nbsp;Matrix&nbsp;and&nbsp;Statistics</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reference</div><div style="padding:0 6px; white-space:pre; line-height:130%">Prediction&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;Low&nbsp;Moderate</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;High&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18614&nbsp;&nbsp;&nbsp;239&nbsp;&nbsp;&nbsp;&nbsp;12660</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Low&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;76&nbsp;&nbsp;9456&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5125</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;Moderate&nbsp;&nbsp;4455&nbsp;&nbsp;2909&nbsp;&nbsp;&nbsp;&nbsp;46466</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Overall&nbsp;Statistics</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Accuracy&nbsp;:&nbsp;0.7454&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;95%&nbsp;CI&nbsp;:&nbsp;(0.7426,&nbsp;0.7481)</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;No&nbsp;Information&nbsp;Rate&nbsp;:&nbsp;0.6425&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;P-Value&nbsp;[Acc&nbsp;&gt;&nbsp;NIR]&nbsp;:&nbsp;&lt;&nbsp;2.2e-16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kappa&nbsp;:&nbsp;0.5475&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;Mcnemar's&nbsp;Test&nbsp;P-Value&nbsp;:&nbsp;&lt;&nbsp;2.2e-16&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Statistics&nbsp;by&nbsp;Class:</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Class:&nbsp;High&nbsp;Class:&nbsp;Low&nbsp;Class:&nbsp;Moderate</div><div style="padding:0 6px; white-space:pre; line-height:130%">Sensitivity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.8042&nbsp;&nbsp;&nbsp;&nbsp;0.75024&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.7232</div><div style="padding:0 6px; white-space:pre; line-height:130%">Specificity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.8322&nbsp;&nbsp;&nbsp;&nbsp;0.94049&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.7940</div><div style="padding:0 6px; white-space:pre; line-height:130%">Pos&nbsp;Pred&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.5907&nbsp;&nbsp;&nbsp;&nbsp;0.64515&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.8632</div><div style="padding:0 6px; white-space:pre; line-height:130%">Neg&nbsp;Pred&nbsp;Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.9338&nbsp;&nbsp;&nbsp;&nbsp;0.96311&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.6148</div><div style="padding:0 6px; white-space:pre; line-height:130%">Prevalence&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.2314&nbsp;&nbsp;&nbsp;&nbsp;0.12604&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.6425</div><div style="padding:0 6px; white-space:pre; line-height:130%">Detection&nbsp;Rate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.1861&nbsp;&nbsp;&nbsp;&nbsp;0.09456&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.4647</div><div style="padding:0 6px; white-space:pre; line-height:130%">Detection&nbsp;Prevalence&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.3151&nbsp;&nbsp;&nbsp;&nbsp;0.14657&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.5383</div><div style="padding:0 6px; white-space:pre; line-height:130%">Balanced&nbsp;Accuracy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.8182&nbsp;&nbsp;&nbsp;&nbsp;0.84536&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.7586</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></table></div>
+<br/>
+<p>Based on the results above, the confusion matrix can be visualized as follows.</p>
+<img src="nb_img013.png" class="rounded" width="450">
+<br/>
+<p>Based on the above results, the classification accuracy for the given data is about 0.7454, which means that 74.54% of the total observations were correctly classified. Regarding Sensitivity and Specificity, values for the sensitivity and specificity of the 'High', 'Low', and 'Moderate' classes are provided. The sensitivity is relatively high for the 'High' and 'Low' classes, while the sensitivity of the 'Moderate' class is close to unknown. Looking at the Pos Pred Value and Neg Pred Value, values for the positive and negative predictive values for the 'High', 'Low', and 'Moderate' classes are provided, indicating the reliability of the prediction for each class. Also, looking at the confusion matrix, the accuracy and error of the prediction for the 'High', 'Low', and 'Moderate' classes are evident. There needs to be more clarity between the 'Low' and 'Moderate' classes, especially for the 'Low' class, which is often misclassified as the 'Moderate' class. Based on this confusion matrix, four metrics related to the evaluation of this model were calculated: Accuracy, Precision, Recall, and F1-score.</p>
+<table class="table  table-sm" style="font-size: 12px;">
+    <thead>
+     <tr>
+      <th style="text-align:left;"> Features </th>
+      <th style="text-align:left;"> Class </th>
+      <th style="text-align:right;"> Accuracy </th>
+      <th style="text-align:right;"> Precision </th>
+      <th style="text-align:right;"> Recall </th>
+      <th style="text-align:right;"> F1_Score </th>
+     </tr>
+    </thead>
+   <tbody>
+     <tr>
+      <td style="text-align:left;"> . </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.74536 </td>
+      <td style="text-align:right;"> 0.8042342 </td>
+      <td style="text-align:right;"> 0.5906769 </td>
+      <td style="text-align:right;"> 0.6811080 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> . </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.74536 </td>
+      <td style="text-align:right;"> 0.7502380 </td>
+      <td style="text-align:right;"> 0.6451525 </td>
+      <td style="text-align:right;"> 0.6937383 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> . </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.74536 </td>
+      <td style="text-align:right;"> 0.7231950 </td>
+      <td style="text-align:right;"> 0.8631990 </td>
+      <td style="text-align:right;"> 0.7870191 </td>
+     </tr>
+   </tbody>
+</table>
+<br/>
+<p>The results above represent the percentage of data that the model correctly predicted. For precision, which is the percentage of samples predicted to be positive that are actually positive, 80.42%, 75.02%, and 72.32% are obtained for the Low, Moderate, and High classes, respectively. For recall, the percentage of samples predicted to be positive that is actually positive by the model, 59.07%, 64.52%, and 86.32%, are obtained for the Low, Moderate, and High classes, respectively. Finally, F1 scores of 68.11%, 69.37%, and 78.70% are seen for the Low, Moderate, and High classes, respectively. The insight from these results is that the High class has the highest precision and recall scores, indicating that the model is proficient at identifying data belonging to the High class. The 'Low' class has a lower recall and higher precision, suggesting that the model tends to correctly identify samples belonging to the 'Low' class but often misses actual 'Low' class samples. The 'Moderate' class has a moderate balance of precision and recall, indicating that the model predicts the 'Moderate' class relatively well but is less accurate than the 'High' class.</p>
+<p>The above results from including all the columns in the dataset and the analysis shows that some models need to improve their performance. To do this, an analysis is performed to assess how the models would perform if only some of the vehicle characteristics were selected instead of all of them. The table below shows the results of performing a Naïve Bayes classification using a combination of different vehicle characteristics.</p>
+<table class="table  table-sm" style="font-size: 12px;">
+    <thead>
+     <tr>
+      <th style="text-align:left;"> Features </th>
+      <th style="text-align:left;"> Class </th>
+      <th style="text-align:right;"> Accuracy </th>
+      <th style="text-align:right;"> Precision </th>
+      <th style="text-align:right;"> Recall </th>
+      <th style="text-align:right;"> F1_Score </th>
+     </tr>
+    </thead>
+   <tbody>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.68904 </td>
+      <td style="text-align:right;"> 0.7138043 </td>
+      <td style="text-align:right;"> 0.5587648 </td>
+      <td style="text-align:right;"> 0.6268402 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.68904 </td>
+      <td style="text-align:right;"> 0.0000000 </td>
+      <td style="text-align:right;"> NaN </td>
+      <td style="text-align:right;"> NaN </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.68904 </td>
+      <td style="text-align:right;"> 0.8152869 </td>
+      <td style="text-align:right;"> 0.7437281 </td>
+      <td style="text-align:right;"> 0.7778652 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.66653 </td>
+      <td style="text-align:right;"> 0.8339166 </td>
+      <td style="text-align:right;"> 0.5017808 </td>
+      <td style="text-align:right;"> 0.6265541 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.66653 </td>
+      <td style="text-align:right;"> 0.0000000 </td>
+      <td style="text-align:right;"> NaN </td>
+      <td style="text-align:right;"> NaN </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.66653 </td>
+      <td style="text-align:right;"> 0.7369846 </td>
+      <td style="text-align:right;"> 0.7695133 </td>
+      <td style="text-align:right;"> 0.7528978 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.73019 </td>
+      <td style="text-align:right;"> 0.7923094 </td>
+      <td style="text-align:right;"> 0.5903677 </td>
+      <td style="text-align:right;"> 0.6765916 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.73019 </td>
+      <td style="text-align:right;"> 0.3636941 </td>
+      <td style="text-align:right;"> 0.6657952 </td>
+      <td style="text-align:right;"> 0.4704192 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.73019 </td>
+      <td style="text-align:right;"> 0.7797077 </td>
+      <td style="text-align:right;"> 0.8073260 </td>
+      <td style="text-align:right;"> 0.7932765 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.77680 </td>
+      <td style="text-align:right;"> 0.8095917 </td>
+      <td style="text-align:right;"> 0.6505572 </td>
+      <td style="text-align:right;"> 0.7214137 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.77680 </td>
+      <td style="text-align:right;"> 0.7529356 </td>
+      <td style="text-align:right;"> 0.6647520 </td>
+      <td style="text-align:right;"> 0.7061012 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.77680 </td>
+      <td style="text-align:right;"> 0.7696690 </td>
+      <td style="text-align:right;"> 0.8687831 </td>
+      <td style="text-align:right;"> 0.8162282 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.76644 </td>
+      <td style="text-align:right;"> 0.8002160 </td>
+      <td style="text-align:right;"> 0.6219066 </td>
+      <td style="text-align:right;"> 0.6998829 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.76644 </td>
+      <td style="text-align:right;"> 0.7534116 </td>
+      <td style="text-align:right;"> 0.6723308 </td>
+      <td style="text-align:right;"> 0.7105657 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.76644 </td>
+      <td style="text-align:right;"> 0.7568287 </td>
+      <td style="text-align:right;"> 0.8668687 </td>
+      <td style="text-align:right;"> 0.8081199 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy + wheelbase </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.75076 </td>
+      <td style="text-align:right;"> 0.7930006 </td>
+      <td style="text-align:right;"> 0.5790819 </td>
+      <td style="text-align:right;"> 0.6693654 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy + wheelbase </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.75076 </td>
+      <td style="text-align:right;"> 0.7184227 </td>
+      <td style="text-align:right;"> 0.7088618 </td>
+      <td style="text-align:right;"> 0.7136102 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy + wheelbase </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.75076 </td>
+      <td style="text-align:right;"> 0.7418873 </td>
+      <td style="text-align:right;"> 0.8583854 </td>
+      <td style="text-align:right;"> 0.7958959 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy + wheelbase + owner_count </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.74536 </td>
+      <td style="text-align:right;"> 0.8042342 </td>
+      <td style="text-align:right;"> 0.5906769 </td>
+      <td style="text-align:right;"> 0.6811080 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy + wheelbase + owner_count </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.74536 </td>
+      <td style="text-align:right;"> 0.7502380 </td>
+      <td style="text-align:right;"> 0.6451525 </td>
+      <td style="text-align:right;"> 0.6937383 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + fuel_tank_volume + mileage + year + highway_fuel_economy + wheelbase + owner_count </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.74536 </td>
+      <td style="text-align:right;"> 0.7231950 </td>
+      <td style="text-align:right;"> 0.8631990 </td>
+      <td style="text-align:right;"> 0.7870191 </td>
+     </tr>
+   </tbody>
+   </table>
+   <br/>
+   <p>In the results above, among the different models, the combination "horsepower + torque_lbft + fuel_tank_volume + mileage + year" has the highest accuracy of 0.77680, which is better than the model that includes all the vehicle characteristics. While the features in this dataset were all selected through correlation, the fact that the best performance came from a combination of a few key features suggests that more features do not necessarily mean better performance. In other words, by reducing the number of features, the complexity of the model can be reduced, leading to better performance because it is easier to interpret and more generalizable. The combination "horsepower + torque_lbft + fuel_tank_volume + mileage + year" may be more concise and better able to generalize because it was constructed considering essential characteristics. Also, including all characteristics may cause the model to overfit the data and fail to generalize to other data, resulting in inaccurate predictions of new data. For these reasons, it was found that a model consisting of five features representative of the vehicle had the best accuracy. This can also be interpreted to mean that these variables strongly impact the price of the vehicle.</p>
+
+
