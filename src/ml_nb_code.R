@@ -52,9 +52,9 @@ analyze_nb <- function(features, result_df) {
   # Calculate accuracy, precision, recall, specificity, and F1 score for Gini method
   result_df <- rbind(result_df, calculate_metrics(conf_matrix$table, as.character(features)))
   
-  return (result_df)
-  
+  return (list(result_df, conf_matrix, model, predictions))
 }
+
 
 # Define result dataframe
 result_df <- data.frame(formula = character(),
@@ -64,6 +64,46 @@ result_df <- data.frame(formula = character(),
                         Recall = numeric(),
                         F1_Score = numeric(),
                         stringsAsFactors = FALSE)
+
+result <- analyze_nb(label ~., result_df)
+
+print("Prior Probabilities:")
+print(result[[3]]$apriori)
+print("\nConditional Probabilities:")
+print(result[[3]]$table)
+
+png("apriori_nb.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+ggplot(as.data.frame(result[[3]]$apriori), aes(x = class_labels, y = prior_prob, fill = class_labels)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Prior Probabilities of Vehicle Price Classes",
+       x = "Price Class",
+       y = "Prior Probability") +
+  theme_minimal()
+# Save the plot
+dev.off()
+
+result[[2]]
+
+conf_mat_table <- as.data.frame(result[[2]]$table)
+
+# Visualization
+png("confusionMatrix_nb.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+ggplot(data = conf_mat_table, aes(x = Reference, y = Prediction, fill = Freq, label = Freq)) +
+  geom_tile() +
+  geom_text(color = "white", size = 8, fontface = "bold") +
+  scale_fill_gradient(low = "lightblue", high = "darkblue") +
+  labs(title = "Confusion Matrix Heatmap based",
+       x = "Reference",
+       y = "Prediction",
+       fill = "Frequency")
+# Save the plot
+dev.off()
+
+# Generate Html Table code
+kable(result[[1]], format = "html", table.attr = ' class="table  table-sm" style="font-size: 12px;"')
+
+# Clear df
+result_df <- result_df[0, ]
 
 # Define formulars
 fml <- list(
@@ -79,7 +119,7 @@ fml <- list(
 
 for (i in 1:length(fml)) {
   print(fml[[i]])
-  result_df <- analyze_nb(fml[[i]], result_df)
+  result_df <- analyze_nb(fml[[i]], result_df)[[1]]
 }
 result_df
 kable(result_df, format = "html", table.attr = ' class="table  table-sm" style="font-size: 12px;"')
