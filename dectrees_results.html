@@ -945,9 +945,242 @@
 <br/>
 <p>In the table above, varying minsplit did not affect the model's evaluation metrics such as accuracy. In a large dataset like this, increasing the value of minsplit may have a limited impact. Because there is enough data, the nodes are sufficiently split to allow the model to learn patterns in the data. Therefore, adjusting minsplit may have little impact on accuracy. For maxdepth, increasing this value to 6 will no longer increase accuracy. When accuracy no longer increases when maxdepth is raised to a certain value, it indicates that the model is optimized for that parameter value, meaning that better predictions cannot be obtained with more splits or a deeper tree. This may indicate that the model is sufficiently complex for that data, assuming that a more complex model can perform better.</p>
 
+<br/>
+<b>Decision tree by feature combination</b>
+<p>Created a decision tree model based on the impurity measures and evaluated the model based on the predicted values. The Gini index was slightly more accurate when analyzing this dataset with a decision tree. At this time, it was also investigated which features are essential for classifying vehicle prices. Then, is it best to apply all the features of this dataset to the decision tree analysis? To answer this question, explored the decision tree model by focusing on the critical features that were analyzed earlier. Analyzed the combination of nine features and obtained the following evaluation results for the prediction model.</p>
+<table class="table  table-sm" style="font-size: 12px;">
+    <thead>
+     <tr>
+      <th style="text-align:left;"> Features </th>
+      <th style="text-align:left;"> Class </th>
+      <th style="text-align:right;"> Accuracy </th>
+      <th style="text-align:right;"> Precision </th>
+      <th style="text-align:right;"> Recall </th>
+      <th style="text-align:right;"> F1_Score </th>
+     </tr>
+    </thead>
+   <tbody>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.7174000 </td>
+      <td style="text-align:right;"> 0.0000000 </td>
+      <td style="text-align:right;"> NaN </td>
+      <td style="text-align:right;"> NaN </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.7174000 </td>
+      <td style="text-align:right;"> 0.9514164 </td>
+      <td style="text-align:right;"> 0.7088652 </td>
+      <td style="text-align:right;"> 0.8124236 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.7174000 </td>
+      <td style="text-align:right;"> 0.4651595 </td>
+      <td style="text-align:right;"> 0.7694675 </td>
+      <td style="text-align:right;"> 0.5798110 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.7231667 </td>
+      <td style="text-align:right;"> 0.0000000 </td>
+      <td style="text-align:right;"> NaN </td>
+      <td style="text-align:right;"> NaN </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.7231667 </td>
+      <td style="text-align:right;"> 0.9237138 </td>
+      <td style="text-align:right;"> 0.7256105 </td>
+      <td style="text-align:right;"> 0.8127649 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.7231667 </td>
+      <td style="text-align:right;"> 0.5660323 </td>
+      <td style="text-align:right;"> 0.7124077 </td>
+      <td style="text-align:right;"> 0.6308404 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8102000 </td>
+      <td style="text-align:right;"> 0.5497767 </td>
+      <td style="text-align:right;"> 0.8003824 </td>
+      <td style="text-align:right;"> 0.6518219 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8102000 </td>
+      <td style="text-align:right;"> 0.8829931 </td>
+      <td style="text-align:right;"> 0.8313885 </td>
+      <td style="text-align:right;"> 0.8564141 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8102000 </td>
+      <td style="text-align:right;"> 0.7520389 </td>
+      <td style="text-align:right;"> 0.7520389 </td>
+      <td style="text-align:right;"> 0.7520389 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8182333 </td>
+      <td style="text-align:right;"> 0.5497767 </td>
+      <td style="text-align:right;"> 0.8003824 </td>
+      <td style="text-align:right;"> 0.6518219 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8182333 </td>
+      <td style="text-align:right;"> 0.9037180 </td>
+      <td style="text-align:right;"> 0.8283614 </td>
+      <td style="text-align:right;"> 0.8644004 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8182333 </td>
+      <td style="text-align:right;"> 0.7295750 </td>
+      <td style="text-align:right;"> 0.7925085 </td>
+      <td style="text-align:right;"> 0.7597407 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8142667 </td>
+      <td style="text-align:right;"> 0.5497767 </td>
+      <td style="text-align:right;"> 0.8003824 </td>
+      <td style="text-align:right;"> 0.6518219 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8142667 </td>
+      <td style="text-align:right;"> 0.9151218 </td>
+      <td style="text-align:right;"> 0.8170533 </td>
+      <td style="text-align:right;"> 0.8633115 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8142667 </td>
+      <td style="text-align:right;"> 0.6812133 </td>
+      <td style="text-align:right;"> 0.8102451 </td>
+      <td style="text-align:right;"> 0.7401477 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.5497767 </td>
+      <td style="text-align:right;"> 0.8003824 </td>
+      <td style="text-align:right;"> 0.6518219 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.9083524 </td>
+      <td style="text-align:right;"> 0.8333254 </td>
+      <td style="text-align:right;"> 0.8692229 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.7450279 </td>
+      <td style="text-align:right;"> 0.8070366 </td>
+      <td style="text-align:right;"> 0.7747935 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.5497767 </td>
+      <td style="text-align:right;"> 0.8003824 </td>
+      <td style="text-align:right;"> 0.6518219 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.9083524 </td>
+      <td style="text-align:right;"> 0.8333254 </td>
+      <td style="text-align:right;"> 0.8692229 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.7450279 </td>
+      <td style="text-align:right;"> 0.8070366 </td>
+      <td style="text-align:right;"> 0.7747935 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.5497767 </td>
+      <td style="text-align:right;"> 0.8003824 </td>
+      <td style="text-align:right;"> 0.6518219 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.9083524 </td>
+      <td style="text-align:right;"> 0.8333254 </td>
+      <td style="text-align:right;"> 0.8692229 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8248000 </td>
+      <td style="text-align:right;"> 0.7450279 </td>
+      <td style="text-align:right;"> 0.8070366 </td>
+      <td style="text-align:right;"> 0.7747935 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> . </td>
+      <td style="text-align:left;"> Low </td>
+      <td style="text-align:right;"> 0.8235667 </td>
+      <td style="text-align:right;"> 0.5518781 </td>
+      <td style="text-align:right;"> 0.7877765 </td>
+      <td style="text-align:right;"> 0.6490578 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> . </td>
+      <td style="text-align:left;"> Moderate </td>
+      <td style="text-align:right;"> 0.8235667 </td>
+      <td style="text-align:right;"> 0.9060092 </td>
+      <td style="text-align:right;"> 0.8332455 </td>
+      <td style="text-align:right;"> 0.8681053 </td>
+     </tr>
+     <tr>
+      <td style="text-align:left;"> . </td>
+      <td style="text-align:left;"> High </td>
+      <td style="text-align:right;"> 0.8235667 </td>
+      <td style="text-align:right;"> 0.7450279 </td>
+      <td style="text-align:right;"> 0.8070366 </td>
+      <td style="text-align:right;"> 0.7747935 </td>
+     </tr>
+   </tbody>
+   </table>
 
-
-
-
-
-
+<br/>
+<p>As shown in the results above, the combination of horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length has the highest accuracy, which is slightly higher than the accuracy of the model including all the features in the dataset. A visualization of the decision tree for this model is shown below.</p>
+<img src="dt_img020.png" class="rounded" width="800">
+<br/>
+<p>In the tree above, the top tree classifies vehicles in the high price category if the torque value is greater than 294, and otherwise in the medium category. The low value of year is classified into the low-price category, and the relatively large value of horsepower is classified into the high-price category, and the higher the mileage, the lower the vehicle price. When building a model based on a decision tree, as shown above, more features do not increase the accuracy or performance of the model. On the contrary, more features increase the complexity and computational efficiency of the model, so it is more important to identify the features that can perform proper classification in advance.</p>
