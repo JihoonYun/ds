@@ -106,24 +106,34 @@ df_dt_test <- df_dt[-train_indices, ]
 cat("Training set length: ", nrow(df_dt_train), "\n")
 cat("Test set length: ", nrow(df_dt_test), "\n")
 
-df_dt_html <- kable(head(df_dt), format = "html", table.attr = "style='width:100%;'") %>%
-  kable_styling(full_width = FALSE)
-
-# Define result dataframe
-result_df <- data.frame(Method = character(), 
-                 Minsplit = numeric(),         
-                 Maxdepth = numeric(),         
-                 Accuracy = numeric(), 
-                 Precision = numeric(), 
-                 Recall = numeric(),
-                 Specificity = numeric(),
-                 F1_Score = numeric(),
-                 stringsAsFactors = FALSE)
-
+df_dt_html <- kable(head(df_dt), format = "html", table.attr = "style='width:100%;'")
 
 write.csv(df_dt, "used_cars_data_cleaned_final_ver_dt_sampled_preprocessed.csv") 
 write.csv(df_dt_train, "used_cars_data_cleaned_final_ver_dt_sampled_preprocessed_train.csv") 
 write.csv(df_dt_test, "used_cars_data_cleaned_final_ver_dt_sampled_preprocessed_test.csv")
+
+
+# Define result dataframe
+result_df <- data.frame(Method = character(), 
+                 Minsplit = numeric(),         
+                 Maxdepth = numeric(), 
+                 Class = character(), 
+                 Accuracy = numeric(), 
+                 Precision = numeric(), 
+                 Recall = numeric(),
+                 F1_Score = numeric(),
+                 stringsAsFactors = FALSE)
+
+calculate_metrics <- function(conf_matrix, method, minsplit, maxdepth) {
+  accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+  precision <- diag(conf_matrix) / colSums(conf_matrix)
+  recall <- diag(conf_matrix) / rowSums(conf_matrix)
+  f1_score <- 2 * precision * recall / (precision + recall)  
+  
+  result <- data.frame(' Method' = method, Minsplit = minsplit, Maxdepth = maxdepth, Class = c("Low", "Moderate", "High"), Accuracy = accuracy, Precision = precision, Recall = recall, F1_Score = f1_score)
+  rownames(result) <- NULL
+  return(result)
+}
 
 
 ###########################################################################################
@@ -134,7 +144,7 @@ rpart_gini <- rpart(df_dt_train$label ~., data = df_dt_train, method='class')
 
 # Create a high-quality PNG file
 png("fancyRpartPlot_gini.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
-fancyRpartPlot(rpart_gini)
+fancyRpartPlot(rpart_gini, main = "Decision trees based on the Gini index")
 # Save the plot
 dev.off()
 
@@ -144,11 +154,13 @@ var_imp <- varImp(rpart_gini) %>%
            arrange(desc(Overall)) %>% 
            slice(1:20)
 
+png("Variable_Importance_gini.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
 ggplot(var_imp, aes(x = reorder(rowname, -Overall), y = Overall)) +
   geom_bar(stat = "identity", fill = "steelblue") +
   labs(title = "Top 20 Variable Importance", x = "Variable", y = "Importance") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-
+# Save the plot
+dev.off()
 # Find the cp value for pruning
 # printcp(rpart_gini)
 # 
@@ -162,61 +174,108 @@ rpart_gini_pd <- predict(rpart_gini, df_dt_test, type = "class")
 
 # Calculate confusion matrix
 confusion_matrix_gini <- confusionMatrix(rpart_gini_pd, df_dt_test$label)
+conf_mat_table <- as.data.frame(confusion_matrix_gini$table)
+
+# Visualization
+png("confusionMatrix_gini.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+ggplot(data = conf_mat_table, aes(x = Reference, y = Prediction, fill = Freq, label = Freq)) +
+  geom_tile() +
+  geom_text(color = "white", size = 8, fontface = "bold") +
+  scale_fill_gradient(low = "lightblue", high = "darkblue") +
+  labs(title = "Confusion Matrix Heatmap based on the Gini index",
+       x = "Reference",
+       y = "Prediction",
+       fill = "Frequency")
+# Save the plot
+dev.off()
 
 # Calculate accuracy, precision, recall, specificity, and F1 score for Gini method
+result_df <- rbind(result_df, calculate_metrics(confusion_matrix, 'gini', -1, -1))
+kable(result_df, format = "html", table.attr = ' class="table  table-sm" style="font-size: 12px;"')
 
-accuracy_gini <- confusion_matrix_gini$overall[1]
-precision_gini <- confusion_matrix_gini$byClass[1]
-recall_gini <- confusion_matrix_gini$byClass[2]
-specificity_gini <- confusion_matrix_gini$byClass[3]
-f1_score_gini <- confusion_matrix_gini$byClass[4]
 
-new_row <- data.frame(Method = "Gini",
-                      Minsplit = -1,         
-                      Maxdepth = -1,    
-                      Accuracy = accuracy_gini,
-                      Precision = precision_gini,
-                      Recall = recall_gini,
-                      Specificity = specificity_gini,
-                      F1_Score = f1_score_gini,
-                      stringsAsFactors = FALSE)
 
-result_df <- rbind(result_df, new_row)
+######
+# Pruning
+######
+# Train
+rpart_gini_pruning <- rpart(df_dt_train$label ~., data = df_dt_train, method='class', cp = 0.001) 
+
+# Create a high-quality PNG file
+png("fancyRpartPlot_gini_pruning.png", width = 4000, height = 2800, units = "px", pointsize = 12, res = 600)
+fancyRpartPlot(rpart_gini_pruning, main = "Decision trees based on the Gini index after pruning")
+# Save the plot
+dev.off()
+
+# Extract variable importance
+var_imp_pruning <- varImp(rpart_gini_pruning) %>% 
+  rownames_to_column() %>% 
+  arrange(desc(Overall)) %>% 
+  slice(1:20)
+
+png("Variable_Importance_gini_pruning.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+ggplot(var_imp_pruning, aes(x = reorder(rowname, -Overall), y = Overall)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Top 20 Variable Importance", x = "Variable", y = "Importance") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# Save the plot
+dev.off()
+
+# Prediction
+rpart_gini_pd_pruning <- predict(rpart_gini_pruning, df_dt_test, type = "class")
+
+confusion_matrix_gini_pruning <- confusionMatrix(rpart_gini_pd_pruning, df_dt_test$label)
 
 ###########################################################################################
-# Entropy
+# Information Gain(Entropy)
 ###########################################################################################
 # Train
 rpart_entropy <- rpart(df_dt_train$label ~., data = df_dt_train, method='class', parms = list(split="information"))
-rpart.plot(rpart_entropy)
-fancyRpartPlot(rpart_entropy)
-prp(rpart_entropy)
+# rpart.plot(rpart_entropy)
+
+png("fancyRpartPlot_entropy.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+fancyRpartPlot(rpart_entropy, main = "Decision trees based on Information gain")
+# Save the plot
+dev.off()
+# prp(rpart_entropy)
+
+# Extract variable importance
+var_imp_ent <- varImp(rpart_entropy) %>% 
+  rownames_to_column() %>% 
+  arrange(desc(Overall)) %>% 
+  slice(1:20)
+
+png("Variable_Importance_entropy.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+ggplot(var_imp_ent, aes(x = reorder(rowname, -Overall), y = Overall)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(title = "Top 20 Variable Importance", x = "Variable", y = "Importance") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# Save the plot
+dev.off()
 
 # Prediction
 rpart_entropy_pd <- predict(rpart_entropy, df_dt_test, type = "class", parms = list(split="information"))
 
 # Calculate confusion matrix
 confusion_matrix_entropy <- confusionMatrix(rpart_entropy_pd, df_dt_test$label)
+conf_mat_table_ent <- as.data.frame(confusion_matrix_entropy$table)
 
-# Calculate accuracy, precision, recall, specificity, and F1 score for Entropy method
-accuracy_entropy <- confusion_matrix_entropy$overall[1]
-precision_entropy <- confusion_matrix_entropy$byClass[1]
-recall_entropy <- confusion_matrix_entropy$byClass[2]
-specificity_entropy <- confusion_matrix_entropy$byClass[3]
-f1_score_entropy <- confusion_matrix_entropy$byClass[4]
+# Visualization
+png("confusionMatrix_entropy.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+ggplot(data = conf_mat_table_ent, aes(x = Reference, y = Prediction, fill = Freq, label = Freq)) +
+  geom_tile() +
+  geom_text(color = "white", size = 8, fontface = "bold") +
+  scale_fill_gradient(low = "lightblue", high = "darkblue") +
+  labs(title = "Confusion Matrix Heatmap based on the Gini index",
+       x = "Reference",
+       y = "Prediction",
+       fill = "Frequency")
+# Save the plot
+dev.off()
 
-new_row <- data.frame(Method = "Entropy",
-                      Minsplit = -1,         
-                      Maxdepth = -1,    
-                      Accuracy = accuracy_entropy,
-                      Precision = precision_entropy,
-                      Recall = recall_entropy,
-                      Specificity = specificity_entropy,
-                      F1_Score = f1_score_entropy,
-                      stringsAsFactors = FALSE)
-
-result_df <- rbind(result_df, new_row)
-
+# Calculate accuracy, precision, recall, specificity, and F1 score for Gini method
+result_df <- rbind(result_df, calculate_metrics(confusion_matrix_entropy$table, 'information', -1, -1))
+kable(result_df, format = "html", table.attr = ' class="table  table-sm" style="font-size: 12px;"')
 
 ###########################################################################################
 # minsplit = 10, 20, 30Permalink
@@ -232,24 +291,8 @@ for (s in c('gini', 'information')){
     confusion_matrix_minsplit <- confusionMatrix(rpart_minsplit_pd, df_dt_test$label)
     
     # Calculate accuracy, precision, recall, specificity, and F1 score for Gini method
+    result_df <- rbind(result_df, calculate_metrics(confusion_matrix_minsplit$table, s, i, -1))
     
-    accuracy_minsplit <- confusion_matrix_minsplit$overall[1]
-    precision_minsplit <- confusion_matrix_minsplit$byClass[1]
-    recall_minsplit <- confusion_matrix_minsplit$byClass[2]
-    specificity_minsplit <- confusion_matrix_minsplit$byClass[3]
-    f1_score_minsplit <- confusion_matrix_minsplit$byClass[4]
-    
-    new_row <- data.frame(Method = ifelse(s == 'gini', 'Gini', ifelse(s == 'information', 'Entropy', NA)),
-                          Minsplit = i,         
-                          Maxdepth = -1,    
-                          Accuracy = accuracy_minsplit,
-                          Precision = precision_minsplit,
-                          Recall = recall_minsplit,
-                          Specificity = specificity_minsplit,
-                          F1_Score = f1_score_minsplit,
-                          stringsAsFactors = FALSE)
-    
-    result_df <- rbind(result_df, new_row)
   }
 }
 
@@ -259,7 +302,7 @@ for (s in c('gini', 'information')){
 for (s in c('gini', 'information')){
   for (i in c(2, 3, 4, 5, 6, 7)){
     rpart_maxdepth <- rpart(df_dt_train$label ~., data = df_dt_train, method='class',control = rpart.control(maxdepth = i), parms = list(split=s))
-      # fancyRpartPlot(rpart_maxdepth)
+  
     png(paste0("fancyRpartPlot_",s,"_maxdepth_",i,".png"), width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
     fancyRpartPlot(rpart_maxdepth)
     # Save the plot
@@ -270,29 +313,14 @@ for (s in c('gini', 'information')){
     confusion_matrix_maxdepth <- confusionMatrix(rpart_maxdepth_pd, df_dt_test$label)
     
     # Calculate accuracy, precision, recall, specificity, and F1 score for Gini method
+    result_df <- rbind(result_df, calculate_metrics(confusion_matrix_maxdepth$table, s, -1, i))
     
-    accuracy_maxdepth <- confusion_matrix_maxdepth$overall[1]
-    precision_maxdepth <- confusion_matrix_maxdepth$byClass[1]
-    recall_maxdepth <- confusion_matrix_maxdepth$byClass[2]
-    specificity_maxdepth <- confusion_matrix_maxdepth$byClass[3]
-    f1_score_maxdepth <- confusion_matrix_maxdepth$byClass[4]
-    
-    new_row <- data.frame(Method = ifelse(s == 'gini', 'Gini', ifelse(s == 'information', 'Entropy', NA)),
-                          Minsplit = -1,         
-                          Maxdepth = i,    
-                          Accuracy = accuracy_maxdepth,
-                          Precision = precision_maxdepth,
-                          Recall = recall_maxdepth,
-                          Specificity = specificity_maxdepth,
-                          F1_Score = f1_score_maxdepth,
-                          stringsAsFactors = FALSE)
-    
-    result_df <- rbind(result_df, new_row)
   }
 }
 
 result_df
 
+kable(result_df, format = "html", table.attr = ' class="table  table-sm" style="font-size: 12px;"')
 
 
 # Train the model
@@ -327,10 +355,6 @@ evaluation_table <- data.frame("MSE" = mse,
 
 # Print the evaluation table
 print(evaluation_table)
-
-
-
-
 
 
 
@@ -408,95 +432,81 @@ if (train_accuracy_after - accuracy_after > 0.05) {
 
 
 
-
-# Train model
-rpart_model <- rpart(label ~ ., data = df_dt_train, method = 'class')
-
-# Error visualization based on cp value
-plotcp(rpart_model)
-
-# Find the optimal cp value
-opt_cp <- rpart_model$cptable[which.min(rpart_model$cptable[,"xerror"]),"CP"]
-print(paste("Optimal CP value:", opt_cp))
-
-
-
-# Define a sequence of cp values
-cp_seq <- seq(0.01, 0.5, by = 0.01)
-
-# Create empty vectors to store accuracy values
-train_accuracy <- vector("numeric", length = length(cp_seq))
-test_accuracy <- vector("numeric", length = length(cp_seq))
-
-# Train models with different cp values and compute accuracies
-for (i in 1:length(cp_seq)) {
-  rpart_model <- rpart(label ~ ., data = df_dt_train, method = "class", cp = cp_seq[i])
-  train_predictions <- predict(rpart_model, newdata = df, type = "class")
-  train_accuracy[i] <- mean(train_predictions == df_dt_train$label)
-}
-
-# Plot the learning curve
-learning_curve <- data.frame(cp = cp_seq, train_accuracy = train_accuracy)
-ggplot(learning_curve, aes(x = cp, y = train_accuracy)) +
-  geom_line() +
-  labs(title = "Learning Curve", x = "CP Value", y = "Accuracy") +
-  theme_minimal()
-
-# Find the cp value where overfitting occurs
-overfitting_cp <- cp_seq[which.max(train_accuracy)]
-print(paste("CP value where overfitting occurs:", overfitting_cp))
+################################################################################
+# Decision tree models with various features
+################################################################################
+str(df_dt_test)
+# Define formulars
+fml <- list(
+  label ~ horsepower + torque_lbft,
+  label ~ horsepower + torque_lbft + height,
+  label ~ horsepower + torque_lbft + height + year,
+  label ~ horsepower + torque_lbft + height + year + fuel_tank_volume,
+  label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage, 
+  label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length,
+  label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count,
+  label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width,
+  # label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width + highway_fuel_economy,
+  # label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width + highway_fuel_economy +engine_displacement,
+  # label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width + highway_fuel_economy +engine_displacement + front_legroom,
+  # label ~ horsepower + torque_lbft + height + year + fuel_tank_volume + mileage + length + owner_count + width + highway_fuel_economy +engine_displacement + front_legroom + engine_cylinders,
+  label ~ .
+)
 
 
-
-
-
-
-
-
-# Define a sequence of cp values
-cp_seq <- seq(0.0001, 0.5, by = 0.0005)
-
-# Create empty vectors to store accuracy values
-train_accuracy <- vector("numeric", length = length(cp_seq))
-test_accuracy <- vector("numeric", length = length(cp_seq))
-
-# Train models with different cp values and compute accuracies
-for (i in 1:length(cp_seq)) {
-  rpart_model <- rpart(label ~ ., data = df_dt_train, method = "class", cp = cp_seq[i])
-  train_predictions <- predict(rpart_model, newdata = df_dt_train, type = "class")
-  train_accuracy[i] <- mean(train_predictions == df_dt_train$label)
-  test_predictions <- predict(rpart_model, newdata = df_dt_test, type = "class")
-  test_accuracy[i] <- mean(test_predictions == df_dt_test$label)
-}
-
-# Create empty vectors to store accuracy values
-train_accuracy <- vector("numeric", length = length(cp_seq))
-test_accuracy <- vector("numeric", length = length(cp_seq))
-accuracy_diff <- vector("numeric", length = length(cp_seq))
-
-# Train models with different cp values and compute accuracies
-for (i in 1:length(cp_seq)) {
-  rpart_model <- rpart(label ~ ., data = df_dt_train, method = "class", cp = cp_seq[i])
-  train_predictions <- predict(rpart_model, newdata = df_dt_train, type = "class")
-  train_accuracy[i] <- mean(train_predictions == df_dt_train$label)
+# Define functions
+calculate_metrics <- function(conf_matrix, features) {
+  accuracy <- sum(diag(conf_matrix)) / sum(conf_matrix)
+  precision <- diag(conf_matrix) / colSums(conf_matrix)
+  recall <- diag(conf_matrix) / rowSums(conf_matrix)
+  f1_score <- 2 * precision * recall / (precision + recall)  
   
-  test_predictions <- predict(rpart_model, newdata = df_dt_test, type = "class")
-  test_accuracy[i] <- mean(test_predictions == df_dt_test$label)
-  
-  accuracy_diff[i] <- abs(train_accuracy[i] - test_accuracy[i])
+  result <- data.frame(Features = features[3], Class = c("Low", "Moderate", "High"), Accuracy = accuracy, Precision = precision, Recall = recall, F1_Score = f1_score)
+  rownames(result) <- NULL
+  return(result)
 }
-# Filter values with accuracy difference <= 0.05
-filtered_indices <- which(accuracy_diff <= 0.05)
-optimal_cp <- cp_seq[filtered_indices[1]]
 
-# Plot the learning curve
-learning_curve <- data.frame(cp = cp_seq, train_accuracy = train_accuracy, test_accuracy = test_accuracy, accuracy_diff = accuracy_diff)
-ggplot(learning_curve, aes(x = cp)) +
-  geom_line(aes(y = train_accuracy, color = "Train Accuracy")) +
-  geom_line(aes(y = test_accuracy, color = "Test Accuracy")) +
-  labs(title = paste("Learning Curve (Optimal CP =", round(optimal_cp, 3), ")"), x = "CP Value", y = "Accuracy") +
-  scale_color_manual(name = "Accuracy", values = c("Train Accuracy" = "blue", "Test Accuracy" = "red")) +
-  theme_minimal() +
-  geom_vline(xintercept = optimal_cp, linetype = "dashed", color = "green") +
-  annotate("text", x = optimal_cp, y = max(learning_curve$test_accuracy), 
-           label = paste("Optimal CP =", round(optimal_cp, 3)), vjust = -1, hjust = -0.5, color = "green")
+analyze_dt <- function(features, result_df) {
+  # Build a Decision Tree model
+  model <- rpart(features, data = df_dt_train, method='class') 
+  
+  # Make predictions on the test set
+  predictions <- predict(model, newdata = df_dt_test, type = "class")
+  
+  # Calculate the confusion matrix
+  conf_matrix <- confusionMatrix(predictions, df_dt_test$label)
+  
+  # Calculate accuracy, precision, recall, specificity, and F1 score for Gini method
+  result_df <- rbind(result_df, calculate_metrics(conf_matrix$table, as.character(features)))
+  
+  return (list(result_df, conf_matrix, model, predictions))
+}
+
+
+# Define result dataframe
+result_features_df <- data.frame(formula = character(),
+                        Class = character(), 
+                        Accuracy = numeric(), 
+                        Precision = numeric(), 
+                        Recall = numeric(),
+                        F1_Score = numeric(),
+                        stringsAsFactors = FALSE)
+
+
+for (i in 1:length(fml)) {
+  print(fml[[i]])
+  result_features_df <- analyze_dt(fml[[i]], result_features_df)[[1]]
+}
+result_features_df
+kable(result_features_df, format = "html", table.attr = ' class="table  table-sm" style="font-size: 12px;"')
+
+model_6 <- analyze_dt(fml[[6]], result_features_df)
+model_6[[3]]
+
+# Create a high-quality PNG file
+png("fancyRpartPlot_features_gini.png", width = 3600, height = 2800, units = "px", pointsize = 12, res = 600)
+fancyRpartPlot(model_6[[3]], main = "Decision trees based on the Gini index")
+# Save the plot
+dev.off()
+
+
