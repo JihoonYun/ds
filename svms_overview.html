@@ -3,10 +3,10 @@
 
 <b>What is an SVM?</b>
 <p>A Support Vector Machine (SVM) is a type of supervised learning algorithm, primarily used for classification and regression tasks. It is used to categorize a given data set into specific classes or make predictions from continuous values. SVMs are particularly powerful on high-dimensional data. In addition, SVM is a classification technique that finds a hyperplane that can divide a space of N dimensions into (N-1)-dimensions. To make it easier to understand, here's an example.</p>
-<img src="ml_svm_001.png" class="rounded" width="700">
+<img src="ml_svm_001.png" class="rounded" width="500">
 <br/>
 <p>In the image above, ten pieces of data are currently categorized into classes 0 and 1. The goal is to classify classes 0 and 1 correctly. The SVM aims to find the optimal boundary that separates the two classes. First, let's discuss what the SVM calls the optimal boundary.</p>
-<img src="ml_svm_002.png" class="rounded" width="700">
+<img src="ml_svm_002.png" class="rounded" width="500">
 <br/>
 <p>The margin is the gap between classes, the distance between the data at the ends of each class. SVMs aim to maximize this margin when classifying, which means finding a boundary that maximizes the margin. The support vectors are the data in each class closest to the margin. The two data points above the dotted line are the support vectors in the figure above. They are called support vectors because the position of these data points determines the position of the boundary (hyperplane), hence the name supporting the hyperplane function.</p>
 <p>Returning to the definition of SVM and interpreting it as finding a hyperplane that can divide the N-dimensional space into (N-1) dimensions, The data above is a two-dimensional space. A boundary with a straight line (2-1)-dimensional was found to classify it. If the data were three-dimensional, it would be represented by N, (N-1) dimensions, a generalization of the division into a two-dimensional space. Also, the hyperplane is the boundary that has been discussed, and it is a boundary that can be classified in higher dimensions instead of two dimensions. Here's an illustration to help understand.</p>
@@ -22,10 +22,10 @@
 
 <b>Hard Margin</b>
 <p>Hard margin is a method that finds a hyperplane of maximum margin capable of separating the two classes. However, all training data must be linearly separated so that they lie on the outside of the margin. In other words, any error is not allowed.</p>
-<img src="ml_svm_006.png" class="rounded" width="700">
+<img src="ml_svm_006.png" class="rounded" width="500">
 <br/>
 <p>As shown above, one piece of data in class 0 is outside the margin, and if there is an error, it will violate the goal of the hard margin.</p>
-<img src="ml_svm_007.png" class="rounded" width="700">
+<img src="ml_svm_007.png" class="rounded" width="500">
 <br/>
 <p>Where W represents the weight, {w<sub>1</sub>, w<sub>2</sub>, w<sub>3</sub> ... w<sub>n</sub>}, and b is the bias. The goal is to maximize the value of 2/||w|| on the hard margin. When classification is performed, the test data is entered into the discriminant function, and classification is based on 0. If deducing the expression for the objective function, it is as follows.</p>
 <img src="ml_svm_012.png" class="rounded" width="150">
@@ -33,7 +33,7 @@
 <p>However, it is practically impossible to find a decision boundary that can divide all data linearly and without error. This is where the concept of soft margins comes in.</p>
 <b>Soft Margin</b>
 <p>Soft margin is a way to improve on the limitations of hard margin by allowing for some degree of misclassification rather than looking for a perfectly classifying hyperplane. Soft margin allows for misclassification and uses a slack variable to account for it. The slack variable is used to measure the distance of misclassified data from the corresponding decision boundary, which can be understood by looking at the figure below.</p>
-<img src="ml_svm_008.png" class="rounded" width="700">
+<img src="ml_svm_008.png" class="rounded" width="500">
 <br/>
 <ul>
     <li><b>e = 0</b>: if the classification is correct</li>
@@ -45,5 +45,5 @@
 <img src="ml_svm_009.png" class="rounded" width="200">
 <br/>
 <p>The slack variable is added to the existing objective function, which can be adjusted by limiting the sum of the slack variables through a parameter called C(cost). So, parameter C plays an essential role in controlling overfitting. A larger C allows for less margin for learning error, resulting in fewer errors but the risk of overfitting, while a smaller C allows for larger margins, more errors, and the risk of underfitting.</p>
-<img src="ml_svm_010.png" class="rounded" width="800">
+<img src="ml_svm_010.png" class="rounded" width="600">
 
