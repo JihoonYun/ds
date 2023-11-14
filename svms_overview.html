@@ -20,7 +20,7 @@
 <br/>
 <p>As seen in the image above, not all data can be classified linearly, so a linear SVM is used for the data on the left and a nonlinear SVM for the data on the right to solve the problem. First, let's discuss linear SVMs. Linear SVMs are employed when the data can be classified linearly and are broadly divided into hard and soft margin methods.</p>
 
-<b>Linear Separation</b>
+<b><i>Linear Separation</i></b>
 <p><b>Hard Margin</b> is a method that finds a hyperplane of maximum margin capable of separating the two classes. However, all training data must be linearly separated so that they lie on the outside of the margin. In other words, any error is not allowed.</p>
 <img src="ml_svm_006.png" class="rounded" width="450">
 <br/>
@@ -47,15 +47,17 @@
 <p>The slack variable is added to the existing objective function, which can be adjusted by limiting the sum of the slack variables through a parameter called C(cost). So, parameter C plays an essential role in controlling overfitting. A larger C allows for less margin for learning error, resulting in fewer errors but the risk of overfitting, while a smaller C allows for larger margins, more errors, and the risk of underfitting.</p>
 <img src="ml_svm_010.png" class="rounded" width="500">
 <br/>
-<b>Nonlinear Separation</b>
+<br/>
+<br/>
+<b><i>Nonlinear Separation</i></b>
 <p>What if, unlike hard and soft margins, linear separation is not possible?</p>
-<img src="ml_svm_013.png" class="rounded" width="900">
+<img src="ml_svm_013.png" class="rounded" width="800">
 <br/>
 <p>The concept behind this is straightforward. In the figure on the left below, linear separation is impossible, but we converted the data to two dimensions to solve this problem. The basic concept of nonlinear separation is that the input space that cannot be linearly separated is sent to a higher-dimensional feature space that can be linearly separated and then converted back to the original input space to perform nonlinear separation.</p>
 <img src="ml_svm_014.png" class="rounded" width="450">
 <br/>
 <p>To convert the input space to the feature space, we use a mapping function, which may vary depending on the definition of the mapping function, and the expression can be expressed as below.</p>
-<img src="ml_svm_015.png" class="rounded" width="150">
+<img src="ml_svm_015.png" class="rounded" width="120">
 <br/>
 <p>However, this is where the problem arises. While transforming to a higher-dimensional feature space and solving the objective function problem is feasible in simple dimensions, the computational growth becomes prohibitive as the order increases. This is where kernel tricks come in. Kernel tricks don't actually scale the characteristics of the data, but they compute as if they do.</p>
 <img src="ml_svm_016.png" class="rounded" width="280">
