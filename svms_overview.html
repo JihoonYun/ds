@@ -38,7 +38,7 @@
 <ul>
     <li><b>ε = 0</b>: if the classification is correct</li>
     <li><b>0 &lt; ε &lt; 1</b>: Correct classification, but closer to the hyperplane than the support vector</li>
-    <li><b>ε &lt; 1</b>: if the classification is incorrect</li>
+    <li><b>ε &gt; 1</b>: if the classification is incorrect</li>
 </ul>
 <br/>
 <p>To summarize, since perfect classification is not possible, a soft margin is used to allow an error above and below the hyperplane equal to the size of the slack variable. The objective function with the slack variable is shown below.</p>
@@ -54,7 +54,58 @@
 <img src="ml_svm_013.png" class="rounded" width="800">
 <br/>
 <p>The concept behind this is straightforward. In the figure on the left below, linear separation is impossible, but we converted the data to two dimensions to solve this problem. The basic concept of nonlinear separation is that the input space that cannot be linearly separated is sent to a higher-dimensional feature space that can be linearly separated and then converted back to the original input space to perform nonlinear separation.</p>
-<img src="ml_svm_014.png" class="rounded" width="450">
+<img src="ml_svm_017.png" class="rounded" width="550">
+<br/>
+<p>For example, in two dimensions, no hyperplane perfectly separates the two classes, as shown on the left in the figure above, but when transformed into a three-dimensional form, the appropriate hyperplane can be found.  After moving low-dimensional observations to higher dimensions, the next step in the process of finding a hyperplane is necessary.</p>
+<ul>
+    <li><p>Transform each observation to a higher dimension (multiplying each observation vector by a matrix moves it to a higher dimension)</p></li>
+    <li><p>Compute the inner product between observations in higher dimensions</p></li>
+</ul>
+<p>To understand the idea of moving observations to higher dimensions, it is useful to refer to the geometric meanings of matrices and vectors. A matrix acts as a linear transformation that transforms a given vector to a new location. They can also be moved to other dimensions.</p>
+<img src="ml_svm_018.png" class="rounded" width="350">
+<br/>
+<p>In the above example, multiplying the original two-dimensional vector v by the A matrix transforms it into a three-dimensional Av vector. Here, inner computation is used to measure the similarity between two observations, which is important when mapping data into higher dimensions. However, if all the above observations are moved to a higher dimension, and the inner product between the observations in the higher dimension is calculated separately, the computation time will be too long. Therefore, to solve this problem, the kernel function (kernel trick), a method used in linear algebra, is employed. Using a kernel function, the inner product in a higher dimension can be computed simply without directly sending each observation to the higher dimension. There are two types of kernel functions: polynomial kernel and rbf kernel (radius basis function).</p>
+<br/>
+<b>Polynomial Kernel</b>
+<p>A polynomial kernel is a kernel that computes the inner product of all possible combinations of input variables, or vectors, up to a specified order. The general model of a polynomial kernel is as follows:</p>
+<img src="ml_svm_019.png" class="rounded" width="180">
+<br/>
+<p>Let a,b represent two separate vectors in the lower dimension, and perform the same operation on them that returns the inner product after sending them to the higher dimension via the expression in the right-hand term. In the right-hand side term, aT * b means the inner operation. And r, d are user-defined hyper-parameters, where r is the coefficient of the kernel and d is the degree of the polynomial. As the value of d increases, the inner operation is performed in a higher dimension. The appropriate number of dimensions depends on your dataset, so you'll need to test this yourself. To help you understand this expression, here's an example of taking a point in two dimensions and a polynomial kernel with r = 1 and d = 2 and casting the point to the appropriate number of dimensions.</p>
+<img src="ml_svm_020.png" class="rounded" width="180">
+<br/>
+<p>Expanding this polynomial gives the following.</p>
+<img src="ml_svm_021.png" class="rounded" width="400">
+<br/>
+<p>Now, to represent this polynomial in its inner form, the vectors a and b need to be mapped to three dimensions. The vectors a and b are cast into a three-dimensional space as shown below.</p>
+<img src="ml_svm_022.png" class="rounded" width="300">
+<br/>
+<p>Then the polynomial kernel K(a,b) can be represented in inner form as follows.</p>
+<img src="ml_svm_023.png" class="rounded" width="450">
+<br/>
+<p>Thus, K(a,b) can be expressed in inner form equal to (ab + 1)<sup>2</sup>.</p>
+<br/>
+<br/>
+<b>RBF Kernel</b>
+<p>The Radial Basis Function (RBF) kernel is also known as a Gaussian function and is defined as follows.</p>
+<img src="ml_svm_024.png" class="rounded" width="250">
+<br/>
+<ul>
+    <li><p>a and b are the input data points (vectors).</p></li>
+    <li><p>||a - b||<sup>2</sup> is the square of the Euclidean distance between the two vectors.</p></li>
+    <li><p>σ is a parameter that controls the width of the RBF kernel.</p></li>
+</ul>
+<p>The RBF kernel maps data points into a higher-dimensional space based on the distance between them. This helps solve linear inseparability problems by projecting data into a nonlinear space. The value of σ determines the range of influence of the RBF kernel, and the choice of an appropriate σ value can play an important role in the performance of the model. And the RBF kernel has the effect of sending a vector in a low-dimensional space into an infinite dimension, where it finds its inner product. It can also be expressed as above, with the right-hand side term simplified using gamma.</p>
+<img src="ml_svm_025.png" class="rounded" width="400">
+<br/>
+<p>γ has the same meaning as the polynomial kernel, but here it has a -, so the larger the value, the smaller the eigenvalues of the two vectors, and therefore the less similar they are. This means that only very close observations will be judged as similar. When this happens (=γ becomes larger), the boundary shape in low dimensions becomes complicated. </p>
+<img src="ml_svm_026.png" class="rounded" width="1100">
+<br/>
+<p>Referring to the figure above, it can be seen that as γ increases, the boundary shape becomes more complex, and the probability of overfitting increases.</p>
+
+
+
+
+<!-- <img src="ml_svm_014.png" class="rounded" width="450">
 <br/>
 <p>To convert the input space to the feature space, we use a mapping function, which may vary depending on the definition of the mapping function, and the expression can be expressed as below.</p>
 <img src="ml_svm_015.png" class="rounded" width="120">
@@ -67,7 +118,7 @@
 <p>However, this is where the problem arises. While transforming to a higher-dimensional feature space and solving the objective function problem is feasible in simple dimensions, the computational growth becomes prohibitive as the order increases. This is where kernel tricks come in. Kernel tricks don't actually scale the characteristics of the data, but they compute as if they do.</p>
 <img src="ml_svm_016.png" class="rounded" width="280">
 <br/>
-<p>As shown in the expression above, the kernel trick does not need to explicitly know the dimensionality of the feature space or the mapping relationship; it only needs to compute the inner product of two vectors in the extended feature space. The idea is to use a kernel function to solve a simple computation without the need for high-dimensional complexity. There are two types of kernel functions: polynomial kernel and rbf kernel (radius basis function).</p>
+<p>As shown in the expression above, the kernel trick does not need to explicitly know the dimensionality of the feature space or the mapping relationship; it only needs to compute the inner product of two vectors in the extended feature space. The idea is to use a kernel function to solve a simple computation without the need for high-dimensional complexity. There are two types of kernel functions: polynomial kernel and rbf kernel (radius basis function).</p> -->
 
 
 
