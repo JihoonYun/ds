@@ -36,9 +36,9 @@
 <img src="ml_svm_008.png" class="rounded" width="450">
 <br/>
 <ul>
-    <li><b>e = 0</b>: if the classification is correct</li>
-    <li><b>0 &gt; e <1</b>: Correct classification, but closer to the hyperplane than the support vector</li>
-    <li><b>e > 1</b>: if the classification is incorrect</li>
+    <li><b>ε = 0</b>: if the classification is correct</li>
+    <li><b>0 &lt; ε &lt; 1</b>: Correct classification, but closer to the hyperplane than the support vector</li>
+    <li><b>ε &lt; 1</b>: if the classification is incorrect</li>
 </ul>
 <br/>
 <p>To summarize, since perfect classification is not possible, a soft margin is used to allow an error above and below the hyperplane equal to the size of the slack variable. The objective function with the slack variable is shown below.</p>
@@ -59,10 +59,14 @@
 <p>To convert the input space to the feature space, we use a mapping function, which may vary depending on the definition of the mapping function, and the expression can be expressed as below.</p>
 <img src="ml_svm_015.png" class="rounded" width="120">
 <br/>
+<p>To understand the idea of moving each observation to a higher dimension, it is helpful to refer to the geometric meanings of matrices and vectors. A matrix acts as a linear transformation that transforms a particular vector to a new position. This can be done in different dimensions. For example, the expression below shows that multiplying the original two-dimensional v vector by the A matrix transforms it into a three-dimensional Av vector.</p>
+<img src="ml_svm_018.png" class="rounded" width="120">
+<br/>
+<p>The data is then mapped to a higher dimension, moving each observation to a higher dimension and calculating the inner product. The inner product measures the similarity between two vectors, which is used to find the decision boundary. In low dimensions, finding the perfect decision boundary (hyperplane) can be challenging, but by mapping the data to higher dimensions, non-linear patterns can be distinguished linearly.</p>
 <p>However, this is where the problem arises. While transforming to a higher-dimensional feature space and solving the objective function problem is feasible in simple dimensions, the computational growth becomes prohibitive as the order increases. This is where kernel tricks come in. Kernel tricks don't actually scale the characteristics of the data, but they compute as if they do.</p>
 <img src="ml_svm_016.png" class="rounded" width="280">
 <br/>
-<p>As shown in the expression above, the kernel trick does not need to explicitly know the dimensionality of the feature space or the mapping relationship; it only needs to compute the inner product of two vectors in the extended feature space. The idea is to use a kernel function to solve a simple computation without the need for high-dimensional complexity.</p>
+<p>As shown in the expression above, the kernel trick does not need to explicitly know the dimensionality of the feature space or the mapping relationship; it only needs to compute the inner product of two vectors in the extended feature space. The idea is to use a kernel function to solve a simple computation without the need for high-dimensional complexity. There are two types of kernel functions: polynomial kernel and rbf kernel (radius basis function).</p>
 
 
 
