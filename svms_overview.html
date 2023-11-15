@@ -60,7 +60,8 @@
 <img src="ml_svm_015.png" class="rounded" width="120">
 <br/>
 <p>To understand the idea of moving each observation to a higher dimension, it is helpful to refer to the geometric meanings of matrices and vectors. A matrix acts as a linear transformation that transforms a particular vector to a new position. This can be done in different dimensions. For example, the expression below shows that multiplying the original two-dimensional v vector by the A matrix transforms it into a three-dimensional Av vector.</p>
-<img src="ml_svm_018.png" class="rounded" width="120">
+<img src="ml_svm_018.png" class="rounded" width="350">
+<br/>
 <br/>
 <p>The data is then mapped to a higher dimension, moving each observation to a higher dimension and calculating the inner product. The inner product measures the similarity between two vectors, which is used to find the decision boundary. In low dimensions, finding the perfect decision boundary (hyperplane) can be challenging, but by mapping the data to higher dimensions, non-linear patterns can be distinguished linearly.</p>
 <p>However, this is where the problem arises. While transforming to a higher-dimensional feature space and solving the objective function problem is feasible in simple dimensions, the computational growth becomes prohibitive as the order increases. This is where kernel tricks come in. Kernel tricks don't actually scale the characteristics of the data, but they compute as if they do.</p>
