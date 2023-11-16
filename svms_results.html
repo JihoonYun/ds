@@ -1918,14 +1918,16 @@
 
     </div>
 </div>
-
 <br/>
+<p>Analyzing the table above, the Linear kernel produces a linear decision boundary with the accuracy remaining the same at 82.67% for all cost values. In the given results, increasing the cost value does not significantly impact the accuracy and remains constant. This may indicate that the linear model is learning the patterns in the data well and does not require a complex decision boundary. The confusion matrix is nearly constant for all Cost values, indicating stable predictions for each class. For the Linear kernel, the Cost value is generally constant without a significant impact on accuracy, suggesting that the relatively simple model is a good fit for the given data. Based on these results, the linear model works relatively well for predicting the price of a vehicle. It is easier to interpret than other, more complex models, especially when linear relationships are essential.</p>
+<p>The Poly kernel produces a polynomial decision boundary, and for the given results, the accuracy is generally consistent at 83.33% as the Cost value increases. This indicates that the model only requires a certain level of complexity to learn polynomial features. The Poly kernel shows generally stable predictions, with the class "high" tending to be more challenging to predict. The poly kernel generally maintains stable accuracy for a specific cost value. This is a good model for cases where polynomial characteristics are essential. Based on these results, vehicle prices can have polynomial characteristics, and models that account for them can improve performance. However, it can lead to overfitting beyond a certain level of polynomial dimensionality, so finding the suitable model complexity is crucial.</p>
+<p>Finally, the RBF kernel generates a non-linear decision boundary. In the given results, the accuracy remains stable above a certain level as the value of Cost increases. While the accuracy remains at 83.33% in most cases, it increases to 83.67% for a cost of 13. This could be a sign that a more complex model for the data is needed. The RBF kernel shows generally stable predictions, with the class 'high' tending to be more challenging to predict. However, for some Cost values, the class 'High' prediction appears to be more difficult. The RBF kernel tends to improve its accuracy as the Cost value increases. Therefore, the RBF kernel may be the most appropriate model for a given dataset. However, choosing a proper Cost value is vital to avoid overfitting. As a result, if non-linear relationships are essential in predicting vehicle prices, SVMs with RBF kernels may have a performance advantage. However, it is necessary to control the complexity of the model correctly, which requires careful tuning of the cost value.</p>
 <br/>
-<p></p>
+<p>Here's a visualization of the decision boundary for each kernel. Visualizations like this can help see the shape of the decision boundary and the class distribution of the data points. It also allows for a comparison of the performance of different kernels and the shape of the decision boundary to choose the suitable model for the data.</p>
 <div class="row">
     <div class="col">
         <img src="ml_svm_038.png" class="rounded" width="350">
-    </div>&nbsp;
+    </div>
     <div class="col">
         <img src="ml_svm_039.png" class="rounded" width="350">
     </div>
