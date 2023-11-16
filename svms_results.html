@@ -1,19 +1,16 @@
 <h2>Support Vector Machine Results</h2>
 <br />
-<p>...</p>
-
+<p>Running SVMs for each kernel type and cost on the vehicle data, we obtain accuracy and confusion matrices for the generated models. This exploration enables an assessment of the best accuracy for each kernel type, with the table below presenting the results of this experiment. The models with the highest accuracy for each kernel type are shaded in blue.</p>
 <br />
-
-
 <div class="row">
     <div class="col">
         <table class="table  table-sm" style="font-size: 12px;">
             <thead>
                 <tr style="text-align: center;">
-                    <th>Kernel Type</th>
+                    <th>Kernel<br/>Type</th>
                     <th>Cost</th>
                     <th>Accuracy</th>
-                    <th>Confusion Matrix</th>
+                    <th>Confusion<br/>Matrix</th>
                 </tr>
             </thead>
             <tbody>
@@ -318,10 +315,10 @@
         <table class="table  table-sm" style="font-size: 12px;">
             <thead>
                 <tr style="text-align: center;">
-                    <th>Kernel Type</th>
+                    <th>Kernel<br/>Type</th>
                     <th>Cost</th>
                     <th>Accuracy</th>
-                    <th>Confusion Matrix</th>
+                    <th>Confusion<br/>Matrix</th>
                 </tr>
             </thead>
             <tbody>
@@ -626,10 +623,10 @@
         <table class="table  table-sm" style="font-size: 12px;">
             <thead>
                 <tr style="text-align: center;">
-                    <th>Kernel Type</th>
+                    <th>Kernel<br/>Type</th>
                     <th>Cost</th>
                     <th>Accuracy</th>
-                    <th>Confusion Matrix</th>
+                    <th>Confusion<br/>Matrix</th>
                 </tr>
             </thead>
             <tbody>
@@ -931,3 +928,25 @@
         </table>
     </div>
 </div>
+
+<br/>
+<p>Based on the results in the table above, we present the line plot below to show the trend of the change in accuracy as COST changes for each kernel type.</p>
+<img src="ml_svm_035.png" class="rounded" width="900">
+<br/>
+<p>Based on the above data, comparing the performance of different kernels and cost values reveals the following. First, for the Linear kernel, accuracy remains constant as the Cost value increases. The confusion matrix also shows minimal variation, with the highest accuracy being 83.00%, consistent across different Cost values. The Linear kernel, producing a linear decision boundary, performs well when the data is linearly separable. The current dataset exhibits linear separability, yielding performance similar to the RBF kernel. The linear kernel shows a confusion matrix concentrated in the principal diagonal components.</p>
+<p>Poly kernels represent polynomial kernels, offering various degrees. The experiment with a degree of 3 resulted in the highest accuracy of 84.00%, costing 25. The degree can impact model performance. The line graph illustrates the accuracy trend as the degree varies from 2 to 10, costing 25.</p>
+<img src="ml_svm_036.png" class="rounded" width="700">
+<br/>
+<p>From the graph, the highest accuracy is achieved at a degree of 3. Additionally, the confusion matrix's main diagonal component has significant values, accompanied by some misclassifications. For the RBF kernel, accuracy remains constant with increasing Cost. The optimal accuracy hovers around 0.83. In the confusion matrix, the main diagonal component contains large values, and values outside the main diagonal are uniformly distributed. The RBF kernel excels at generating nonlinear decision boundaries, though accuracy doesn't notably improve with higher Cost values, suggesting effective classification with relatively simple decision boundaries. Despite correct predictions in the main diagonal, other values contribute to some misclassification.</p>
+<p>Overall, the results indicate that accuracy only significantly improves as Cost increases for all kernels. Misclassifications persist in all kernels' confusion matrices, potentially stemming from noise or unusual data patterns requiring additional processing. Linear, RBF, and Poly kernels produce decision boundaries—linear or nonlinear—exhibiting similar behavior on the current dataset.</p>
+<br/>
+<p>In a support vector machine (SVM), the weight for each feature indicates its influence on the model's decision boundary. A positive weight supports the positive class, while a negative weight supports the negative class. The magnitude of the weight reflects its importance. The following illustrates the relationship of weights for each feature.</p>
+<img src="ml_svm_037.png" class="rounded" width="500">
+<br/>
+<p>After analyzing the graph above, the weight of each feature indicates its importance in the SVM model's classification decision. Positive weights suggest support for the positive class, while negative weights indicate support for the negative class. For instance, mileage has a positive weight (0.7188), and higher mileage supports the positive class. Conversely, horsepower has a negative weight (-0.6032), implying that higher horsepower supports the negative class. Year exhibits a positive weight (0.5035, 0.2329) for specific year ranges (1984-2015 and 2019-2021) and a negative weight (-0.0966) for other year ranges (2016-2018). Thus, vehicles in specific year ranges support positive classes, while those in different year ranges support negative classes. Fuel Tank Volume carries a negative weight (-0.3728), indicating that higher fuel tank volume supports the negative class. Highway Fuel Economy has a positive weight (0.2330), signifying that higher highway fuel economy supports positive classes. Width has a negative weight (-0.0997), suggesting that a wider vehicle supports the negative class. Lastly, torque has a negative weight (-0.0966), indicating that higher torque supports negative classes.</p>
+<br/>
+
+
+
+
+
