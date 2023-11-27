@@ -978,12 +978,29 @@
     negative weight (-0.0997), suggesting that a wider vehicle supports the negative class. Lastly, torque has a
     negative weight (-0.0966), indicating that higher torque supports negative classes.</p>
 <br />
-<p>Visualizing the data becomes challenging when performing SVM modeling based on nine vehicle characteristics.
+<!-- <p>Visualizing the data becomes challenging when performing SVM modeling based on nine vehicle characteristics.
     Therefore, as outlined above, the number of features was reduced to 2 through PCA dimensionality reduction and
     conducting SVM modeling again. Principal Component Analysis (PCA) captures the main variation in the data,
     facilitating visualization by projecting the data in 2D or 3D. This aids in understanding patterns in the data and
-    the boundaries between classes.</p>
-<p>On the other hand, dimensionality reduction can result in losing some information in the original data. Some details
+    the boundaries between classes.</p> -->
+<p>Data visualization becomes difficult when performing SVM modeling based on nine vehicle characteristics. Therefore, results are visualized in two ways. First, two representative features used in the SVM performed above are selected, and visualization is done on them. Then, after performing PCA dimensionality reduction as described earlier, SVM modeling is performed again, and visualization is done based on the reduced features.</p>
+<p>First, select two features, horsepower, and mileage, from the SVM performed earlier and visualize them as shown below. </p>
+<div class="row">
+    <div class="col">
+        <img src="ml_svm_041.png" class="rounded" width="350">
+    </div>
+    <div class="col">
+        <img src="ml_svm_042.png" class="rounded" width="350">
+    </div>
+    <div class="col">
+        <img src="ml_svm_043.png" class="rounded" width="350">
+    </div>
+</div>
+<br/>
+<p>
+    The three visualizations above, although not perfect, do an excellent job of distinguishing between Class 0, a relatively low-priced vehicle, and Class 1, a medium-priced vehicle. On the other hand, these visualizations show that the more expensive Class 2 vehicles are mixed in with Class 1 and need to be clearly distinguishable. If one looks at the decision boundaries generated for each kernel type, it can be observed that they look different, but no one type is performing better than the other. This is consistent with the similar accuracy of each type described earlier. When comparing Poly and RBF, which is a non-linear separation, it can be seen that RBF does a better job of separating Class 0 and Class 1, albeit slightly, and this is supported by the results showing that RBF has a slightly higher accuracy. As a result, all three kernels show similar results, and it seems that various attempts are needed to obtain higher decision boundaries, such as using different hyper-parameters.</p>
+<p>Next, SVM is performed after PCA dimensionality reduction, and squaring is done based on the results. Principal component analysis (PCA) captures the main variation in the data and facilitates visualization by projecting the data into 2D or 3D. This helps to understand patterns in the data and the boundaries between classes.
+    On the other hand, dimensionality reduction can result in losing some information in the original data. Some details
     may need to be recovered even if they capture the main variations well. Since the characteristics of the reduced
     dimensions do not match the original characteristics, interpreting what they mean can be challenging. In addition,
     dimensionality reduction only continually improves the model's performance in some datasets. Especially for
