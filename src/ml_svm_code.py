@@ -363,6 +363,70 @@ for kernel, row in best_pca_rows.items():
 print(results_pca_df)
 
 ##########################################################################################
+# Visualize 2-dimension decision boundary based on two main characteristics (horsepower, mileage)
+##########################################################################################
+
+# Extract only 'horsepower' and 'mileage' columns from the original DataFrame
+X_subset = df[['horsepower', 'mileage']]
+
+# Split the subset data into training and testing sets
+X_train_subset, X_test_subset, y_train_subset, y_test_subset = train_test_split(X_subset, y, test_size=0.3, random_state=42)
+
+# Standardize the subset data
+scaler_subset = StandardScaler()
+X_train_std_subset = scaler_subset.fit_transform(X_train_subset)
+X_test_std_subset = scaler_subset.transform(X_test_subset)
+
+
+def plot_decision_boundary(X, y, model, title, kernel_type):
+    x_min, x_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    y_min, y_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.1), np.arange(y_min, y_max, 0.1))
+
+    Z = model.predict(np.c_[xx.ravel(), yy.ravel()])
+    Z = Z.reshape(xx.shape)
+
+    plt.contourf(xx, yy, Z, alpha=0.3, cmap=plt.cm.coolwarm)
+
+    # Customize markers for each class
+    # scatter = plt.scatter(X[:, 0], X[:, 1], c=y, cmap=plt.cm.coolwarm, edgecolors='k',
+    #                       marker='o', s=50, label='Data Points', alpha=0.8)
+
+
+    # Add legend
+    # plt.legend(handles=scatter.legend_elements()[0], labels=['Class 0', 'Class 1', 'Class 2'], loc='upper right')
+
+    # Plot decision boundary with different marker shapes for each class
+    plt.contourf(xx, yy, Z, cmap=plt.cm.coolwarm, alpha=0.8)
+    for i, (marker, color) in zip(np.unique(y_train), [('o', 'blue'), ('s', 'white'), ('^', 'red')]):
+        indices = np.where(y_train == i)
+        plt.scatter(X_train_std[indices, 0], X_train_std[indices, 1], marker=marker, s=25, edgecolors='k',
+                    label=f'Class {i}', c=color)
+
+    plt.legend()
+    plt.title(f'SVM Decision Boundary - {kernel_type} Kernel')
+    plt.xlabel('Horsepower')
+    plt.ylabel('Mileage')
+    plt.show()
+
+
+# Linear Kernel
+model_linear = SVC(kernel='linear', C=1.0)
+model_linear.fit(X_train_std_subset, y_train_subset)
+plot_decision_boundary(X_train_std_subset, y_train_subset, model_linear, 'Linear', 'Linear')
+
+# Polynomial Kernel
+model_poly = SVC(kernel='poly', C=1.0, degree=3, gamma='auto')
+model_poly.fit(X_train_std_subset, y_train_subset)
+plot_decision_boundary(X_train_std_subset, y_train_subset, model_poly, 'Polynomial', 'Poly')
+
+# RBF Kernel
+model_rbf = SVC(kernel='rbf', C=1.0, gamma='auto')
+model_rbf.fit(X_train_std_subset, y_train_subset)
+plot_decision_boundary(X_train_std_subset, y_train_subset, model_rbf, 'RBF', 'RBF')
+
+
+##########################################################################################
 # Visualization through dimensionality reduction at each optimal kernel and cost
 ##########################################################################################
 # Apply PCA to reduce dimensionality to 2
