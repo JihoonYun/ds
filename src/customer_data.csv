@@ -1,0 +1,31 @@
+Age,Preferred_Product_Category,Income,Card_Approval
+25,Sports,55000,True
+40,Books,85000,True
+32,Electronics,72000,True
+50,Home Decor,95000,True
+28,Clothing,40000,False
+45,Sports,105000,True
+22,Home Decor,65000,False
+35,Clothing,80000,True
+60,Books,110000,True
+30,Electronics,60000,False
+55,Home Decor,100000,True
+26,Electronics,48000,False
+48,Clothing,90000,True
+33,Sports,78000,True
+21,Books,35000,False
+42,Clothing,92000,True
+38,Home Decor,75000,True
+23,Electronics,52000,False
+65,Sports,115000,True
+27,Books,42000,False
+44,Clothing,88000,True
+31,Sports,70000,False
+58,Electronics,98000,True
+36,Home Decor,82000,True
+24,Books,38000,False
+46,Electronics,97000,True
+29,Sports,59000,False
+52,Clothing,94000,True
+34,Home Decor,77000,True
+49,Sports,89000,True
