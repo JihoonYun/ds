@@ -1,21 +1,29 @@
 <h2>Regression Data</h2>
 <br/>
-<p>Randomly sampling 30,000 data points from the original dataset, correlation analysis was conducted to understand the relationship between independent variables and the dependent variable, 'price.' Selecting the top 10 independent variables with the highest correlation with 'price,' the correlation values were visualized using a bar chart.</p>
+<b>Sampling & Extracting features</b>
+<p>Randomly sampling 30,000 data points from the original dataset, correlation analysis was conducted to understand the relationship between independent variables and the dependent variable, 'price.' Selecting the top 10 independent variables with the highest correlation with 'price,' the correlation values were visualized using a bar chart. However, The dataset was cleaned to include only representative features, as there were some overlapping features related to vehicle features.</p>
 <img src="ml_rg_053.png" class="rounded" width="400">
 <br/>
-<p>To enhance the effectiveness of linear regression analysis, the independent variables were normalized, and a logarithmic transformation was performed on the dependent variable. This transformation aims to approximate the distribution of the dependent variable to a normal distribution, meeting the assumptions of a linear regression model. With the preprocessed data, a Q-Q plot was created to confirm that the residuals follow a normal distribution. The Q-Q plot exhibits a relatively close alignment along the 45-degree line, indicating that the model is well-fitted to the data, and the residuals show normality.</p>
-<img src="ml_rg_055.png" class="rounded" width="400">
+<b>Label</b>
+<p>In linear regression models, supervised learning requires a label. At this stage, we designate 'price' as the label. We keep the name 'price' without changing it to a column named 'label.'</p>
 <br/>
+<b>Normalization</b>
+<p>To enhance the effectiveness of linear regression analysis, the independent variables were normalized, and a logarithmic transformation was performed on the dependent variable. This transformation aims to approximate the distribution of the dependent variable to a normal distribution, meeting the assumptions of a linear regression model.</p>
+<br/>
+<!-- <p>To enhance the effectiveness of linear regression analysis, the independent variables were normalized, and a logarithmic transformation was performed on the dependent variable. This transformation aims to approximate the distribution of the dependent variable to a normal distribution, meeting the assumptions of a linear regression model. With the preprocessed data, a Q-Q plot was created to confirm that the residuals follow a normal distribution. The Q-Q plot exhibits a relatively close alignment along the 45-degree line, indicating that the model is well-fitted to the data, and the residuals show normality.</p>
+<img src="ml_rg_055.png" class="rounded" width="400">
+<br/> -->
+<b>linearity</b>
 <p>The scatter plot below illustrates the distribution of data points between each independent variable and the dependent variable. While the data points exhibit a linear pattern along the line, there might be some deviations. The points are reasonably clustered around the line, suggesting that the model is adequately capturing the data.</p>
 <img src="ml_rg_054.png" class="rounded" width="1100">
 <br/>
-<p>Finally, the table below shows that all Variance Inflation Factor (VIF) values are below 10. This indicates a relatively low degree of multicollinearity, as higher VIF values suggest stronger correlations among independent variables. A low VIF implies that the regression model has appropriate diversity among the independent variables, indicating model stability.</p>
+<!-- <p>Finally, the table below shows that all Variance Inflation Factor (VIF) values are below 10. This indicates a relatively low degree of multicollinearity, as higher VIF values suggest stronger correlations among independent variables. A low VIF implies that the regression model has appropriate diversity among the independent variables, indicating model stability.</p>
 <img src="ml_rg_056.png" class="rounded" width="270">
-<br/>
+<br/> -->
 <p>As a result of the above procedure, the following data was generated.</p>
 <img src="ml_rg_057.png" class="rounded" width="800">
 <br/>
-<p>The dataset was cleaned to include only representative features, as there were overlapping features related to vehicle features.</p>
+
 
 
 <br/>
