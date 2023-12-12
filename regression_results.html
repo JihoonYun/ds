@@ -58,22 +58,20 @@ The R-squared value of 0.6531539164360696 indicates that the model can explain a
 <br/>
 <b>Linear Regression Equation</b>
 <p>Based on the above coefficients and Intercept, the linear regression equation, considering the log-transformed dependent variable, can be expressed as follows:</p>
-<img src="ml_rg_060.png" class="rounded" width="500">
+<img src="ml_rg_060.png" class="rounded" width="520">
 <br/>
-<p>Now, suppose you have a new set of data with the following normalized input values:</p>
-<ul>
-    <li><p>Normalized Horsepower: 0.8</p></li>
-    <li><p>Normalized Mileage: -0.5</p></li>
-    <li><p>Normalized Highway Fuel Economy: 0.2</p></li>
-    <li><p>Normalized Year: 1.5</p></li>
-    <li><p>Normalized Wheelbase: −0.1</p></li>
-</ul>
+<br/>
+<p>Now, Here is a simple example of this equation. Suppose you have a new set of data with the following normalized input values:</p>
+<p>Normalized Horsepower: 0.8, 
+Normalized Mileage: -0.5, 
+Normalized Highway Fuel Economy: 0.2, 
+Normalized Year: 1.5, 
+Normalized Wheelbase: −0.1</p>
 <p>To predict the log-transformed price for this new data, you substitute these normalized values into the equation:</p>
-<img src="ml_rg_061.png" class="rounded" width="490"><br/>
-<img src="ml_rg_062.png" class="rounded" width="490"><br/>
-<img src="ml_rg_063.png" class="rounded" width="490"><br/>
-<img src="ml_rg_064.png" class="rounded" width="490"><br/>
-<p>This will give you the predicted car price based on the new set of normalized input values. Remember that the actual price is obtained after reversing any transformations applied during the modeling process (e.g., log transformation).</p>
+<img src="ml_rg_061.png" class="rounded" width="510"><br/>
+<img src="ml_rg_062.png" class="rounded" width="510"><br/>
+<img src="ml_rg_063.png" class="rounded" width="510"><br/>
+<img src="ml_rg_064.png" class="rounded" width="510"><br/>
 
 <br/>
 <p>In summary, the multiple linear regression model effectively predicts vehicle prices based on diverse characteristics, showcasing low Mean Squared Error (MSE) and Mean Absolute Error (MAE) values, indicating accurate and reliable predictions. The model explains approximately 65.32% of the variability in used car prices, reflecting strong explanatory power. Residual analysis confirms accurate predictions, with residuals close to zero and a small standard deviation, demonstrating the model's stability. The Q-Q Plot further supports the model's reliability by indicating residuals closely approximate a normal distribution. While the model successfully explains and predicts data, the existence of unexplained patterns suggests potential for further improvement through additional features or model refinement.</p>
