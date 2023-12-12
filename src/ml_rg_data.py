@@ -12,6 +12,7 @@ from statsmodels.graphics.gofplots import ProbPlot
 import statsmodels.api as sm
 from scipy.stats import boxcox
 from statsmodels.stats.outliers_influence import variance_inflation_factor
+from scipy.stats import norm
 
 # Load CSV
 df = pd.read_csv("used_cars_data_cleaned_final_ver.csv")
