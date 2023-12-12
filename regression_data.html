@@ -5,7 +5,7 @@
 <img src="ml_rg_053.png" class="rounded" width="400">
 <br/>
 <b>Label</b>
-<p>In linear regression models, supervised learning requires a label. At this stage, we designate 'price' as the label. We keep the name 'price' without changing it to a column named 'label.'</p>
+<p>To build a linear regression model based on vehicle features, supervised learning is employed in this project. One crucial aspect of supervised learning is defining the label that represents the model's learning goal. In this particular project, the aim is to predict the price of vehicles, and hence, 'price' is designated as the label. This step is pivotal, enabling the model to learn and predict prices based on the characteristics of each vehicle. The decision to retain 'price' as the variable name enhances readability and simplifies the code. With this label configuration, the model learns the relationship between the given features and 'price,' enabling it to predict the price for new vehicles.</p>
 <br/>
 <b>Normalization</b>
 <p>To enhance the effectiveness of linear regression analysis, the independent variables were normalized, and a logarithmic transformation was performed on the dependent variable. This transformation aims to approximate the distribution of the dependent variable to a normal distribution, meeting the assumptions of a linear regression model.</p>
@@ -14,12 +14,13 @@
 <img src="ml_rg_055.png" class="rounded" width="400">
 <br/> -->
 <b>linearity</b>
-<p>The scatter plot below illustrates the distribution of data points between each independent variable and the dependent variable. While the data points exhibit a linear pattern along the line, there might be some deviations. The points are reasonably clustered around the line, suggesting that the model is adequately capturing the data.</p>
+<p>The scatter plot below offers a visual representation of the distribution of data points between each independent variable and the dependent variable. While the data points loosely follow a linear pattern along a regression line, there exists a subtle degree of deviation. Notably, the points are reasonably clustered around the regression line, providing evidence that the model adequately captures the underlying data dynamics. The intriguing aspect lies in the nuanced relationship depicted by the scatter plot. Though the data points don't conform precisely to the linear regression line, the discernible pattern suggests an inherent connection between the independent and dependent variables. The slight deviations from linearity could be attributed to inherent complexities or unaccounted factors within the dataset. The clustering of points around the regression line signifies that, on average,</p>
 <img src="ml_rg_054.png" class="rounded" width="1100">
 <br/>
 <!-- <p>Finally, the table below shows that all Variance Inflation Factor (VIF) values are below 10. This indicates a relatively low degree of multicollinearity, as higher VIF values suggest stronger correlations among independent variables. A low VIF implies that the regression model has appropriate diversity among the independent variables, indicating model stability.</p>
 <img src="ml_rg_056.png" class="rounded" width="270">
 <br/> -->
+<br/>
 <p>As a result of the above procedure, the following data was generated.</p>
 <img src="ml_rg_057.png" class="rounded" width="800">
 <br/>
